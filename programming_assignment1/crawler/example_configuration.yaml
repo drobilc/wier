@@ -1,0 +1,10 @@
+user_agent: "fri-wier-NAME_OF_YOUR_GROUP"
+
+# The seed URL's that the crawler will use to seed the frontier.
+initial_urls:
+  - "gov.si"
+  - "evem.gov.si"
+  - "e-uprava.gov.si"
+  - "e-prostor.gov.si"
+
+number_of_workers: 4
