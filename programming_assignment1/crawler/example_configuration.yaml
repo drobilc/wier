@@ -1,10 +1,13 @@
-user_agent: "fri-wier-NAME_OF_YOUR_GROUP"
+user_agent: "fri-wier-DOMACI_NJOKI"
 
 # The seed URL's that the crawler will use to seed the frontier.
 initial_urls:
-  - "gov.si"
-  - "evem.gov.si"
-  - "e-uprava.gov.si"
-  - "e-prostor.gov.si"
+  - "https://www.gov.si/"
+  - "https://evem.gov.si/"
+  - "https://e-uprava.gov.si/"
+  - "https://www.e-prostor.gov.si/"
 
 number_of_workers: 4
+
+# Path to the selected Google Chrome headless browser
+driver_path: "downloader/chromedriver.exe"

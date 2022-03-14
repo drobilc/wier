@@ -1,15 +1,10 @@
 import yaml
 import argparse
+from downloader import Downloader
 
 def run_crawler(configuration):
-    # Read data from configuration
-    initial_urls = configuration.get('initial_urls', [])
-
-    user_agent = configuration.get('user_agent')
-    assert user_agent is not None
-
-    # TODO: Actually start the crawler
-    print(configuration)
+    downloader = Downloader(configuration)
+    downloader.run()
 
 def main():
 
