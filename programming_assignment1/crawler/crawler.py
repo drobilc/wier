@@ -11,7 +11,7 @@ class Crawler(object):
         # manager (Scheduler object) and use them when constructing multiple
         # downloader threads.
         self.storage = Storage()
-        self.scheduler = Scheduler(self.storage)
+        self.scheduler = Scheduler(self.configuration, self.storage)
 
         # Read initial seed URL's from configuration and add them to the crawler
         # queue.
