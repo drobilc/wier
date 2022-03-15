@@ -1,5 +1,6 @@
 import yaml
 import argparse
+import logging
 from crawler import Crawler
 
 def run_crawler(configuration):
@@ -9,6 +10,9 @@ def run_crawler(configuration):
     crawler.run()
 
 def main():
+
+    # Configure logger
+    logging.basicConfig(level=logging.INFO)
 
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Start web crawler.')
@@ -30,7 +34,7 @@ def main():
             run_crawler(configuration)
 
         except yaml.YAMLError as exception:
-            print(exception)
+            logging.exception(exception)
 
 if __name__ == '__main__':
     main()

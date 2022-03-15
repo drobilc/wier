@@ -1,8 +1,7 @@
-from scheduler import Scheduler
-from storage import Storage
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
+import logging
 
 class Downloader(object):
 
@@ -60,6 +59,7 @@ class Downloader(object):
             try:
                 # Get the next url from scheduler
                 url = self.scheduler.next()
+                logging.info('Getting URL: %s', url)
                 
                 # Try to read the website and parse its html.
                 content = self.download_site(url)
@@ -75,4 +75,4 @@ class Downloader(object):
             except Exception as e:
                 # Don't stop if an error occurs.
                 # TODO: Use logger library to log errors
-                print(e)
+                logging.exception(e)
