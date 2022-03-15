@@ -1,6 +1,5 @@
 from urllib.parse import urljoin, urlparse
 from urllib.robotparser import RobotFileParser
-from usp.tree import sitemap_tree_for_homepage
 import logging
 
 class Scheduler(object):
