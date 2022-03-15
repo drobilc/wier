@@ -3,7 +3,7 @@ user_agent: "fri-wier-DOMACI_NJOKI"
 # The seed URL's that the crawler will use to seed the frontier.
 initial_urls:
   - "https://www.gov.si/"
-  - "https://evem.gov.si/"
+  - "http://evem.gov.si/"
   - "https://e-uprava.gov.si/"
   - "https://www.e-prostor.gov.si/"
 
