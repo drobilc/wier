@@ -1,7 +1,9 @@
+from scheduler import Scheduler
+from storage import Storage
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+#from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
-import logging
 
 class Downloader(object):
 
@@ -11,22 +13,28 @@ class Downloader(object):
         self.scheduler = scheduler
         self.storage = storage
 
+        # Read data from configuration
+        initial_urls = configuration.get('initial_urls', [])
+        self.scheduler.enqueue(initial_urls)
+
         # Initialize Selenium webdriver with Google Chrome browser
         driver_path = configuration.get('driver_path')
         
         browser_options = Options()
+        browser_options.binary_location = r'C:\Program Files (x86)\Mozilla Firefox\firefox.exe'
         
         # Set user agent for the browser
         user_agent = configuration.get('user_agent')
         browser_options.add_argument(f'user-agent={user_agent}')
 
-        # Hide browser if the headless key is set in configuration
-        browser_options.headless = self.configuration.get('headless', True)
-
         self.driver = webdriver.Chrome(driver_path, options=browser_options)
 
+        # TODO: Hide the browser
+        # browser_options.add_argument("--headless")
+
         # TODO: Read timeout from configuratinon
-        self.timeout = configuration.get('page_load_timeout')
+        self.timeout = 5
+        
 
     def download_site(self, url):
         if url is None: return None
@@ -59,7 +67,6 @@ class Downloader(object):
             try:
                 # Get the next url from scheduler
                 url = self.scheduler.next()
-                logging.info('Getting URL: %s', url)
                 
                 # Try to read the website and parse its html.
                 content = self.download_site(url)
@@ -75,4 +82,4 @@ class Downloader(object):
             except Exception as e:
                 # Don't stop if an error occurs.
                 # TODO: Use logger library to log errors
-                logging.exception(e)
+                print(e)
