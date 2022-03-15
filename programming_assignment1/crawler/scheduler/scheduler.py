@@ -1,5 +1,6 @@
 from urllib.parse import urljoin, urlparse
 from urllib.robotparser import RobotFileParser
+from usp.tree import sitemap_tree_for_homepage
 import logging
 
 class Scheduler(object):
@@ -29,6 +30,13 @@ class Scheduler(object):
         parser.read()
 
         self.robots[domain] = parser
+
+        # If there is a sitemap inside the "robots.txt" file, add it to queue
+        # and our crawler will extract all links.
+        sitemaps = parser.site_maps()
+        if sitemaps is not None:
+            self.enqueue(sitemaps)
+
         return parser
 
     def enqueue(self, urls):
