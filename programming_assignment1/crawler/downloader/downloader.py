@@ -12,10 +12,6 @@ class Downloader(object):
         self.scheduler = scheduler
         self.storage = storage
 
-        # Read data from configuration
-        initial_urls = configuration.get('initial_urls', [])
-        self.scheduler.enqueue(initial_urls)
-
         # Initialize Selenium webdriver with Google Chrome browser
         driver_path = configuration.get('driver_path')
         
@@ -31,8 +27,7 @@ class Downloader(object):
         # browser_options.add_argument("--headless")
 
         # TODO: Read timeout from configuratinon
-        self.timeout = 5
-        
+        self.timeout = configuration.get('page_load_timeout')
 
     def download_site(self, url):
         if url is None: return None

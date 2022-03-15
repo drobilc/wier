@@ -11,3 +11,6 @@ number_of_workers: 4
 
 # Path to the selected Google Chrome headless browser
 driver_path: "downloader/chromedriver.exe"
+
+# How many seconds the crawler should wait for page to load.
+page_load_timeout: 5

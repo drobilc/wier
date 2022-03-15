@@ -9,7 +9,7 @@ class Scheduler(object):
     def enqueue(self, urls):
         # TODO: Use repository to check if the site has already been downloaded.
         for url in urls:
-            if not self.repository.contains_url(url):
+            if self.repository.contains_url(url):
                 continue
             self.queue.append(url)
     

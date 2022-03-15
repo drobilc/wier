@@ -12,6 +12,11 @@ class Crawler(object):
         # downloader threads.
         self.storage = Storage()
         self.scheduler = Scheduler(self.storage)
+
+        # Read initial seed URL's from configuration and add them to the crawler
+        # queue.
+        initial_urls = configuration.get('initial_urls', [])
+        self.scheduler.enqueue(initial_urls)
     
     def run(self):
         # TODO: Spawn multiple downloaders using threads
