@@ -6,11 +6,11 @@ from bs4 import BeautifulSoup
 
 class Downloader(object):
 
-    def __init__(self, configuration):
+    def __init__(self, configuration, scheduler, storage):
         self.configuration = configuration
 
-        self.scheduler = Scheduler()
-        self.storage = Storage()
+        self.scheduler = scheduler
+        self.storage = storage
 
         # Read data from configuration
         initial_urls = configuration.get('initial_urls', [])

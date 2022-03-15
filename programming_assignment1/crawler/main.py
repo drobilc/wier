@@ -1,10 +1,12 @@
 import yaml
 import argparse
-from downloader import Downloader
+from crawler import Crawler
 
 def run_crawler(configuration):
-    downloader = Downloader(configuration)
-    downloader.run()
+    # Create a new crawler object with the configuration and start it. The
+    # crawler will spawn multiple Downloader threads.
+    crawler = Crawler(configuration)
+    crawler.run()
 
 def main():
 

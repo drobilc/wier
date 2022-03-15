@@ -2,10 +2,12 @@ from urllib.parse import urljoin
 
 class Scheduler(object):
 
-    def __init__(self):
+    def __init__(self, repository):
         self.queue = []
+        self.repository = repository
 
     def enqueue(self, urls):
+        # TODO: Use repository to check if the site has already been downloaded.
         self.queue.extend(urls)
     
     def has_next(self):
