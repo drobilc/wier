@@ -26,8 +26,8 @@ Pajka poženemo tako, da mu podamo zastavico s potjo do konfiguracijske datoteke
 python .\main.py --configuration .\configuration.yaml
 ```
 
-## TODO
+Če pajku podamo še zastavico `--verbose`, bo ta izpisoval dodatne informacije o svojem stanju.
 
-* [ ] Spoznavni sestanek
-* [ ] Razdelitev dela
-* [ ] Poimenovanje skupine
+```bash
+python .\main.py --configuration .\configuration.yaml --verbose
+```

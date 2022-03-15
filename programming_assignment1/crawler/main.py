@@ -11,9 +11,6 @@ def run_crawler(configuration):
 
 def main():
 
-    # Configure logger
-    logging.basicConfig(level=logging.INFO)
-
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Start web crawler.')
     parser.add_argument(
@@ -21,7 +18,16 @@ def main():
         dest='configuration_file',
         help='Web crawler configuration file (default: configuration.yaml)'
     )
+    parser.add_argument(
+        '--verbose',
+        action='store_true',
+        help='If set, the crawler will output DEBUG information'
+    )
     arguments = parser.parse_args()
+
+    # Configure logger
+    logging_level = logging.DEBUG if arguments.verbose else logging.INFO
+    logging.basicConfig(level=logging_level)
 
     # Open YAML configuration file
     with open(arguments.configuration_file, "r") as configuration_file:
