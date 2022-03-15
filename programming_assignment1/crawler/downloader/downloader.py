@@ -20,10 +20,10 @@ class Downloader(object):
         user_agent = configuration.get('user_agent')
         browser_options.add_argument(f'user-agent={user_agent}')
 
-        self.driver = webdriver.Chrome(driver_path, options=browser_options)
+        # Hide browser if the headless key is set in configuration
+        browser_options.headless = self.configuration.get('headless', True)
 
-        # TODO: Hide the browser
-        # browser_options.add_argument("--headless")
+        self.driver = webdriver.Chrome(driver_path, options=browser_options)
 
         # TODO: Read timeout from configuratinon
         self.timeout = configuration.get('page_load_timeout')

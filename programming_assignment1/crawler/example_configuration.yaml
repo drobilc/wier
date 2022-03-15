@@ -14,3 +14,6 @@ driver_path: "downloader/chromedriver.exe"
 
 # How many seconds the crawler should wait for page to load.
 page_load_timeout: 5
+
+# Whether we want our browser to run in headless mode or not.
+headless: False
