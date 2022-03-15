@@ -6,3 +6,7 @@ class Storage(object):
     def save(self, url, html):
         # TODO: Actually store page in database
         pass
+
+    def contains_url(self, url):
+        # TODO: Query database for this URL
+        return False
