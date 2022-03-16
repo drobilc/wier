@@ -1,12 +1,10 @@
 class Storage(object):
 
     def __init__(self):
-        pass
+        self.already_visited = []
 
     def save(self, url, html):
-        # TODO: Actually store page in database
-        pass
+        self.already_visited.append(url)
 
     def contains_url(self, url):
-        # TODO: Query database for this URL
-        return False
+        return url in self.already_visited
