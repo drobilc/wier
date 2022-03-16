@@ -1,8 +1,9 @@
+from datetime import datetime, timedelta
 from urllib.parse import urljoin, urlparse, urldefrag
 from urllib.robotparser import RobotFileParser
 from url_normalize import url_normalize
 import logging
-
+import socket
 class Scheduler(object):
 
     def __init__(self, configuration, repository):
@@ -20,6 +21,21 @@ class Scheduler(object):
         # A mapping between domains and RobotFileParser objects that we can use
         # to query for allowed or disallowed URL's.
         self.robots = {}
+
+        self.ips = {}
+        self.last_request = {}
+
+        wait_between_consecutive_requests = self.configuration.get('wait_between_consecutive_requests', 5)
+        self.wait_between_consecutive_requests = timedelta(seconds=wait_between_consecutive_requests)
+    
+    def get_server_ip(self, hostname):
+        try:
+            ip_address = socket.gethostbyname(hostname)
+            logging.info('Performing DNS request for %s, IP: %s', hostname, ip_address)
+            return ip_address
+        except Exception as e:
+            logging.exception(e)
+            return None
     
     def get_robots_parser(self, url):
         url_parts = urlparse(url)
@@ -88,8 +104,34 @@ class Scheduler(object):
     def next(self):
         if len(self.queue) <= 0:
             return None
+
+        for index, url in enumerate(self.queue):
+
+            # Get IP address from the URL - either perform a DNS query or read it
+            # from cache.
+            url_parts = urlparse(url)
+            if url_parts.hostname in self.ips:
+                ip_address = self.ips[url_parts.hostname]
+            else:
+                ip_address = self.get_server_ip(url_parts.hostname)
+                self.ips[url_parts.hostname] = ip_address
+            
+            # Check if enough time has passed between two consecutive requests to
+            # the same server.
+            if ip_address not in self.last_request:
+                # We haven't made any requests to this server yet. We can perform
+                # our first request now.
+                self.last_request[ip_address] = datetime.now()
+                return self.queue.pop(index)
+            else:
+                last_request_time = self.last_request[ip_address]
+                time_passed = datetime.now() - last_request_time
+
+                if time_passed > self.wait_between_consecutive_requests:
+                    self.last_request[ip_address] = datetime.now()
+                    return self.queue.pop(index)
         
-        return self.queue.pop(0)
+        return None
 
     def normalize_url(self, url):
         normalized_url = url_normalize(url)

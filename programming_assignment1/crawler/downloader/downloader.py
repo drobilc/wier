@@ -1,6 +1,8 @@
 from selenium import webdriver
+import selenium.common.exceptions as selenium_exceptions
 from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
+import logging
 
 class Downloader(object):
 
@@ -26,7 +28,6 @@ class Downloader(object):
 
         # Read timeout from configuratinon
         self.timeout = configuration.get('page_load_timeout')
-        
 
     def download_site(self, url):
         if url is None: return None
@@ -59,6 +60,9 @@ class Downloader(object):
             try:
                 # Get the next url from scheduler
                 url = self.scheduler.next()
+
+                if url is None:
+                    continue
                 
                 # Try to read the website and parse its html.
                 content = self.download_site(url)
@@ -71,7 +75,8 @@ class Downloader(object):
                 # scheduler.
                 urls = self.extract_links(url, html)
                 self.scheduler.enqueue(urls)
+            except selenium_exceptions.TimeoutException:
+                logging.error('Timeout exception: %s', url)
             except Exception as e:
                 # Don't stop if an error occurs.
-                # TODO: Use logger library to log errors
-                print(e)
+                logging.exception(e)
