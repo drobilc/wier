@@ -27,7 +27,11 @@ def main():
 
     # Configure logger
     logging_level = logging.DEBUG if arguments.verbose else logging.INFO
-    logging.basicConfig(level=logging_level)
+    logging.basicConfig(
+        level=logging_level,
+        format='%(asctime)s %(levelname)s %(module)s: %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S',
+    )
 
     # Open YAML configuration file
     with open(arguments.configuration_file, "r") as configuration_file:
