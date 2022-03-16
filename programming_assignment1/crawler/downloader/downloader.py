@@ -1,5 +1,7 @@
 from selenium import webdriver
 import selenium.common.exceptions as selenium_exceptions
+import urllib.error as urllib_exceptions
+import ssl
 from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
 import logging
@@ -16,6 +18,7 @@ class Downloader(object):
         driver_path = configuration.get('driver_path')
         
         browser_options = Options()
+        browser_options.accept_insecure_certs = True
         
         # Set user agent for the browser
         user_agent = configuration.get('user_agent')
@@ -64,6 +67,8 @@ class Downloader(object):
                 if url is None:
                     continue
                 
+                logging.info('Fetching: %s', url)
+                
                 # Try to read the website and parse its html.
                 content = self.download_site(url)
                 html = self.parse_html(content)
@@ -75,8 +80,12 @@ class Downloader(object):
                 # scheduler.
                 urls = self.extract_links(url, html)
                 self.scheduler.enqueue(urls)
-            except selenium_exceptions.TimeoutException:
+            except selenium_exceptions.TimeoutException as e:
                 logging.error('Timeout exception: %s', url)
+            except ssl.SSLError as e:
+                logging.error('SSL exception: %s', url)
+            except urllib_exceptions.URLError as e:
+                logging.error('SSL handshake exception: %s', url)
             except Exception as e:
                 # Don't stop if an error occurs.
                 logging.exception(e)
