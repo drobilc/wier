@@ -1,5 +1,6 @@
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin, urlparse, urldefrag
 from urllib.robotparser import RobotFileParser
+from url_normalize import url_normalize
 import logging
 
 class Scheduler(object):
@@ -11,6 +12,10 @@ class Scheduler(object):
         self.queue = []
 
         self.user_agent = self.configuration.get('user_agent')
+
+        initial_urls = self.configuration.get('initial_urls')
+        initial_domains = map(lambda url: urlparse(url).hostname, initial_urls)
+        self.allowed_domains = list(initial_domains)
 
         # A mapping between domains and RobotFileParser objects that we can use
         # to query for allowed or disallowed URL's.
@@ -38,22 +43,43 @@ class Scheduler(object):
 
         return parser
 
+    def should_skip(self, url):
+        # Check if the URL has already been visited using data from our
+        # repository.
+        if self.repository.contains_url(url):
+            logging.debug('Site already downloaded: %s', url)
+            return True
+
+        url_parts = urlparse(url)
+
+        # Ignore links that are not http or https
+        if url_parts.scheme not in ['http', 'https']:
+            logging.debug('Incorrect scheme: %s', url_parts.scheme)
+            return True
+
+        # Check if we are even allowed to visit the url using the
+        # "robots.txt" file.
+        robots_parser = self.get_robots_parser(url)
+        if not robots_parser.can_fetch(self.user_agent, url):
+            logging.debug('Site disallowed: %s', url)
+            return True
+        
+        # Ignore links that are not inside our allowed domains
+        for allowed_domain in self.allowed_domains:
+            if url_parts.hostname.endswith(allowed_domain):
+                return False
+
+        logging.debug('Domain not allowed: %s', url_parts.hostname)
+        return True
+
     def enqueue(self, urls):
-        for url in urls:
-
-            # Check if the URL has already been visited using data from our
-            # repository.
-            if self.repository.contains_url(url):
-                logging.debug('Site already downloaded: %s', url)
+        for dirty_url in urls:
+            # First, canonicalize the URL address
+            url = self.normalize_url(dirty_url)
+            
+            if self.should_skip(url):
                 continue
-
-            # Check if we are even allowed to visit the url using the
-            # "robots.txt" file.
-            robots_parser = self.get_robots_parser(url)
-            if not robots_parser.can_fetch(self.user_agent, url):
-                logging.debug('Site disallowed: %s', url)
-                continue
-
+            
             self.queue.append(url)
     
     def has_next(self):
@@ -64,6 +90,14 @@ class Scheduler(object):
             return None
         
         return self.queue.pop(0)
-    
+
+    def normalize_url(self, url):
+        normalized_url = url_normalize(url)
+        final_url, _ = urldefrag(normalized_url)
+        return final_url
+
     def canonicalize_url(self, base_url, relative_url):
-        return urljoin(base_url, relative_url)
+        absolute_url = urljoin(base_url, relative_url)
+        normalized_url = url_normalize(absolute_url)
+        final_url, _ = urldefrag(normalized_url)
+        return final_url
