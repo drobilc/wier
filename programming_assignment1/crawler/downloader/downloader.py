@@ -1,7 +1,6 @@
 from scheduler import Scheduler
 from storage import Storage
 from selenium import webdriver
-#from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
 
@@ -13,27 +12,22 @@ class Downloader(object):
         self.scheduler = scheduler
         self.storage = storage
 
-        # Read data from configuration
-        initial_urls = configuration.get('initial_urls', [])
-        self.scheduler.enqueue(initial_urls)
-
-        # Initialize Selenium webdriver with Google Chrome browser
+        # Initialize Selenium webdriver with Firefox browser
         driver_path = configuration.get('driver_path')
         
         browser_options = Options()
-        browser_options.binary_location = r'C:\Program Files (x86)\Mozilla Firefox\firefox.exe'
         
         # Set user agent for the browser
         user_agent = configuration.get('user_agent')
         browser_options.add_argument(f'user-agent={user_agent}')
 
-        self.driver = webdriver.Chrome(driver_path, options=browser_options)
+        # Hide browser if the headless key is set in configuration
+        browser_options.headless = self.configuration.get('headless', True)
 
-        # TODO: Hide the browser
-        # browser_options.add_argument("--headless")
+        self.driver = webdriver.Firefox(driver_path, options=browser_options)
 
         # TODO: Read timeout from configuratinon
-        self.timeout = 5
+        self.timeout = configuration.get('page_load_timeout')
         
 
     def download_site(self, url):
