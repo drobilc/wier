@@ -1,5 +1,3 @@
-from scheduler import Scheduler
-from storage import Storage
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
@@ -24,9 +22,9 @@ class Downloader(object):
         # Hide browser if the headless key is set in configuration
         browser_options.headless = self.configuration.get('headless', True)
 
-        self.driver = webdriver.Firefox(driver_path, options=browser_options)
+        self.driver = webdriver.Firefox(executable_path=driver_path, options=browser_options)
 
-        # TODO: Read timeout from configuratinon
+        # Read timeout from configuratinon
         self.timeout = configuration.get('page_load_timeout')
         
 
