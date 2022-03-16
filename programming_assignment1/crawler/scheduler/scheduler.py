@@ -24,9 +24,13 @@ class Scheduler(object):
 
         self.ips = {}
         self.last_request = {}
+        self.crawler_delays = {}
 
         wait_between_consecutive_requests = self.configuration.get('wait_between_consecutive_requests', 5)
         self.wait_between_consecutive_requests = timedelta(seconds=wait_between_consecutive_requests)
+    
+    def get_wait_time(self, domain):
+        return self.crawler_delays.get(domain, self.wait_between_consecutive_requests)
     
     def get_server_ip(self, hostname):
         try:
@@ -45,11 +49,18 @@ class Scheduler(object):
             return self.robots[domain]
         
         robots_url = f'{url_parts.scheme}://{domain}/robots.txt'
-        logging.debug('Getting "robots.txt" from: %s', robots_url)
+        logging.info('Fetching "robots.txt" from: %s', robots_url)
         parser = RobotFileParser(robots_url)
         parser.read()
 
         self.robots[domain] = parser
+
+        # If crawler delay option is set in the "robots.txt" file, store it into
+        # [crawler_delays] cache and use it when checking if the URL can
+        # actually be fetched.
+        crawler_delay = parser.crawl_delay(self.user_agent)
+        if crawler_delay is not None:
+            self.crawler_delays[domain] = timedelta(seconds=crawler_delay)
 
         # If there is a sitemap inside the "robots.txt" file, add it to queue
         # and our crawler will extract all links.
@@ -72,7 +83,18 @@ class Scheduler(object):
         if url_parts.scheme not in ['http', 'https']:
             logging.debug('Incorrect scheme: %s', url_parts.scheme)
             return True
-
+        
+        # Ignore links that are not inside our allowed domains
+        is_domain_allowed = False
+        for allowed_domain in self.allowed_domains:
+            if url_parts.hostname.endswith(allowed_domain):
+                is_domain_allowed = True
+                break
+        
+        if not is_domain_allowed:
+            logging.debug('Domain not allowed: %s', url_parts.hostname)
+            return True
+        
         # Check if we are even allowed to visit the url using the
         # "robots.txt" file.
         robots_parser = self.get_robots_parser(url)
@@ -80,13 +102,7 @@ class Scheduler(object):
             logging.debug('Site disallowed: %s', url)
             return True
         
-        # Ignore links that are not inside our allowed domains
-        for allowed_domain in self.allowed_domains:
-            if url_parts.hostname.endswith(allowed_domain):
-                return False
-
-        logging.debug('Domain not allowed: %s', url_parts.hostname)
-        return True
+        return False
 
     def enqueue(self, urls):
         for dirty_url in urls:
@@ -127,7 +143,8 @@ class Scheduler(object):
                 last_request_time = self.last_request[ip_address]
                 time_passed = datetime.now() - last_request_time
 
-                if time_passed > self.wait_between_consecutive_requests:
+                wait_between_consecutive_requests = self.get_wait_time(url_parts.hostname)
+                if time_passed > wait_between_consecutive_requests:
                     self.last_request[ip_address] = datetime.now()
                     return self.queue.pop(index)
         
