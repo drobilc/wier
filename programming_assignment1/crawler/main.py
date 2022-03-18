@@ -2,12 +2,24 @@ import yaml
 import argparse
 import logging
 from crawler import Crawler
+import time
 
 def run_crawler(configuration):
     # Create a new crawler object with the configuration and start it. The
     # crawler will spawn multiple Downloader threads.
     crawler = Crawler(configuration)
     crawler.run()
+
+    # The crawler will spawn multiple Downloader threads in daemon mode. Because
+    # the main thread will have nothing to do after that, the main thread will
+    # exit, and the crawler will stop.
+    # Run an infinite loop that does nothing.
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        logging.info('The crawler has been interrupted')
+        # TODO: Save current frontier using pickle library
 
 def main():
 

@@ -5,10 +5,17 @@ import ssl
 from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
 import logging
+import threading
 
-class Downloader(object):
+class Downloader(threading.Thread):
 
     def __init__(self, configuration, scheduler, storage):
+        # Because the downloader will be running as a thread, we need to
+        # initialize the parent Thread object first. We use the daemon=True so
+        # that when the main thread exits, all Downloader threads are destroyed
+        # too.
+        threading.Thread.__init__(self, daemon=True)
+
         self.configuration = configuration
 
         self.scheduler = scheduler
@@ -58,7 +65,7 @@ class Downloader(object):
         
         return urls
 
-    def run(self):
+    def main_loop(self):
         while self.scheduler.has_next():
             try:
                 # Get the next url from scheduler
@@ -89,3 +96,14 @@ class Downloader(object):
             except Exception as e:
                 # Don't stop if an error occurs.
                 logging.exception(e)
+    
+    def run(self):
+        logging.info('Starting thread %s', self.name)
+
+        # Start the main loop, which will grab URL from scheduler, fetch sites
+        # and add more URLs into scheduler. The function will exit when there is
+        # no more URLs in queue.
+        self.main_loop()
+
+        # Before the thread finishes, we need to close our driver.
+        self.driver.close()

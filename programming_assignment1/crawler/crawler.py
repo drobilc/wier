@@ -1,6 +1,8 @@
 from downloader import Downloader
 from scheduler import Scheduler
 from storage import Storage
+import threading
+
 
 class Crawler(object):
 
@@ -17,8 +19,14 @@ class Crawler(object):
         # queue.
         initial_urls = configuration.get('initial_urls', [])
         self.scheduler.enqueue(initial_urls)
+
+        # A list of threads that are used to crawl the web.
+        self.threads = []
     
     def run(self):
-        # TODO: Spawn multiple downloaders using threads
-        downloader = Downloader(self.configuration, self.scheduler, self.storage)
-        downloader.run()
+        number_of_workers = self.configuration.get('number_of_workers', 1)
+
+        for _ in range(number_of_workers):
+            downloader = Downloader(self.configuration, self.scheduler, self.storage)
+            self.threads.append(downloader)
+            downloader.start()
