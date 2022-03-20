@@ -1,0 +1,98 @@
+TABELA SITE
+
+def add_site(domain, robots_content, sitemap_content):
+v bazo zapiše site 
+primer uporabe: storage.add_site("rtvslo.si","vsebina robotov rtv","vsebina sitemap rtv")
+vrne 1 če je uspel in 0 če ni uspel
+
+def update_site(domain, robots_content, sitemap_content):   
+popravi podatke za že vpisan site
+primer u porabe: storage.update_site("rtvslo.si","popravljana vsebina robotov rtv","popravljana vsebina sitemap rtv")
+vrne 1 če je zapis uspel in 0 če ni uspel
+
+def contains_site(domain):
+preveri, če site že obstaja
+primer uporabe: storage.contains_site("rtvslo.si")
+vrne polje id v tabeli Site, če site v tabeli obstaja. Če ne obstaja vrne 0
+
+def retrieve_site(domain):
+vrne podatke o zapisu v tabeli site
+primer uporabe: storage.retrieve_site("rtvslo.si")
+vrne: id, domain, robot_content, sitemap_content
+primer rezultata: [65, 'rtvslo.si', 'vsebina robotov rtv', 'vsebina sitemap rtv']
+
+
+-----------------------------------------------------------------------------------------------
+
+TABELA PAGE
+def add_page(site, page_type_code, url, html_content, http_status_code, accessed_time):
+v bazo zapiše page
+primer uporabe: storage.add_page("rtvslo.si","HTML","urlrtvslosi1","htmlcontent",1,datetime.now())
+vrne 1 če je uspel in 0 če ni uspel
+
+def update_page(site, page_type_code, url, html_content, http_status_code, accessed_time):
+popravi podatke za že vpisan site
+primer uporabe: storage.update_page("rtvslo.si","HTML","urlrtvslosi1","popravljen htmlcontent RTVSLO1",1,datetime.now())
+vrne 1 če je zapis uspel in 0 če ni uspel
+
+def contains_page(site,url):
+preveri če page obstaja
+primer uporabe: storage.contains_page("rtvslo.si","urlrtvslosi1")
+vrne id v tabeli page če je page vpisan. Če ni vpisan vrne 0
+
+def retrieve_page(site,url):
+vrne podatke o zapisu v tabeli page
+primer uporabe: storage.retrieve_page("rtvslo.si","urlrtvslosi1")
+vrne: domain, id, site_id, page_type_code, url, html_content, http_status_code, accessed_time
+primer: ['rtvslo.si', 105, 65, 'HTML', 'urlrtvslosi1', 'htmlcontent', 1, datetime.datetime(2022, 3, 20, 9, 40, 56, 13915)]
+
+
+-----------------------------------------------------------------------------------------------
+
+TABELA LINK
+
+def add_redirection(site1,url1,site2,url2):
+doda preusmeritev site1.url1 -> site2.url2
+primer uporabe: baza.add_redirection("rtvslo.si","urlrtvslosi1","fri.uni-lj.si","urlfri1")
+
+def contains_redirection(site1,url1,site2,url2):
+vrne 1 če redirekcija v smeti site1.url1 -> site2.url2 obstaja in 0, če ne obstaja
+primer uporabe: baza.contains_redirection("rtvslo.si","urlrtvslosi1","fri.uni-lj.si","urlfri1")
+
+
+-----------------------------------------------------------------------------------------------
+
+TABELA IMAGE
+
+def add_image(site,url,filename,content_type,data,accessed_time):
+v bazo doda podatke o sliki na določeni strani
+primer uporabe: baza.add_image("rtvslo.si","urlrtvslosi3","slika1 RTVSLO url3","conent type slika1 RTVSLO url3","DATA",datetime.now())
+vrne 1 če je uspešno zapisal in 0 če ni zapisal
+
+def contains_image(site,url,filename):
+vrne 1 če zapis o sliki že obstaja in 0 če ne obstaja
+primer uporabe: baza.contains_image("rtvslo.si","urlrtvslosi3","slika1 RTVSLO url3")
+
+def list_images(site,url):
+vrne spisek vseh slik, ki pripadajo določeni strani
+primer uproabe: baza.list_images("rtvslo.si","urlrtvslosi3")
+
+
+-----------------------------------------------------------------------------------------------
+
+TABELA PAGE_DATA
+
+def add_pagedata(site,url,data_type_code, data):
+v bazo doda podatke o vsebini na strani - pod vsebino so mišljeni dokumenti tipov DOC,DOCx,...
+primer uporabe: baza.add_pagedata("fri.uni-lj.si","urlfri1","docx","podatki")
+vrne 1, če je uspešno zapisal v tabelo in 0 če ni zapisal
+
+def contains_pagedata(site,url,data_type_code,data):
+preveri, če podatki o vsebini na strani že obstajajo
+priemr uporabe: baza.contains_pagedata("fri.uni-lj.si","urlfri1","docx","podatki")
+vrne 1 če zapis o vsebini že obstaja in 0 če ne obstaja
+
+def list_pagedata(site,url):
+vrne spisek vseh vsebin, ki pripadajo določeni strani
+priemr uporabe: baza.list_pagedata("rtvslo.si","urlrtvslosi3")
+
