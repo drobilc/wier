@@ -21,3 +21,7 @@ headless: False
 # How many seconds to wait between consecutive requests to the same server if
 # "Crawl-Delay" option is not set in "robots.txt" for a specified page.
 wait_between_consecutive_requests: 5
+
+database_host: "localhost"
+database_user: "postgres"
+database_password: "postgres"
