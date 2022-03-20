@@ -3,7 +3,6 @@ import psycopg2
 
 datatype=['DOC','DOCX','PDF','PPT','PPTX']
 
-#class Storage(object):
 class Storage(object):
 
     def __init__(self,configuration):
