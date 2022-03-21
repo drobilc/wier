@@ -3,6 +3,7 @@ from urllib.parse import urljoin, urldefrag, urlparse
 from url_normalize import url_normalize
 from datetime import datetime, timedelta
 import logging
+import pickle
 
 class Scheduler(queue.Queue):
 
@@ -12,6 +13,10 @@ class Scheduler(queue.Queue):
         self.configuration = configuration
         self.repository = repository
 
+        # TODO: Load fontier from file
+        # with open('frontier.p', 'rb') as input_file:
+        #     self.queue = pickle.load(input_file)
+
         initial_urls = self.configuration.get('initial_urls')
         initial_domains = map(lambda url: urlparse(url).hostname, initial_urls)
         self.allowed_domains = list(initial_domains)
@@ -19,11 +24,11 @@ class Scheduler(queue.Queue):
     def should_skip(self, url):
         # Check if the URL has already been visited using data from our
         # repository.
-        if self.repository.contains_url(url):
-            logging.debug('Site already downloaded: %s', url)
-            return True
-
         url_parts = urlparse(url)
+
+        if self.repository.contains_page(url_parts.hostname, url):
+            logging.debug('Site already downloaded: %s', url)
+            return True        
 
         # Ignore links that are not http or https
         if url_parts.scheme not in ['http', 'https']:
@@ -69,3 +74,8 @@ class Scheduler(queue.Queue):
         normalized_url = url_normalize(absolute_url)
         final_url, _ = urldefrag(normalized_url)
         return final_url
+    
+    def stop(self):
+        # Store current frontier to a file
+        with open('frontier.p', 'wb') as output_file:
+            pickle.dump(self.queue, output_file)

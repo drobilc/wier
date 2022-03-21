@@ -9,13 +9,10 @@ import logging
 import threading
 
 from urllib.parse import urljoin, urlparse
-from crawler.scheduler import *
-from crawler.downloader.duplicateDetector import *
-import hyperlink
-from crawler.storage.storage import *
-from crawler.downloader.robots import *
+from .duplicateDetector import *
+from downloader.robots import *
 from selenium.common.exceptions import WebDriverException, TimeoutException
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 import hashlib
 import os
 import requests
@@ -178,8 +175,8 @@ class Downloader(threading.Thread):
                 content = self.download_site(url)
                 html = self.parse_html(content)
 
-                # Store the page source in database.
-                self.storage.save(url, html)
+                # TODO: Store the page source in database.
+                # self.storage.save(url, html)
 
                 # Get a list of links from page and add pass them on to the
                 # scheduler.

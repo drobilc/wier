@@ -19,7 +19,8 @@ def run_crawler(configuration):
             time.sleep(1)
     except KeyboardInterrupt:
         logging.info('The crawler has been interrupted')
-        # TODO: Save current frontier using pickle library
+    finally:
+        crawler.stop()
 
 def main():
 
