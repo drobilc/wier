@@ -156,3 +156,6 @@ configuration.yaml
 
 # Executables
 *.exe
+
+# Pickle files
+*.p
