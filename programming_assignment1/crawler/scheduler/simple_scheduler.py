@@ -6,6 +6,7 @@ import logging
 import pickle
 import socket
 from collections import deque
+from urllib.robotparser import RobotFileParser
 
 class Scheduler(queue.Queue):
 
@@ -22,6 +23,13 @@ class Scheduler(queue.Queue):
         initial_urls = self.configuration.get('initial_urls')
         initial_domains = map(lambda url: urlparse(url).hostname, initial_urls)
         self.allowed_domains = list(initial_domains)
+
+        self.user_agent = self.configuration.get('user_agent')
+
+        # A mapping between domains and RobotFileParser objects that we can use
+        # to query for allowed or disallowed URL's.
+        self.robots = {}
+        self.crawler_delays = {}
 
         # The last access time for a specified IP address.
         self.access_times = {}
@@ -49,6 +57,32 @@ class Scheduler(queue.Queue):
             self.domain_ips[domain] = ip_address
             return ip_address
     
+    def get_robots_parser(self, url):
+        url_parts = urlparse(url)
+
+        domain = url_parts.hostname
+        if domain in self.robots:
+            return self.robots[domain]
+        
+        robots_url = f'{url_parts.scheme}://{domain}/robots.txt'
+        logging.info('Fetching "robots.txt" from: %s', robots_url)
+        parser = RobotFileParser(robots_url)
+        parser.read()
+
+        self.robots[domain] = parser
+
+        # If crawler delay option is set in the "robots.txt" file, store it into
+        # [crawler_delays] cache and use it when checking if the URL can
+        # actually be fetched.
+        crawler_delay = parser.crawl_delay(self.user_agent)
+        if crawler_delay is not None:
+            self.crawler_delays[domain] = timedelta(seconds=crawler_delay)
+
+        return parser
+
+    def get_wait_time(self, domain):
+        return self.crawler_delays.get(domain, self.wait_between_consecutive_requests)
+
     def should_skip(self, url):
         # Check if the URL has already been visited using data from our
         # repository.
@@ -72,6 +106,13 @@ class Scheduler(queue.Queue):
         
         if not is_domain_allowed:
             logging.debug('Domain not allowed: %s', url_parts.hostname)
+            return True
+        
+        # Check if we are even allowed to visit the url using the
+        # "robots.txt" file.
+        robots_parser = self.get_robots_parser(url)
+        if not robots_parser.can_fetch(self.user_agent, url):
+            logging.debug('Site disallowed: %s', url)
             return True
         
         return False
@@ -144,6 +185,10 @@ class Scheduler(queue.Queue):
 
         url = queue.popleft()
 
-        self.access_times[ip_address] = datetime.now() + self.wait_between_consecutive_requests
+        domains = filter(lambda item: item[1] == ip_address, self.domain_ips.items())
+        waiting_times = list(map(lambda item: self.get_wait_time(item[0]), domains))
+        maximum_waiting_time = max(waiting_times) if len(waiting_times) > 0 else self.wait_between_consecutive_requests
+
+        self.access_times[ip_address] = datetime.now() + maximum_waiting_time
         
         return (url, access_time)
