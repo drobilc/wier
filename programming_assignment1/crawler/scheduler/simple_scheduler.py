@@ -4,6 +4,8 @@ from url_normalize import url_normalize
 from datetime import datetime, timedelta
 import logging
 import pickle
+import socket
+from collections import deque
 
 class Scheduler(queue.Queue):
 
@@ -20,6 +22,32 @@ class Scheduler(queue.Queue):
         initial_urls = self.configuration.get('initial_urls')
         initial_domains = map(lambda url: urlparse(url).hostname, initial_urls)
         self.allowed_domains = list(initial_domains)
+
+        # The last access time for a specified IP address.
+        self.access_times = {}
+
+        # The IP addresses for domains.
+        self.domain_ips = {}
+
+        wait_between_consecutive_requests = self.configuration.get('wait_between_consecutive_requests', 5)
+        self.wait_between_consecutive_requests = timedelta(seconds=wait_between_consecutive_requests)
+    
+    def get_host_ip(self, host):
+        try:
+            ip_address = socket.gethostbyname(host)
+            logging.info('Performing DNS request for %s, IP: %s', host, ip_address)
+            return ip_address
+        except Exception as e:
+            logging.exception(e)
+            return None
+    
+    def get_ip(self, domain):
+        if domain in self.domain_ips:
+            return self.domain_ips[domain]
+        else:
+            ip_address = self.get_host_ip(domain)
+            self.domain_ips[domain] = ip_address
+            return ip_address
     
     def should_skip(self, url):
         # Check if the URL has already been visited using data from our
@@ -79,3 +107,43 @@ class Scheduler(queue.Queue):
         # Store current frontier to a file
         with open('frontier.p', 'wb') as output_file:
             pickle.dump(self.queue, output_file)
+    
+    def _init(self, maxsize):
+        self.queue = {}
+    
+    def _qsize(self):
+        return sum(map(lambda queue: len(queue), self.queue.values()))
+    
+    # Put a new item in the queue
+    def _put(self, url):
+        url_parts = urlparse(url)
+
+        domain = url_parts.hostname
+        ip_address = self.get_ip(domain)
+        if ip_address not in self.queue:
+            self.queue[ip_address] = deque()
+        
+        if ip_address not in self.access_times:
+            self.access_times[ip_address] = datetime.now()
+        
+        self.queue[ip_address].append(url)
+    
+    # Get an item from the queue
+    def _get(self):
+        # First, find all queues that are not empty.
+        non_empty_queues = dict(filter(lambda item: len(item[1]) > 0, self.queue.items()))
+
+        # There are no more items
+        if len(non_empty_queues) <= 0:
+            return None
+
+        # Then, find the queue that has the smallest last modified time.
+        least_recently_downloaded = min(non_empty_queues.items(), key=lambda item: self.access_times[item[0]])
+        ip_address, queue = least_recently_downloaded
+        access_time = self.access_times[ip_address]
+
+        url = queue.popleft()
+
+        self.access_times[ip_address] = datetime.now() + self.wait_between_consecutive_requests
+        
+        return (url, access_time)

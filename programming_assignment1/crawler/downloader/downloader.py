@@ -161,13 +161,20 @@ class Downloader(threading.Thread):
         return urls
 
     def main_loop(self):
-        while self.scheduler.has_next():
+        while True:
             try:
                 # Get the next url from scheduler
-                url = self.scheduler.next()
+                url, wait_until = self.scheduler.next()
 
                 if url is None:
-                    continue
+                    break
+
+                if wait_until is not None:
+                    wait_for = wait_until - datetime.now()
+                    logging.info('URL: %s, waiting for: %s', url, wait_for)
+                    sleep_for = wait_for.total_seconds()
+                    if sleep_for > 0:
+                        time.sleep(sleep_for)
                 
                 logging.info('Fetching: %s', url)
                 
