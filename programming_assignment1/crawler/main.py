@@ -42,7 +42,7 @@ def main():
     logging_level = logging.DEBUG if arguments.verbose else logging.INFO
     logging.basicConfig(
         level=logging_level,
-        format='%(asctime)s %(levelname)s %(module)s: %(message)s',
+        format='%(asctime)s %(levelname)s %(threadName)s: %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S',
     )
 

@@ -136,8 +136,9 @@ class Downloader(threading.Thread):
 
     def download_site(self, url):
         if url is None: return None
-        self.driver.get(url)
         self.driver.set_page_load_timeout(self.timeout)
+        self.driver.delete_all_cookies()
+        self.driver.get(url)
         return self.driver.page_source
     
     def parse_html(self, content):
@@ -167,16 +168,17 @@ class Downloader(threading.Thread):
                 url, wait_until = self.scheduler.next()
 
                 if url is None:
+                    logging.info('Url is none, the thread will exit')
                     break
 
                 if wait_until is not None:
                     wait_for = wait_until - datetime.now()
-                    logging.info('URL: %s, waiting for: %s', url, wait_for)
                     sleep_for = wait_for.total_seconds()
                     if sleep_for > 0:
                         time.sleep(sleep_for)
                 
-                logging.info('Fetching: %s', url)
+                url_parts = urlparse(url)
+                logging.info('[%s] Fetching: %s', url_parts.hostname, url)
                 
                 # Try to read the website and parse its html.
                 content = self.download_site(url)

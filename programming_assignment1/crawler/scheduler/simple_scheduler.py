@@ -184,11 +184,13 @@ class Scheduler(queue.Queue):
         access_time = self.access_times[ip_address]
 
         url = queue.popleft()
+        while self.should_skip(url):
+            url = queue.popleft()
 
         domains = filter(lambda item: item[1] == ip_address, self.domain_ips.items())
         waiting_times = list(map(lambda item: self.get_wait_time(item[0]), domains))
         maximum_waiting_time = max(waiting_times) if len(waiting_times) > 0 else self.wait_between_consecutive_requests
 
-        self.access_times[ip_address] = datetime.now() + maximum_waiting_time
+        self.access_times[ip_address] = max(datetime.now(), access_time) + maximum_waiting_time
         
         return (url, access_time)
