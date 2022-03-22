@@ -3,6 +3,7 @@ import psycopg2
 import logging
 import time
 from datetime import datetime
+from urllib.parse import urlparse
 
 datatype=['DOC','DOCX','PDF','PPT','PPTX']
 
@@ -20,17 +21,54 @@ class Storage(object):
         self.conn.autocommit = True
 
         self.db_pool = None
+    
+    def save_page(self, url, html, page_type='HTML'):
+        url_parts = urlparse(url)
+        
+        # First, add domain to database. If it already exists, it will be not be
+        # changed.
+        domain = url_parts.hostname
+        site_id = self.add_site(domain, '', '')
+
+        # Then, 
+        return self.add_page(site_id, page_type, url, html, 200, datetime.now())
 
     def add_site(self, domain, robots_content, sitemap_content):
-        if self.contains_site(domain)==0:
-            with self.lock:
-                cur = self.conn.cursor()
-                cur.execute("INSERT INTO crawldb.site (domain, robots_content, sitemap_content) VALUES (%s, %s, %s)", (domain, robots_content, sitemap_content))
-                cur.close()
-            return True
-        else:
-            return False
+        """
+            Insert a site into database and return its id. If the site could not
+            be inserted, `None` will be returned instead.
+        """
 
+        # Try to find site in database. If it already exists, return its id.
+        existing_site_id = self.get_site_id(domain)
+        if existing_site_id is not None:
+            return existing_site_id
+
+        # The site does not exist yet, insert it into database, get its id and
+        # return it.
+        with self.lock:
+            cur = self.conn.cursor()
+            cur.execute("INSERT INTO crawldb.site (domain, robots_content, sitemap_content) VALUES (%s, %s, %s) RETURNING id", (domain, robots_content, sitemap_content))
+            site_id = cur.fetchone()[0]
+            cur.close()
+            return site_id
+    
+    def get_site_id(self, domain):
+        """
+            Find site by its domain name. If the site does not exist, `None`
+            will be returned.
+        """
+        with self.lock:
+            cursor = self.conn.cursor()
+            cursor.execute("SELECT id FROM crawldb.site WHERE domain=%s", (domain,))
+            
+            # The site doesn't exist yet, return None.
+            if cursor.rowcount < 1:
+                return None
+            
+            site_id = cursor.fetchone()[0]
+            cursor.close()
+            return site_id
 
     def update_site(self, domain, robots_content, sitemap_content):        
         if self.contains_site(domain)!=0:
@@ -42,7 +80,6 @@ class Storage(object):
         else:
             return False
 
-
     def contains_site(self,domain):
         with self.lock:
             cur = self.conn.cursor()
@@ -52,7 +89,6 @@ class Storage(object):
         if len(dataFromBase)==0:
             return False
         return dataFromBase[0][0]
-
 
     def retrieve_site(self, domain):
         with self.lock:
@@ -66,20 +102,51 @@ class Storage(object):
 
 #---------------------------------------------------------------------------------
 
-    def add_page(self, site, page_type_code, url, html_content, http_status_code, accessed_time):
-        if self.contains_page(site,url)==0:
-            pageSite=self.contains_site(site)
-            if pageSite!=0:
+    def add_page(self, site_id, page_type_code, url, html_content, http_status_code, accessed_time):
+        """
+            Add page to database and return its id. If the page could not be
+            added to database, `None` will be returned.
+        """
+        existing_page_id = self.get_page_id(url)
+        if existing_page_id is not None:
+            return existing_page_id
+        
+        with self.lock:
+            cur = self.conn.cursor()
+            cur.execute("INSERT INTO crawldb.page (site_id, page_type_code, url, html_content, http_status_code, accessed_time) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id", (site_id, page_type_code.upper(), url, html_content, http_status_code, accessed_time))
+            page_id = cur.fetchone()[0]
+            cur.close()
+            return page_id
+        """if self.contains_page(site, url) == 0:
+            pageSite = self.contains_site(site)
+            if pageSite != 0:
                 with self.lock:
                     cur = self.conn.cursor()
-                    cur.execute("INSERT INTO crawldb.page (site_id, page_type_code, url, html_content, http_status_code, accessed_time) VALUES (%s, %s, %s, %s, %s, %s)", (pageSite,page_type_code.upper(), url, html_content, http_status_code, accessed_time))
+                    cur.execute("INSERT INTO crawldb.page (site_id, page_type_code, url, html_content, http_status_code, accessed_time) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id", (pageSite,page_type_code.upper(), url, html_content, http_status_code, accessed_time))
+                    page_id = cur.fetchone()[0]
                     cur.close()
-                return True
+                    return page_id
             else:
-                return False
+                return None
         else:
-            return False
+            return None"""
     
+    def get_page_id(self, url):
+        """
+            Find page by its URL address. If the page does not exist, `None`
+            will be returned.
+        """
+        with self.lock:
+            cursor = self.conn.cursor()
+            cursor.execute("SELECT id FROM crawldb.page WHERE url=%s", (url,))
+            
+            # The site doesn't exist yet, return None.
+            if cursor.rowcount < 1:
+                return None
+            
+            page_id = cursor.fetchone()[0]
+            cursor.close()
+            return page_id
     
     def update_page(self, site, page_type_code, url, html_content, http_status_code, accessed_time):
         if self.contains_page(site,url)!=0:
@@ -97,17 +164,20 @@ class Storage(object):
     
     
     def contains_page(self, site,url):
-        pageSite=self.contains_site(site)
-        if pageSite==False:
-            pageSite=0
+
+        # pageSite=self.contains_site(site)
+        # if pageSite==False:
+        #    pageSite=0
         with self.lock:
             cur = self.conn.cursor()
-            cur.execute("SELECT id FROM crawldb.page WHERE url=%s AND site_id=%s", (url,pageSite))
-            dataFromBase=cur.fetchall()
+            cur.execute("SELECT id FROM crawldb.page WHERE url=%s", (url,))
+            # dataFromBase = cur.fetchall()
+            number_of_results = cur.rowcount
             cur.close()
-        if len(dataFromBase)==0:
-            return False
-        return dataFromBase[0][0]
+            return number_of_results > 0
+        #if len(dataFromBase)==0:
+        #    return False
+        #return dataFromBase[0][0]
     
     
     def retrieve_page(self, site,url):
@@ -161,8 +231,14 @@ class Storage(object):
 
 #------------------------------------------------
 
-    def add_image(self, site,url,filename,content_type,data,accessed_time):
-        pageID=self.contains_page(site,url)
+    def add_image(self, page_id, image_url, content_type, data, accessed_time):
+        with self.lock:
+            cur = self.conn.cursor()
+            cur.execute("INSERT INTO crawldb.image (page_id, filename, content_type, data, accessed_time) VALUES(%s,%s,%s,%s,%s) RETURNING id", (page_id, image_url, content_type, data, accessed_time))
+            image_id = cur.fetchone()[0]
+            cur.close()
+            return image_id
+        """pageID=self.contains_page(site,url)
         if pageID!=0:
             with self.lock:
                 cur = self.conn.cursor()
@@ -170,7 +246,10 @@ class Storage(object):
                 cur.close()
             return True
         else:
-            return False
+            return False"""
+    
+    def save_image(self, page_id, image_url, file_extension):
+        return self.add_image(page_id, image_url, file_extension, None, datetime.now())
 
     def contains_image(self, site,url,filename):
         pageID=self.contains_page(site,url)
@@ -201,8 +280,14 @@ class Storage(object):
 #------------------------------------------------
 # 
 
-    def add_pagedata(self, site,url,data_type_code, data):
-        pageID=self.contains_page(site,url)
+    def add_page_data(self, page_id, data_type_code, data):
+        with self.lock:
+            cur = self.conn.cursor()
+            cur.execute("INSERT INTO crawldb.page_data (page_id, data_type_code,data) VALUES(%s,%s,%s) RETURNING id", (page_id, data_type_code.upper(), data))
+            page_data_id = cur.fetchone()[0]
+            cur.close()
+            return page_data_id
+        """pageID=self.contains_page(site,url)
         if pageID!=0 and data_type_code.upper() in datatype:
             with self.lock:
                 cur = self.conn.cursor()
@@ -210,7 +295,7 @@ class Storage(object):
                 cur.close()
             return True
         else:
-            return False
+            return False"""
 
     def contains_pagedata(self,site,url,data_type_code,data):
         pageID=self.contains_page(site,url)
@@ -236,6 +321,10 @@ class Storage(object):
                 dataFromBase=cur.fetchall()
                 cur.close()
         return dataFromBase
+    
+    def save_page_data(self, url, extension):
+        page_id = self.save_page(url, None, page_type='BINARY')
+        self.add_page_data(page_id, extension, None)
     
     def getFromFrontier(self):
         time.sleep(12)

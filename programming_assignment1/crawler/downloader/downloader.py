@@ -20,6 +20,7 @@ import urllib.error
 from socket import timeout
 import sys
 import time
+import pathlib
 
 """
 sys.setrecursionlimit(1500)
@@ -160,6 +161,53 @@ class Downloader(threading.Thread):
                 urls.append(url)
         
         return urls
+    
+    def extract_images(self, current_url, html):
+        images = html.find_all('img')
+        
+        image_urls = []
+        for image in images:
+            image_url = image.get('src')
+            if image_url is not None:
+                absolute_url = self.scheduler.canonicalize_url(current_url, image_url)
+
+                url_parts = urlparse(absolute_url)
+
+                # Skip images with no scheme (svg and base64 encoded images)
+                if url_parts.hostname is None:
+                    continue
+                
+                path = pathlib.Path(url_parts.path)
+                image_urls.append((absolute_url, path.suffix))
+        
+        return image_urls
+
+    def sort_urls(self, urls):
+        binary_file_extensions = ['.pdf', '.doc', '.docx', '.ppt', '.pptx']
+        skip_file_extensions = ['.gif', '.jpg', '.jpeg', '.png', '.bmp', '.svg', '.zip']
+
+        page_urls = []
+        binary_file_urls = []
+
+        for url in urls:
+            url_parts = urlparse(url)
+            
+            file_extension = pathlib.Path(url_parts.path).suffix
+            extension = file_extension.lower()
+            
+            # If the filename contains a file extension from
+            # [skip_file_extensions] list, skip it as we don't need to insert it
+            # into database or add it to frontier.
+            if extension in skip_file_extensions:
+                continue
+
+            if extension in binary_file_extensions:
+                clean_extension = extension.removeprefix('.')
+                binary_file_urls.append((url, clean_extension))
+            else:
+                page_urls.append(url)
+        
+        return page_urls, binary_file_urls
 
     def main_loop(self):
         while True:
@@ -184,15 +232,29 @@ class Downloader(threading.Thread):
                 content = self.download_site(url)
                 html = self.parse_html(content)
 
-                # TODO: Store the page source in database.
-                # self.storage.save(url, html)
+                # Store the page source in database.
+                page_id = self.storage.save_page(url, str(html))
 
                 # Get a list of links from page and add pass them on to the
                 # scheduler.
                 urls = self.extract_links(url, html)
-                self.scheduler.enqueue(urls)
+
+                image_urls = self.extract_images(url, html)
+                for image_url, file_extension in image_urls:
+                    self.storage.save_image(page_id, image_url, file_extension)
+
+                # Filter out the urls that most likely point to a website and
+                # links that point to a binary file.
+                page_urls, binary_file_urls = self.sort_urls(urls)
+
+                for binary_file_url, extension in binary_file_urls:
+                    self.storage.save_page_data(binary_file_url, extension)
+
+                self.scheduler.enqueue(page_urls)
             except selenium_exceptions.TimeoutException as e:
                 logging.error('Timeout exception: %s', url)
+                # Insert URL back into the frontier
+                self.scheduler.enqueue([ url ])
             except ssl.SSLError as e:
                 logging.error('SSL exception: %s', url)
             except urllib_exceptions.URLError as e:
