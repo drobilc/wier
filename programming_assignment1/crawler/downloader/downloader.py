@@ -216,17 +216,15 @@ class Downloader(threading.Thread):
         while True:
             try:
                 # Get the next url from scheduler
-                url, wait_until = self.scheduler.next()
+                url, wait_for = self.scheduler.next()
 
-                if url is None:
-                    logging.info('Url is none, the thread will exit')
-                    break
-
-                if wait_until is not None:
-                    wait_for = wait_until - datetime.now()
+                if wait_for is not None:
                     sleep_for = wait_for.total_seconds()
                     if sleep_for > 0:
                         time.sleep(sleep_for)
+                
+                if url is None:
+                    continue
                 
                 url_parts = urlparse(url)
                 logging.info('[%s] Fetching: %s', url_parts.hostname, url)
@@ -265,6 +263,9 @@ class Downloader(threading.Thread):
             except Exception as e:
                 # Don't stop if an error occurs.
                 logging.exception(e)
+            finally:
+                if url is not None:
+                    self.scheduler.mark_done(url)
     
     def run(self):
         logging.info('Starting thread %s', self.name)

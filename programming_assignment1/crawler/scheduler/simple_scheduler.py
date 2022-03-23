@@ -22,6 +22,10 @@ class Scheduler(queue.Queue):
 
         self.user_agent = self.configuration.get('user_agent')
 
+        # Currently locked IP addresses - the ones that the threads must not
+        # access to.
+        self.locked_ips = {}
+
         # A mapping between domains and RobotFileParser objects that we can use
         # to query for allowed or disallowed URL's.
         self.robots = {}
@@ -39,6 +43,9 @@ class Scheduler(queue.Queue):
                 access_times, queue = pickle.load(input_file)
                 self.access_times = access_times
                 self.queue = queue
+                for ip in self.queue:
+                    self.locked_ips[ip] = False
+                logging.info('Frontier loaded from file')
         except Exception:
             logging.info('No saved frontier')
 
@@ -183,7 +190,20 @@ class Scheduler(queue.Queue):
         if ip_address not in self.access_times:
             self.access_times[ip_address] = datetime.now()
         
+        if ip_address not in self.locked_ips:
+            self.locked_ips[ip_address] = False
+        
         self.queue[ip_address].append(url)
+    
+    def mark_done(self, url):
+        with self.mutex:
+            url_parts = urlparse(url)
+
+            domain = url_parts.hostname
+            ip_address = self.get_ip(domain)
+
+            self.locked_ips[ip_address] = False
+            self.access_times[ip_address] = datetime.now()
     
     # Get an item from the queue
     def _get(self):
@@ -192,21 +212,37 @@ class Scheduler(queue.Queue):
 
         # There are no more items
         if len(non_empty_queues) <= 0:
-            return None
+            return None, None
+        
+        unlocked_ips = list(map(lambda item: item[0], filter(lambda item: not item[1], self.locked_ips.items())))
+        queues = dict(filter(lambda item: item[0] in unlocked_ips, non_empty_queues.items()))
 
-        # Then, find the queue that has the smallest last modified time.
-        least_recently_downloaded = min(non_empty_queues.items(), key=lambda item: self.access_times[item[0]])
+        if len(queues) <= 0:
+            return None, None
+        
+        # Find the IP that was marked as accessed least recently.
+        least_recently_downloaded = min(queues.items(), key=lambda item: self.access_times[item[0]])
         ip_address, queue = least_recently_downloaded
         access_time = self.access_times[ip_address]
 
-        url = queue.popleft()
-        while self.should_skip(url):
-            url = queue.popleft()
-
+        # Check if at least maximum_waiting_time has passed between accessing
+        # this domain.
         domains = filter(lambda item: item[1] == ip_address, self.domain_ips.items())
         waiting_times = list(map(lambda item: self.get_wait_time(item[0]), domains))
         maximum_waiting_time = max(waiting_times) if len(waiting_times) > 0 else self.wait_between_consecutive_requests
 
-        self.access_times[ip_address] = max(datetime.now(), access_time) + maximum_waiting_time
+        time_difference = datetime.now() - access_time
+        if time_difference < maximum_waiting_time:
+            return None, time_difference
         
-        return (url, access_time)
+        # Enough time has passed.
+        
+        # Mark the IP address as locked - it will only be unlocked after
+        # self.mark_done is called.
+        self.locked_ips[ip_address] = True
+
+        url = queue.popleft()
+        while self.should_skip(url):
+            url = queue.popleft()
+        
+        return url, None
