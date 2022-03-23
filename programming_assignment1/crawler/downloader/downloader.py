@@ -191,6 +191,9 @@ class Downloader(threading.Thread):
 
         for url in urls:
             url_parts = urlparse(url)
+
+            if not self.scheduler.site_allowed(url):
+                continue
             
             file_extension = pathlib.Path(url_parts.path).suffix
             extension = file_extension.lower()
