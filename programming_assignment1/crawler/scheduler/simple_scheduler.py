@@ -16,10 +16,6 @@ class Scheduler(queue.Queue):
         self.configuration = configuration
         self.repository = repository
 
-        # TODO: Load fontier from file
-        # with open('frontier.p', 'rb') as input_file:
-        #     self.queue = pickle.load(input_file)
-
         initial_urls = self.configuration.get('initial_urls')
         initial_domains = map(lambda url: urlparse(url).hostname, initial_urls)
         self.allowed_domains = list(initial_domains)
@@ -36,6 +32,15 @@ class Scheduler(queue.Queue):
 
         # The IP addresses for domains.
         self.domain_ips = {}
+
+        # Load fontier from file
+        try:
+            with open('frontier.p', 'rb') as input_file:
+                access_times, queue = pickle.load(input_file)
+                self.access_times = access_times
+                self.queue = queue
+        except Exception:
+            logging.info('No saved frontier')
 
         wait_between_consecutive_requests = self.configuration.get('wait_between_consecutive_requests', 5)
         self.wait_between_consecutive_requests = timedelta(seconds=wait_between_consecutive_requests)
@@ -82,6 +87,17 @@ class Scheduler(queue.Queue):
 
     def get_wait_time(self, domain):
         return self.crawler_delays.get(domain, self.wait_between_consecutive_requests)
+
+    def site_allowed(self, url):
+        url_parts = urlparse(url)
+        if url_parts.scheme not in ['http', 'https']:
+            return False
+        
+        for allowed_domain in self.allowed_domains:
+            if url_parts.hostname.endswith(allowed_domain):
+                return True
+        
+        return False
 
     def should_skip(self, url):
         # Check if the URL has already been visited using data from our
@@ -147,7 +163,7 @@ class Scheduler(queue.Queue):
     def stop(self):
         # Store current frontier to a file
         with open('frontier.p', 'wb') as output_file:
-            pickle.dump(self.queue, output_file)
+            pickle.dump((self.access_times, self.queue), output_file)
     
     def _init(self, maxsize):
         self.queue = {}
