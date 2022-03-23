@@ -184,7 +184,7 @@ class Downloader(threading.Thread):
 
     def sort_urls(self, urls):
         binary_file_extensions = ['.pdf', '.doc', '.docx', '.ppt', '.pptx']
-        skip_file_extensions = ['.gif', '.jpg', '.jpeg', '.png', '.bmp', '.svg', '.zip']
+        skip_file_extensions = ['.gif', '.jpg', '.jpeg', '.png', '.bmp', '.svg', '.zip', '.xls', '.xlsx']
 
         page_urls = []
         binary_file_urls = []
