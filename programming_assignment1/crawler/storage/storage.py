@@ -33,7 +33,7 @@ class Storage(object):
         site_id = self.add_site(domain, '', '')
 
         # Then, 
-        return self.add_page(site_id, page_type, url, html, page_hash, 200, datetime.now())
+        return self.add_page(site_id, page_type, url, html, datetime.now(),200)
     
     def save_page_data(self, url, extension):
         page_id = self.save_page(url, None, page_type='BINARY')
