@@ -1,4 +1,3 @@
-import datetime
 from selenium import webdriver
 import selenium.common.exceptions as selenium_exceptions
 import urllib.error as urllib_exceptions
@@ -7,102 +6,14 @@ from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
 import logging
 import threading
-
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urlparse
 from .duplicateDetector import *
 from downloader.robots import *
-from selenium.common.exceptions import WebDriverException, TimeoutException
 from selenium.webdriver.firefox.options import Options
-import hashlib
-import os
 import requests
-import urllib.error
-from socket import timeout
-import sys
 import time
 import pathlib
 
-"""
-sys.setrecursionlimit(1500)
-
-
-def processSeedPages(seed_urls, db_connection):
-    for seed in seed_urls:
-        if checkForDuplicateSEED(seed, db_connection) or checkForDuplicateFRONTIER(seed, db_connection):
-            continue
-
-        response_robots, sitemap, delay = getResponseRobots(seed, db_connection)
-
-        site_id = add_site(seed, response_robots, sitemap, delay, db_connection)
-        page_id = add_page(seed, site_id, db_connection)
-
-
-def processCurrentPage(current_page, db_connection, driver):
-    html_content = status_code = content_type = None
-    url = "http://" + current_page[3]
-
-    html_content, status_code, content_type = getContent(url, driver)
-
-    if html_content is not None and status_code is not None:
-        # 1. PAGE TYPE IS HTML
-        if content_type is not None and 'html' in content_type:
-            # 1.1 hash and search duplicates
-            pretty_content = html_content.prettify()
-            hashed_content = hashlib.md5(pretty_content.encode()).hexdigest()
-            duplicate = checkForDuplicateHTML(current_page[0], hashed_content, db_connection)
-
-            # 1.2 check if page is accessible
-            if status_code >= 400:
-                updatePageAsInaccessible(current_page[0], status_code, "HTML", db_connection)
-                print("Inaccessible: ", status_code, url, current_page[0])
-            else:
-                # 1.3 if page is not duplicate - crawl it 
-                if not duplicate:
-                    fetchData(html_content, current_page, db_connection)
-                    updatePageAsHTML(current_page[0], status_code,pretty_content, hashed_content, db_connection)
-                else:
-                    print("Duplicate: ", current_page[3], duplicate[0])
-                    updatePageAsDuplicate(current_page[0], status_code,duplicate, db_connection)
-        # 2. PAGE TYPE IS NOT HTML
-        else:
-            updatePageAsNotHTML(current_page[0], status_code, db_connection)
-            print("Not HTML: ", current_page[3])
-    else:
-        updatePageAsInaccessible(current_page[0], status_code, None, db_connection)
-        print("Not a page: ", current_page[3], current_page[0])
-
-
-def getContent(url, driver):
-    soup = status_code = content_type = None
-    try:
-        time.sleep(6)
-        response = requests.get(url, data={'key': 'value'})
-        status_code = response.status_code
-        content_type = response.headers['Content-Type']
-    except Exception as e:
-        print("Getting status code led to", e)
-        return soup, status_code, content_type
-    
-    now = datetime.now()
-    access_time = now.strftime("%Y-%m-%d %H:%M:%S'")
-    print("ACCESS 1:", url, access_time)
-
-    try:
-        time.sleep(6)
-        driver.get(url)
-        html_content = driver.page_source
-        soup = BeautifulSoup(html_content, "html.parser")
-    except Exception as error:
-        print("Fetching page with Selenium led to", error)
-
-    now = datetime.now()
-    access_time = now.strftime("%Y-%m-%d %H:%M:%S'")
-    print("ACCESS 2:", url, access_time)
-
-    return soup, status_code, content_type
-
-
-"""    
 class Downloader(threading.Thread):
 
     def __init__(self, configuration, scheduler, storage):
@@ -136,11 +47,56 @@ class Downloader(threading.Thread):
         self.timeout = configuration.get('page_load_timeout')
 
     def download_site(self, url):
-        if url is None: return None
+        """
+            Fetch the site and return its content and server response code. If
+            page has binary content, a tuple (None, None) will be returned.
+        """
+        if url is None:
+            return None, None
+        
+        response = requests.head(url, allow_redirects=True)
+
+        # We have allowed redirects, so the response object contains redirection
+        # history. If it is empty, no redirection has happened.
+        redirection_urls = [item.url for item in response.history] + [response.url]
+        if len(redirection_urls) >= 2:
+            # A redirection has happened, add redirection url to database
+            for i in range(1, len(redirection_urls)):
+                from_url = redirection_urls[i - 1]
+                to_url = redirection_urls[i]
+                self.storage.save_redirection(from_url, to_url)
+        
+        # If we have been redirected to another page, the response.url will
+        # point to that page. As we don't want to repeat all the redirections,
+        # we can crawl this url with our web driver.
+        url = response.url
+        
+        # Check if content type is 'text/html' or any other text type.
+        content_type = response.headers.get('Content-Type')
+        if content_type is not None:
+            content_type = content_type.lower()
+            if 'text' not in content_type:
+                extensions = {
+                    'application/pdf': 'PDF',
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'DOCX',
+                    'application/vnd.openxmlformats-officedocument.presentationml.presentation': 'PPTX',
+                }
+                # This is a binary file, store this data in database.
+                extension = extensions.get(content_type)
+                if extension is not None:
+                    self.storage.save_page_data(url, extension)
+                return None, None
+        
+        status_code = response.status_code
+
+        # Wait before performing another request to the same URL with our
+        # driver.
+        time.sleep(5)
+
         self.driver.set_page_load_timeout(self.timeout)
         self.driver.delete_all_cookies()
         self.driver.get(url)
-        return self.driver.page_source
+        return self.driver.page_source, status_code
     
     def parse_html(self, content):
         # Maybe we should parse HTML using the 'html5lib' parser which is more
@@ -228,13 +184,24 @@ class Downloader(threading.Thread):
                 
                 url_parts = urlparse(url)
                 logging.info('[%s] Fetching: %s', url_parts.hostname, url)
-                
+
                 # Try to read the website and parse its html.
-                content = self.download_site(url)
+                content, response_code = self.download_site(url)
+                if content is None:
+                    continue
+
                 html = self.parse_html(content)
+                page_content = str(html.prettify())
+
+                # Check if page is a duplicate. If it is, add a new DUPLICATE
+                # entry to database.
+                duplicate_page_id = self.storage.check_if_duplicate(page_content)
+                if duplicate_page_id is not None:
+                    self.storage.save_duplicate(duplicate_page_id, url)
+                    continue
 
                 # Store the page source in database.
-                page_id = self.storage.save_page(url, str(html))
+                page_id = self.storage.save_page(url, str(page_content), response_code=response_code, update=True)
 
                 # Get a list of links from page and add pass them on to the
                 # scheduler.
@@ -264,6 +231,8 @@ class Downloader(threading.Thread):
                 # Don't stop if an error occurs.
                 logging.exception(e)
             finally:
+                # This block will be executed even if we have called continue
+                # inside the loop.
                 if url is not None:
                     self.scheduler.mark_done(url)
     

@@ -24,7 +24,7 @@ class Storage(object):
 
         self.db_pool = None
     
-    def save_page(self, url, html, page_hash=None, page_type='HTML'):
+    def save_page(self, url, html, response_code=200, page_type='HTML', update=False):
         url_parts = urlparse(url)
         
         # First, add domain to database. If it already exists, it will be not be
@@ -33,7 +33,7 @@ class Storage(object):
         site_id = self.add_site(domain, '', '')
 
         # Then, 
-        return self.add_page(site_id, page_type, url, html, page_hash, 200, datetime.now())
+        return self.add_page(site_id, page_type, url, html, datetime.now(), http_status_code=response_code, should_update=update)
     
     def save_page_data(self, url, extension):
         page_id = self.save_page(url, None, page_type='BINARY')
@@ -101,20 +101,25 @@ class Storage(object):
 
 #---------------------------------------------------------------------------------
 
-    def add_page(self, site_id, page_type_code, url, html_content, accessed_time, http_status_code=200):
+    def add_page(self, site_id, page_type_code, url, html_content, accessed_time, http_status_code=200, should_update=False):
         """
             Add page to database and return its id. If the page could not be
             added to database, `None` will be returned.
         """
         existing_page_id = self.get_page_id(url)
         if existing_page_id is not None:
+            if should_update:
+                with self.lock:
+                    cur = self.conn.cursor()
+                    page_hash = self.compute_hash(html_content)
+                    cur.execute("UPDATE crawldb.page SET site_id=%s, page_type_code=%s, html_content=%s, page_hash=%s, accessed_time=%s, http_status_code=%s WHERE url=%s", (site_id, page_type_code.upper(), html_content, page_hash, accessed_time, http_status_code, url))
+                    cur.close()
+            
             return existing_page_id
         
         with self.lock:
             cur = self.conn.cursor()
-
             page_hash = self.compute_hash(html_content)
-
             cur.execute("INSERT INTO crawldb.page (site_id, page_type_code, url, html_content, page_hash, accessed_time, http_status_code) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING id", (site_id, page_type_code.upper(), url, html_content, page_hash, accessed_time, http_status_code))
             page_id = cur.fetchone()[0]
             cur.close()
@@ -173,7 +178,7 @@ class Storage(object):
     def contains_redirection(self,from_page_id, to_page_id):
         with self.lock:
             cur = self.conn.cursor()
-            cur.execute("SELECT * FROM crawldb.link WHERE from_page=%s AND to_page=%s", (from_page_id,to_page_id))
+            cur.execute("SELECT * FROM crawldb.link WHERE from_page=%s AND to_page=%s", (from_page_id, to_page_id))
             dataFromBase=cur.fetchall()
             cur.close()
         if len(dataFromBase)==0:
@@ -181,18 +186,17 @@ class Storage(object):
         return True
 
     def save_redirection(self, url1, url2):
-        id1 = self.get_page_id(url1)
-        id2 = self.get_page_id(url2)
-        print(id1)
-        print(id2)
-        if id1!=None and id2!=None:
+        id1 = self.save_page(url1, None)
+        id2 = self.save_page(url2, None)
+        if id1 is not None and id2 is not None:
             self.add_redirection(id1, id2)
             return True
         else:
             return False
-            
-    
+
     def compute_hash(self, content):
+        if content is None:
+            return None
         return hashlib.md5(content.encode()).hexdigest()
     
     def check_if_duplicate(self, content):
@@ -210,10 +214,10 @@ class Storage(object):
 
     def add_redirection(self, from_page_id, to_page_id):
         # Preveri ali obstaja redirection, ce ja, vrni neki, sicer dodaj in vrni neki
-        if not self.contains_redirection(from_page_id,to_page_id):
+        if not self.contains_redirection(from_page_id, to_page_id):
             with self.lock:
                 cur = self.conn.cursor()
-                cur.execute("INSERT INTO crawldb.link (from_page, to_page) VALUES(%s,%s)", (from_page_id,to_page_id))
+                cur.execute("INSERT INTO crawldb.link (from_page, to_page) VALUES(%s,%s)", (from_page_id, to_page_id))
                 cur.close()
             return True
         else:
