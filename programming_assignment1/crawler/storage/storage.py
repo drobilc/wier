@@ -214,13 +214,16 @@ class Storage(object):
 
     def add_redirection(self, from_page_id, to_page_id):
         # Preveri ali obstaja redirection, ce ja, vrni neki, sicer dodaj in vrni neki
-        if not self.contains_redirection(from_page_id, to_page_id):
-            with self.lock:
-                cur = self.conn.cursor()
-                cur.execute("INSERT INTO crawldb.link (from_page, to_page) VALUES(%s,%s)", (from_page_id, to_page_id))
-                cur.close()
-            return True
-        else:
+        try:
+            if not self.contains_redirection(from_page_id, to_page_id):
+                with self.lock:
+                    cur = self.conn.cursor()
+                    cur.execute("INSERT INTO crawldb.link (from_page, to_page) VALUES(%s,%s)", (from_page_id, to_page_id))
+                    cur.close()
+                return True
+            else:
+                return False
+        except Exception:
             return False
 
 #------------------------------------------------
@@ -331,11 +334,8 @@ class Storage(object):
     
     def save_duplicate(self, page_id, duplicate_url):
         duplicate_id = self.save_page(duplicate_url, None, page_type='DUPLICATE')
-        with self.lock:
-            cur = self.conn.cursor()
-            cur.execute("INSERT INTO crawldb.link (from_page, to_page) VALUES(%s, %s)", (duplicate_id, page_id))
-            cur.close()
-    
+        self.add_redirection(duplicate_id, page_id)
+
     def getFromFrontier(self):
         time.sleep(12)
         accessed_current_page = None
