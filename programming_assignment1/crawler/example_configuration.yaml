@@ -7,6 +7,12 @@ initial_urls:
   - "https://e-uprava.gov.si/"
   - "https://www.e-prostor.gov.si/"
 
+allowed_domains:
+  - "gov.si"
+  - "evem.gov.si"
+  - "e-uprava.gov.si"
+  - "e-prostor.gov.si"
+
 number_of_workers: 4
 
 # Path to the selected Firefox headless browser

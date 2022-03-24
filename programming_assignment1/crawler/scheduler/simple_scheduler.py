@@ -16,9 +16,7 @@ class Scheduler(queue.Queue):
         self.configuration = configuration
         self.repository = repository
 
-        initial_urls = self.configuration.get('initial_urls')
-        initial_domains = map(lambda url: urlparse(url).hostname, initial_urls)
-        self.allowed_domains = list(initial_domains)
+        self.allowed_domains = self.configuration.get('allowed_domains')
 
         self.user_agent = self.configuration.get('user_agent')
 
