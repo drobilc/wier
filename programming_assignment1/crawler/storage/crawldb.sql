@@ -94,3 +94,6 @@ INSERT INTO crawldb.page_type VALUES
 	('BINARY'),
 	('DUPLICATE'),
 	('FRONTIER');
+	
+ALTER TABLE crawldb.page ADD page_hash varchar(32);
+CREATE INDEX page_hash_index ON crawldb.page(page_hash);

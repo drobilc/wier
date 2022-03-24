@@ -1,9 +1,11 @@
+from operator import truediv
 import threading
 import psycopg2 
 import logging
 import time
 from datetime import datetime
 from urllib.parse import urlparse
+import hashlib
 
 datatype=['DOC','DOCX','PDF','PPT','PPTX']
 
@@ -22,7 +24,7 @@ class Storage(object):
 
         self.db_pool = None
     
-    def save_page(self, url, html, page_type='HTML'):
+    def save_page(self, url, html, page_hash=None, page_type='HTML'):
         url_parts = urlparse(url)
         
         # First, add domain to database. If it already exists, it will be not be
@@ -31,7 +33,14 @@ class Storage(object):
         site_id = self.add_site(domain, '', '')
 
         # Then, 
-        return self.add_page(site_id, page_type, url, html, 200, datetime.now())
+        return self.add_page(site_id, page_type, url, html, page_hash, 200, datetime.now())
+    
+    def save_page_data(self, url, extension):
+        page_id = self.save_page(url, None, page_type='BINARY')
+        self.add_page_data(page_id, extension, None)
+    
+    def save_image(self, page_id, image_url, file_extension):
+        return self.add_image(page_id, image_url, file_extension, None, datetime.now())
 
     def add_site(self, domain, robots_content, sitemap_content):
         """
@@ -40,7 +49,7 @@ class Storage(object):
         """
 
         # Try to find site in database. If it already exists, return its id.
-        existing_site_id = self.get_site_id(domain)
+        existing_site_id = self.contains_site(domain)
         if existing_site_id is not None:
             return existing_site_id
 
@@ -53,7 +62,7 @@ class Storage(object):
             cur.close()
             return site_id
     
-    def get_site_id(self, domain):
+    def contains_site(self, domain):
         """
             Find site by its domain name. If the site does not exist, `None`
             will be returned.
@@ -80,16 +89,6 @@ class Storage(object):
         else:
             return False
 
-    def contains_site(self,domain):
-        with self.lock:
-            cur = self.conn.cursor()
-            cur.execute("SELECT id FROM crawldb.site WHERE domain=%s", (domain,))
-            dataFromBase=cur.fetchall()
-            cur.close()
-        if len(dataFromBase)==0:
-            return False
-        return dataFromBase[0][0]
-
     def retrieve_site(self, domain):
         with self.lock:
             cur = self.conn.cursor()
@@ -102,7 +101,7 @@ class Storage(object):
 
 #---------------------------------------------------------------------------------
 
-    def add_page(self, site_id, page_type_code, url, html_content, http_status_code, accessed_time):
+    def add_page(self, site_id, page_type_code, url, html_content, accessed_time, http_status_code=200):
         """
             Add page to database and return its id. If the page could not be
             added to database, `None` will be returned.
@@ -113,23 +112,13 @@ class Storage(object):
         
         with self.lock:
             cur = self.conn.cursor()
-            cur.execute("INSERT INTO crawldb.page (site_id, page_type_code, url, html_content, http_status_code, accessed_time) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id", (site_id, page_type_code.upper(), url, html_content, http_status_code, accessed_time))
+
+            page_hash = self.compute_hash(html_content)
+
+            cur.execute("INSERT INTO crawldb.page (site_id, page_type_code, url, html_content, page_hash, accessed_time, http_status_code) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING id", (site_id, page_type_code.upper(), url, html_content, page_hash, accessed_time, http_status_code))
             page_id = cur.fetchone()[0]
             cur.close()
             return page_id
-        """if self.contains_page(site, url) == 0:
-            pageSite = self.contains_site(site)
-            if pageSite != 0:
-                with self.lock:
-                    cur = self.conn.cursor()
-                    cur.execute("INSERT INTO crawldb.page (site_id, page_type_code, url, html_content, http_status_code, accessed_time) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id", (pageSite,page_type_code.upper(), url, html_content, http_status_code, accessed_time))
-                    page_id = cur.fetchone()[0]
-                    cur.close()
-                    return page_id
-            else:
-                return None
-        else:
-            return None"""
     
     def get_page_id(self, url):
         """
@@ -148,6 +137,9 @@ class Storage(object):
             cursor.close()
             return page_id
     
+    def contains_page(self, site, url):
+        return self.get_page_id(url)
+    
     def update_page(self, site, page_type_code, url, html_content, http_status_code, accessed_time):
         if self.contains_page(site,url)!=0:
             pageSite=self.contains_site(site)
@@ -161,25 +153,7 @@ class Storage(object):
                 return False
         else:
             return False
-    
-    
-    def contains_page(self, site,url):
 
-        # pageSite=self.contains_site(site)
-        # if pageSite==False:
-        #    pageSite=0
-        with self.lock:
-            cur = self.conn.cursor()
-            cur.execute("SELECT id FROM crawldb.page WHERE url=%s", (url,))
-            # dataFromBase = cur.fetchall()
-            number_of_results = cur.rowcount
-            cur.close()
-            return number_of_results > 0
-        #if len(dataFromBase)==0:
-        #    return False
-        #return dataFromBase[0][0]
-    
-    
     def retrieve_page(self, site,url):
         pageSite=self.contains_site(site)
         if pageSite==False:
@@ -196,38 +170,47 @@ class Storage(object):
 
 #------------------------------------------------
 
-    def contains_redirection(self,site1,url1,site2,url2):
-        url1ID=self.contains_page(site1,url1)
-        url2ID=self.contains_page(site2,url2)
-        if url1ID==False:
-            url1ID=0
-        if url2ID==False:
-            url2ID=0
+    def contains_redirection(self,from_page_id, to_page_id):
         with self.lock:
             cur = self.conn.cursor()
-            cur.execute("SELECT * FROM crawldb.link WHERE from_page=%s AND to_page=%s", (url1ID,url2ID))
+            cur.execute("SELECT * FROM crawldb.link WHERE from_page=%s AND to_page=%s", (from_page_id,to_page_id))
             dataFromBase=cur.fetchall()
             cur.close()
         if len(dataFromBase)==0:
             return False
         return True
 
+    def save_redirection(self, url1, url2):
+        id1 = self.get_page_id(url1)
+        id2 = self.get_page_id(url2)
+        self.add_redirection(id1, id2)
+    
+    def compute_hash(self, content):
+        return hashlib.md5(content.encode()).hexdigest()
+    
+    def check_if_duplicate(self, content):
+        hash = self.compute_hash(content)
+        with self.lock:
+            cur = self.conn.cursor()
+            cur.execute("SELECT id FROM crawldb.page WHERE page_hash=%s", (hash,))
+            dataFromBase=cur.fetchall()
+            cur.close()
+        if len(dataFromBase)==0:
+            return None
+        else:
+            return dataFromBase[0][0]
+        # poizvedba v bazi, ce obstaja, vrni id, sicer None
 
-    def add_redirection(self, site1,url1,site2,url2):
-        if self.contains_redirection(site1,url1,site2,url2)==0:
-            url1ID=self.contains_page(site1,url1)
-            url2ID=self.contains_page(site2,url2)
-            if url1ID!=0 and url2ID!=0:
-                with self.lock:
-                    cur = self.conn.cursor()
-                    cur.execute("INSERT INTO crawldb.link (from_page, to_page) VALUES(%s,%s)", (url1ID,url2ID))
-                    cur.close()
-                return True
-            else:
-                return False
+    def add_redirection(self, from_page_id, to_page_id):
+        # Preveri ali obstaja redirection, ce ja, vrni neki, sicer dodaj in vrni neki
+        if not self.contains_redirection(from_page_id,to_page_id):
+            with self.lock:
+                cur = self.conn.cursor()
+                cur.execute("INSERT INTO crawldb.link (from_page, to_page) VALUES(%s,%s)", (from_page_id,to_page_id))
+                cur.close()
+            return True
         else:
             return False
-
 
 #------------------------------------------------
 
@@ -247,9 +230,6 @@ class Storage(object):
             return True
         else:
             return False"""
-    
-    def save_image(self, page_id, image_url, file_extension):
-        return self.add_image(page_id, image_url, file_extension, None, datetime.now())
 
     def contains_image(self, site,url,filename):
         pageID=self.contains_page(site,url)
@@ -322,9 +302,28 @@ class Storage(object):
                 cur.close()
         return dataFromBase
     
-    def save_page_data(self, url, extension):
-        page_id = self.save_page(url, None, page_type='BINARY')
-        self.add_page_data(page_id, extension, None)
+    def check_for_duplicate_html(self, hashed_content):
+        with self.lock:
+            duplicate_page = None
+
+            cur = self.conn.cursor()
+            try:
+                sql_query = "SELECT id FROM crawldb.page WHERE page_hash = %s"
+                cur.execute(sql_query, (hashed_content,))
+                if cur.rowcount < 0:
+                    return None
+                duplicate_page = cur.fetchone()
+                return duplicate_page[0]
+            except Exception as error:
+                logging.exception(error)
+            return duplicate_page
+    
+    def save_duplicate(self, page_id, duplicate_url):
+        duplicate_id = self.save_page(duplicate_url, None, page_type='DUPLICATE')
+        with self.lock:
+            cur = self.conn.cursor()
+            cur.execute("INSERT INTO crawldb.link (from_page, to_page) VALUES(%s, %s)", (duplicate_id, page_id))
+            cur.close()
     
     def getFromFrontier(self):
         time.sleep(12)
