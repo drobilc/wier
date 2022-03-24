@@ -1,15 +1,15 @@
 from selenium import webdriver
 import selenium.common.exceptions as selenium_exceptions
+import requests.exceptions as requests_exceptions
 import urllib.error as urllib_exceptions
 import ssl
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import logging
 import threading
 from urllib.parse import urlparse
 from .duplicateDetector import *
 from downloader.robots import *
-from selenium.webdriver.firefox.options import Options
 import requests
 import time
 import pathlib
@@ -41,7 +41,7 @@ class Downloader(threading.Thread):
         # Hide browser if the headless key is set in configuration
         browser_options.headless = self.configuration.get('headless', True)
 
-        self.driver = webdriver.Firefox(executable_path=driver_path, options=browser_options)
+        self.driver = webdriver.Chrome(executable_path=driver_path, options=browser_options)
 
         # Read timeout from configuratinon
         self.timeout = configuration.get('page_load_timeout')
@@ -219,10 +219,16 @@ class Downloader(threading.Thread):
                     self.storage.save_page_data(binary_file_url, extension)
 
                 self.scheduler.enqueue(page_urls)
+            except requests_exceptions.RequestException as e:
+                logging.error('Requests exception: %s', url)
+                # Insert URL back into the frontier
+                self.scheduler.enqueue([ url ])
             except selenium_exceptions.TimeoutException as e:
                 logging.error('Timeout exception: %s', url)
                 # Insert URL back into the frontier
                 self.scheduler.enqueue([ url ])
+            except selenium_exceptions.WebDriverException as e:
+                logging.error('WebDriver exception: %s', url)
             except ssl.SSLError as e:
                 logging.error('SSL exception: %s', url)
             except urllib_exceptions.URLError as e:
