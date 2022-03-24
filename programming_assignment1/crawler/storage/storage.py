@@ -183,7 +183,14 @@ class Storage(object):
     def save_redirection(self, url1, url2):
         id1 = self.get_page_id(url1)
         id2 = self.get_page_id(url2)
-        self.add_redirection(id1, id2)
+        print(id1)
+        print(id2)
+        if id1!=None and id2!=None:
+            self.add_redirection(id1, id2)
+            return True
+        else:
+            return False
+            
     
     def compute_hash(self, content):
         return hashlib.md5(content.encode()).hexdigest()
