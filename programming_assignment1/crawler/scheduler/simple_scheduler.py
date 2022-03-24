@@ -243,6 +243,8 @@ class Scheduler(queue.Queue):
 
         url = queue.popleft()
         while self.should_skip(url):
+            if len(queue) <= 0:
+                return None, None
             url = queue.popleft()
         
         return url, None
