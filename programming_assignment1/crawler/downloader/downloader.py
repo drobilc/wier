@@ -13,6 +13,9 @@ from downloader.robots import *
 import requests
 import time
 import pathlib
+import urllib3
+
+urllib3.disable_warnings()
 
 class Downloader(threading.Thread):
 
@@ -40,6 +43,7 @@ class Downloader(threading.Thread):
 
         # Hide browser if the headless key is set in configuration
         browser_options.headless = self.configuration.get('headless', True)
+        browser_options.add_argument("--log-level=3")
 
         self.driver = webdriver.Chrome(executable_path=driver_path, options=browser_options)
 
@@ -54,7 +58,9 @@ class Downloader(threading.Thread):
         if url is None:
             return None, None
         
-        response = requests.head(url, allow_redirects=True)
+        # Don't verify certificates, because this greatly reduces the total
+        # number of downloaded pages.
+        response = requests.head(url, allow_redirects=True, verify=False)
 
         # We have allowed redirects, so the response object contains redirection
         # history. If it is empty, no redirection has happened.
@@ -219,10 +225,13 @@ class Downloader(threading.Thread):
                     self.storage.save_page_data(binary_file_url, extension)
 
                 self.scheduler.enqueue(page_urls)
-            except requests_exceptions.RequestException as e:
-                logging.error('Requests exception: %s', url)
+            except requests_exceptions.Timeout:
+                logging.error('Requests timeout exception: %s', url)
                 # Insert URL back into the frontier
                 self.scheduler.enqueue([ url ])
+            except requests_exceptions.RequestException as e:
+                logging.error('Requests exception: %s', url)
+                logging.exception(e)
             except selenium_exceptions.TimeoutException as e:
                 logging.error('Timeout exception: %s', url)
                 # Insert URL back into the frontier
