@@ -40,13 +40,13 @@
 
 	\subsection{Razvrščevalnik}
 
-	Razvrščevalnik (ang. scheduler) URL naslovov je implementiran kot podatkovna vrsta, do katere lahko obenem dostopa več različnih niti. Ta skrbi za seznam naslovov, ki jih mora naš pajek še obiskati in skrbi za etično delovanje pajka - poskrbi namreč, da pajek do istega strežnika ne dostopa bolj pogosto, kot to strežnik dovoljuje.
+	Razvrščevalnik (ang. scheduler) URL naslovov je implementiran kot podatkovna vrsta, do katere lahko obenem dostopa več različnih niti. Skrbi za seznam naslovov, ki jih mora naš pajek še obiskati in za etično delovanje pajka - zagotoviti je potrebno, da pajek do istega strežnika ne dostopa bolj pogosto, kot to strežnik dovoljuje.
 	
 	Ob dodajanju novega URL naslova v vrsto, razvrščevalnik preveri, ali je bil ta URL naslov že prenesen. Prav tako zna iz URL naslova prebrati domeno, pridobiti IP naslov strežnika s to domeno in prenesti datoteko \texttt{robots.txt}.
 	
-	Razvrščevalnik hrani seznam IP naslovov in čas zadnjega dostopa do določenega strežnika. Za vsak IP naslov vzdržuje vrsto URL naslovov, ki jih je potrebno še prenesti. Ko nit pajka od razvrščevalnika zahteva URL naslov, ta preveri kateri izmed strežnikov je bil obiskan pred največ časa in iz vrste za ta strežnik vzame prvega izmed URL naslovov. Ko ena izmed niti pridobi URL naslov za prenos, se v razvrščevalniku IP naslov, pripadajoč domeni, zaklene in se odklene šele po tem, ko nit razvrščevalniku sporoči, da je bil prenos uspešen.
+	Razvrščevalnik hrani seznam IP naslovov in čas zadnjega dostopa do določenega strežnika. Za vsak IP naslov vzdržuje vrsto URL naslovov, ki jih je potrebno še prenesti. Ko nit pajka od razvrščevalnika zahteva URL naslov, ta preveri kateri izmed strežnikov je bil obiskan najprej in iz vrste za ta strežnik vzame prvi URL naslov tega strežnika. Ko nit pridob URL naslov za prenos, se v razvrščevalniku IP naslov, ki pripada tej domeni, zaklene in se odklene šele po tem, ko nit razvrščevalniku sporoči, da je bil prenos uspešen.
 	
-	Pri dodajanju URL naslovov v razvrščevalnik, najprej preverimo, ali je bila stran že obiskana. Če še ni bila, iz domene pridobimo IP naslov strežnika in URL shranimo na konec vrste z ustreznim IP naslovom. Implementiran pajek tako izvaja preiskovanje v širino (angl. breadth-first search) za posamezen IP naslov strežnika. Na tak način zagotovimo, da bo pajek v dovoljšnjem času zagotovo obiskal vse strani, v danem trenutku pa pajek dostopa do strežnikov z različnimi IP naslovi, kar je v skladu z dogovorjenimi etičnimi načeli.
+	Pri dodajanju URL naslovov v razvrščevalnik, najprej preverimo, ali je bila stran že obiskana. Če še ni bila, iz domene pridobimo IP naslov strežnika in URL shranimo na konec vrste z ustreznim IP naslovom. Implementiran pajek tako izvaja preiskovanje v širino (angl. breadth-first search) za posamezen IP naslov strežnika. Na tak način zagotovimo, da bo pajek v primernem času zagotovo obiskal vse strani, v danem trenutku pa pajek dostopa do strežnikov z različnimi IP naslovi, kar je v skladu z dogovorjenimi etičnimi načeli.
 	
 	\subsection{Pajek}
 	
@@ -64,8 +64,6 @@
 		\item Na strani se poiščejo vse hiperpovezave. Razvrščevalnik za vsako hiperpovezavo najprej izračuna njeno kanonizirano obliko in skuša na podlagi poti v naslovu ugotoviti, kakšne vrste je datoteka. V primeru, da ima datoteka ustrezno končnico (npr. \texttt{.pdf}, \texttt{.docx}, ...), takega URL naslova ne dodamo v vrsto, temveč ustvarimo nov zapis v tabeli \texttt{page\_data} v podatkovni bazi.
 		\item Pridobljene hiperpovezave dodamo v razvrščevalnik.
 	\end{itemize}
-
-	\textbf{Dodajmo kakšno besedo o slabostih Firefox driverja za Selenium}
 	
 	\subsection{Shramba}
 	
@@ -76,28 +74,43 @@
 	\section{Delo na projektu}
 	
 	Kar se tiče samega dela na projektu, je bilo najtežje uskladiti večnitno delovanje pajka in čakanje pri pošiljanju zahtev za spletne strani, tako da pajek deluje stabilno in hkrati v skladu z etičnimi načeli. Vsaka takšna zahteva usklajeno delovanje tako med večimi nitmi samega pajka, kot tudi med vsemi komponentami, apliciranimi v pajku.
+	Na težave smo naleteli tudi pri uporabi gonilnika Geckodriver za brskanje v ozadnju po spletnih straneh. Če je pajek prišel do strani, kjer je uproabnik lahko izbral certifikat, se je, ne glede na nastavljen 10 sekundni timeout, nit ustavila. To smo rešili tako....
 	
 	\section{Rezultati}
-	Naš spletni pajek je v ...urah zbral podatke o ... spletnih straneh, ... dokumentih in ... slikovnih datotekah. Glede na to, da gre za kar veliko količino podatkov, predvsem s kvantitativnega vidika, smatramo, da je delovanje pajka zadovoljivo. Tudi same podatke smo uspeli s spletnih mest pridobiti tako, da so primerni za nadaljnjo uporabo, kar se nam zdi pomembno za to nalogo. Je pa, seveda, tudi še nekaj prostora za izboljšave, ki bi jih lahko, če bi imeli na razpolago nekaj več časa, tudi implementirali.
+	Naš spletni pajek je v 20 urah zbral podatke o 221 spletnih mestih, 47.631 spletnih straneh, 33.104 dokumentih in 392.447 slikovnih datotekah. V bazo som ujeli tudi 6 spletnih mest in 3.396 strani, ki so imele povezave s strani gov.si domene in ne gostutejo na tej domeni. Glede na to, da gre za kar veliko količino podatkov, predvsem s kvantitativnega vidika, smatramo, da je delovanje pajka zadovoljivo. Tudi same podatke smo uspeli s spletnih mest pridobiti tako, da so primerni za nadaljnjo uporabo, kar se nam zdi pomembno za to nalogo. Je pa, seveda, tudi še nekaj prostora za izboljšave, ki bi jih lahko, če bi imeli na razpolago nekaj več časa, tudi implementirali.
 	
-	V spodnji tabeli navajamo nekaj zanimivih rezultatov.
+	V spodnji tabeli navajamo rezultate.
+	
+		
 
 \begin{flushleft}
-\begin{tabular}{ |l|l| } 
+\begin{tabular}{ |l|l|l|l|l| } 
  \hline
- Število spletnih mest & ....  \\ 
+  &  gov.si & evem.gov.si & e-uprava.gov.si & e-prostor.gov.si  \\
  \hline
- Število spletnih strani & ...  \\  
+ Število spletnih mest &  215 & 1 & 1 & 4  \\ 
  \hline
- Število dvojnikov strani & ... \\
+ Število spletnih strani &  47631 & 365 & 3020 & 1130  \\  
  \hline
- Število dokumentov & ... \\
+ Število dvojnikov strani &  10636 & 287 & 56 & 412 \\
  \hline
- Število slik & ... \\
+ Število vseh dokumentov &  33122 & 27 & 9 & 960 \\
  \hline
- Povprečno število slik na stran & ... \\
+ Število PDF dokumentov &  23998 & 6 & 8 & 905 \\
  \hline
- Povprečno število dokumentov na stran & ... \\
+ Število DOC dokumentov &  2498 & 15 & 0 & 39 \\
+ \hline
+ Število DOCX dokumentov &  6197 & 6 & 1 & 12 \\
+ \hline
+ Število PPT dokumentov &  176 & 0 & 0 & 1 \\
+ \hline
+ Število PPTX dokumentov &  253 & 0 & 0 & 3 \\
+ \hline
+ Število slik &  425016 & 563 & 3199 & 5302 \\
+ \hline
+ Povprečno število slik na stran &  9 & 1,5 & 1 & 4,6 \\
+ \hline
+ Povprečno število dokumentov na stran &  0,8 & 0,08 & 0,01 & 0,9 \\
  \hline
 \end{tabular}
 \end{flushleft}
@@ -105,8 +118,7 @@
 
 	
 	
-	
-	\section{Zaključek}
+
 	
 	
 	
