@@ -74,7 +74,7 @@
 	\section{Delo na projektu}
 	
 	Kar se tiče samega dela na projektu, je bilo najtežje uskladiti večnitno delovanje pajka in čakanje pri pošiljanju zahtev za spletne strani, tako da pajek deluje stabilno in hkrati v skladu z etičnimi načeli. Vsaka takšna zahteva usklajeno delovanje tako med večimi nitmi samega pajka, kot tudi med vsemi komponentami, apliciranimi v pajku.
-	Na težave smo naleteli tudi pri uporabi gonilnika Geckodriver za brskanje v ozadju po spletnih straneh. Če je pajek prišel do strani, kjer je uporabnik moral izbrati osebno digitalno potrdilo, se je, ne glede na nastavljen 10 sekundni timeout, nit ustavila. To smo rešili tako....
+	Na težave smo naleteli tudi pri uporabi gonilnika Geckodriver za brskanje v ozadju po spletnih straneh. Če je pajek prišel do strani, kjer je uporabnik moral izbrati osebno digitalno potrdilo, se je, ne glede na nastavljen 10 sekundni timeout, nit ustavila. To smo rešili tako, da smo Geckodriver zamenjali z gonilnikom za brskalnik Chrome, ki je potem delal veliko bolje.
 	
 	\section{Rezultati}
 	Naš spletni pajek je v 20 urah zbral podatke o 221 spletnih mestih, 52.146 spletnih straneh, 34.118 dokumentih in 434.080 slikovnih datotekah. V bazo som ujeli tudi 6 spletnih mest in 3.396 strani, ki so imele preusmeritev s strani gov.si domene in ne gostujejo na tej domeni. Glede na to, da gre za kar veliko količino podatkov, predvsem s kvantitativnega vidika, smatramo, da je delovanje pajka zadovoljivo. Tudi same podatke smo uspeli s spletnih mest pridobiti tako, da so primerni za nadaljnjo uporabo, kar se nam zdi pomembno za to nalogo. Je pa, seveda, tudi še nekaj prostora za izboljšave, ki bi jih lahko, če bi imeli na razpolago nekaj več časa, tudi implementirali.
