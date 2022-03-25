@@ -25,18 +25,11 @@
 	
 	\section{Uvod}
 	
-	Za prvo semianrsko nalogo pri predmetu Iskanje in ekstrakcija podatkov s spleta smo implemetirali spletnega pajka, ki je pregledal in v lokalno podatkovno bazo prenesel vsebino spletnih strani na štirih spletnih mestih (gov.si, evem.gov.si, e-uprava.gov.si, e-prostor.gov.si). V nadaljevanju poročila smo opisali strukturo in delovanje našega pajka, predstavili rezultate naše naloge in težave, na katere smo naleteli tekom dela.
+	Za prvo seminarsko nalogo pri predmetu Iskanje in ekstrakcija podatkov s spleta smo implementirali spletnega pajka, ki je obiskal in v lokalno podatkovno bazo prenesel vsebino spletnih strani na štirih spletnih mestih (\texttt{gov.si}, \texttt{evem.gov.si}, \texttt{e-uprava.gov.si}, \texttt{e-prostor.gov.si}). V nadaljevanju poročila smo opisali strukturo in delovanje našega pajka, predstavili rezultate naše naloge in težave, na katere smo naleteli tekom dela.
 	
 	\section{Struktura pajka}
 	
-	Pajka smo izdelali v programskem jeziku Python. Strukturno je pajek razdeljen na tri med seboj povezane komponente, ki so v praogramski kodi definiani kot objekti:
-	
-	\begin{itemize}
-		\item razhroščvealnik,
-		\item pajek,
-		\item shramba.
-	\end{itemize}
-	
+	Pajka smo izdelali v programskem jeziku Python. Strukturno je pajek razdeljen na tri med seboj povezane komponente, ki so v programski kodi definirani kot objekti: razvrščevalnik, pajek in shramba.
 	
 	
 	\begin{figure}[h]
@@ -47,31 +40,45 @@
 
 	\subsection{Razvrščevalnik}
 
-	Razvrščevalnik (ang. scheduler) URL naslovov je implementiran kot podatkovna vrsta, do katere lahko obenem dostopa več različnih niti. 
+	Razvrščevalnik (ang. scheduler) URL naslovov je implementiran kot podatkovna vrsta, do katere lahko obenem dostopa več različnih niti. Ta skrbi za seznam naslovov, ki jih mora naš pajek še obiskati in skrbi za etično delovanje pajka - poskrbi namreč, da pajek do istega strežnika ne dostopa bolj pogosto, kot to strežnik dovoljuje.
 	
 	Ob dodajanju novega URL naslova v vrsto, razvrščevalnik preveri, ali je bil ta URL naslov že prenesen. Prav tako zna iz URL naslova prebrati domeno, pridobiti IP naslov strežnika s to domeno in prenesti datoteko \texttt{robots.txt}.
+	
+	Razvrščevalnik hrani seznam IP naslovov in čas zadnjega dostopa do določenega strežnika. Za vsak IP naslov vzdržuje vrsto URL naslovov, ki jih je potrebno še prenesti. Ko nit pajka od razvrščevalnika zahteva URL naslov, ta preveri kateri izmed strežnikov je bil obiskan pred največ časa in iz vrste za ta strežnik vzame prvega izmed URL naslovov. Ko ena izmed niti pridobi URL naslov za prenos, se v razvrščevalniku IP naslov, pripadajoč domeni, zaklene in se odklene šele po tem, ko nit razvrščevalniku sporoči, da je bil prenos uspešen.
+	
+	Pri dodajanju URL naslovov v razvrščevalnik, najprej preverimo, ali je bila stran že obiskana. Če še ni bila, iz domene pridobimo IP naslov strežnika in URL shranimo na konec vrste z ustreznim IP naslovom. Tako dosežemo, da pajek dostopa do spleta v kvazi širino (angl. breadth-first) in ob tem dosežemo drastično pohitritev.
 	
 	\subsection{Pajek}
 	
 	Ob zagonu, pajek (ang. crawler) zažene več niti, vsaka od njih pa ima nalogo, da iz razvrščevalnika URL naslovov pridobi naslov, prenese stran in shrani podatke v podatkovno bazo. Pridobivanje vsebine strani izvajamo v dveh korakih:
 	
 	\begin{itemize}
-		\item Najprej na strežnik izvedemo \texttt{HTTP HEAD} metodo.
-		\item S pomočjo Selenium brskalnika obiščemo stran.
+		\item Najprej na strežnik izvedemo \texttt{HTTP HEAD} zahtevek. Na tak način pridobimo statusno kodo strežnika in morebitne preusmeritve med stranmi. Pajek v tem koraku tudi preveri kakšen je \texttt{Content-Type} strani. Če je vsebina strani \texttt{HTML}, potem nadaljujemo s prenosom, v nasprotnem primeru pa v tabelo \texttt{page\_data} vstavimo ustrezen vnos s tipom datoteke.
+		\item S pomočjo Selenium brskalnika obiščemo stran. Če pri prenašanju strani pride do prekoračitve vnaprej določenega časa, z obiskom prekinemo in URL naslov ponovno dodamo na konec vrste.
 	\end{itemize}
+
+	Pajek po prenosu strani s spleta izvede še naslednje korake procesiranja:
+	\begin{itemize}
+		\item Iz HTML vsebine strani izračuna razpršilno vrednost (angl. hash) in preveri, ali stran z enako vrednostjo v bazi že obstaja. V tem primeru, se v bazi URL naslov označi kot duplikat.
+		\item Na strani poiščemo vse slike in jih vstavimo v tabelo \texttt{image} v podatkovni bazi.
+		\item Na strani se poiščejo vse hiperpovezave. Razvrščevalnik za vsako hiperpovezavo najprej izračuna njeno kanonizirano obliko in skuša na podlagi poti v naslovu ugotoviti, kakšne vrste je datoteka. V primeru, da ima datoteka ustrezno končnico (npr. \texttt{.pdf}, \texttt{.docx}, ...), takega URL naslova ne dodamo v vrsto, temveč ustvarimo nov zapis v tabeli \texttt{page\_data} v podatkovni bazi.
+		\item Pridobljene hiperpovezave dodamo v razvrščevalnik.
+	\end{itemize}
+
+	\textbf{Dodajmo kakšno besedo o slabostih Firefox driverja za Selenium}
 	
 	\subsection{Shramba}
 	
-	Shramba (ang. storage) je del pajka, ki skrbi za vpis zbranih podatkov in vsebin v relacijsko bazo podatkov. Baza je postavljena v okolju PostgreSQL, strukturi baze, ki je bila predlagana v projektu, pa smo v tabeli \texttt{page} dodali še polje \texttt{page hash}, v katerem se shranjuje hash vrednost, izračunana z MD5 algoritmom. Hash vrednost smo shranjevali za preverajnje, ali spletna stran z določeno vsebino že obstaja. 
+	Shramba (ang. storage) je del pajka, ki skrbi za vpis zbranih podatkov in vsebin v relacijsko bazo podatkov. Baza je postavljena v okolju PostgreSQL, strukturi baze, ki je bila predlagana v projektu, pa smo v tabeli \texttt{page} dodali še polje \texttt{page hash}, v katerem se shranjuje hash vrednost, izračunana z MD5 algoritmom. Hash vrednost smo shranjevali za preverjanje, ali spletna stran z določeno vsebino že obstaja. 
 	
 	Za vpisovanje, popravljanje in izpis podatkov iz podatkovne baze smo sprogramirali 25 funkcij, vsaka od teh funkcij zaklene dostop do podatkovne baze, da ne bi prišlo do pomanjkljivih ali večkratnih vpisov vsebin.
 	
 	\section{Delo na projektu}
 	
-	Kar se tiče samega dela na projektu, je bilo najtežje uskladiti večnitno delovanje pajka in čakanje pri pošiljanju zahtev za spletne strani, tako da pajek deluje stabilno in hkrati v skaldu z etičnimi načeli. Vsaka takšna zahteva usklajeno delovanje tako med večimi nitmi samega pajka, kot tudi med vsemi komponentami, apliciranimi v pajku.
+	Kar se tiče samega dela na projektu, je bilo najtežje uskladiti večnitno delovanje pajka in čakanje pri pošiljanju zahtev za spletne strani, tako da pajek deluje stabilno in hkrati v skladu z etičnimi načeli. Vsaka takšna zahteva usklajeno delovanje tako med večimi nitmi samega pajka, kot tudi med vsemi komponentami, apliciranimi v pajku.
 	
 	\section{Rezultati}
-	Naš spletni pajek je v ...urah zbral podatke o ... spletnih straneh, ... dokumentih in ... slikovnih datotekah. Glede na to, da gre za kar veliko količino podatkov, predvsem s kvantitativnega vidika, smatramo, da je delovanje pajka zadovoljivo. Tudi same podatke smo uspeli s spletnih mest pridobiti tako, da so primerni za nadajno uporabo, kar se nam zdi poembno za to nalogo. Je pa, seveda, tudi še nekaj prostora za izboljšave, ki bi jih lahko, če bi imeli na razplago nekaj več časa, tudi implementirali.
+	Naš spletni pajek je v ...urah zbral podatke o ... spletnih straneh, ... dokumentih in ... slikovnih datotekah. Glede na to, da gre za kar veliko količino podatkov, predvsem s kvantitativnega vidika, smatramo, da je delovanje pajka zadovoljivo. Tudi same podatke smo uspeli s spletnih mest pridobiti tako, da so primerni za nadaljnjo uporabo, kar se nam zdi pomembno za to nalogo. Je pa, seveda, tudi še nekaj prostora za izboljšave, ki bi jih lahko, če bi imeli na razpolago nekaj več časa, tudi implementirali.
 	
 	V spodnji tabeli navajamo nekaj zanimivih rezultatov.
 
@@ -80,7 +87,7 @@
  \hline
  Število spletnih mest & ....  \\ 
  \hline
- Število speltnih strani & ...  \\  
+ Število spletnih strani & ...  \\  
  \hline
  Število dvojnikov strani & ... \\
  \hline
