@@ -46,7 +46,7 @@
 	
 	Razvrščevalnik hrani seznam IP naslovov in čas zadnjega dostopa do določenega strežnika. Za vsak IP naslov vzdržuje vrsto URL naslovov, ki jih je potrebno še prenesti. Ko nit pajka od razvrščevalnika zahteva URL naslov, ta preveri kateri izmed strežnikov je bil obiskan pred največ časa in iz vrste za ta strežnik vzame prvega izmed URL naslovov. Ko ena izmed niti pridobi URL naslov za prenos, se v razvrščevalniku IP naslov, pripadajoč domeni, zaklene in se odklene šele po tem, ko nit razvrščevalniku sporoči, da je bil prenos uspešen.
 	
-	Pri dodajanju URL naslovov v razvrščevalnik, najprej preverimo, ali je bila stran že obiskana. Če še ni bila, iz domene pridobimo IP naslov strežnika in URL shranimo na konec vrste z ustreznim IP naslovom. Tako dosežemo, da pajek dostopa do spleta v kvazi širino (angl. breadth-first) in ob tem dosežemo drastično pohitritev.
+	Pri dodajanju URL naslovov v razvrščevalnik, najprej preverimo, ali je bila stran že obiskana. Če še ni bila, iz domene pridobimo IP naslov strežnika in URL shranimo na konec vrste z ustreznim IP naslovom. Implementiran pajek tako izvaja preiskovanje v širino (angl. breadth-first search) za posamezen IP naslov strežnika. Na tak način zagotovimo, da bo pajek v dovoljšnjem času zagotovo obiskal vse strani, v danem trenutku pa pajek dostopa do strežnikov z različnimi IP naslovi, kar je v skladu z dogovorjenimi etičnimi načeli.
 	
 	\subsection{Pajek}
 	
