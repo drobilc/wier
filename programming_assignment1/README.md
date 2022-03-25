@@ -2,6 +2,10 @@
 
 Navodila naloge se nahajajo [tukaj](https://szitnik.github.io/wier-labs/PA1.html).
 
+## Podatkovna baza
+
+Podatkovna baza se nahaja na naslednjem URL naslovu: https://drive.google.com/drive/folders/1Wp7wToZJy5vAVI632KqMxfmqge28PibY
+
 ## Namestitev
 
 ```bash
