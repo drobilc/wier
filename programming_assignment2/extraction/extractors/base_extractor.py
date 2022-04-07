@@ -25,7 +25,7 @@ class BaseExtractor(object):
 
         # Open each file and extract data
         for filename in html_files:
-            with open(filename, 'r') as html_file:
+            with open(filename, 'r', encoding='utf-8') as html_file:
                 try:
                     file_content = html_file.read()
                     result = self.extract_data(file_content)
