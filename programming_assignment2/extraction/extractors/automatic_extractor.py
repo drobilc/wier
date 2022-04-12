@@ -40,7 +40,7 @@ class AutomaticExtractor(BaseExtractor):
         if isinstance(element, NavigableString):
             return
         element['optional'] = True
-        element['style'] = 'border: 1px solid red'
+        element['style'] = 'background: gold'
     
     @staticmethod
     def element(el):
@@ -79,9 +79,6 @@ class AutomaticExtractor(BaseExtractor):
         newline_filter = lambda element: element != '\n'
         wrapper_children = list(filter(newline_filter, wrapper.children))
         html_children = list(filter(newline_filter, html.children))
-
-        # m = len(wrapper_children)
-        # n = len(html_children)
 
         i = 0
         j = 0
