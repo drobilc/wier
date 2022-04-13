@@ -98,8 +98,6 @@ class AutomaticExtractor(BaseExtractor):
                 i += 1
                 j += 1
                 continue
-            
-            match_found = False
 
             # We have found two children tags that don't match. First, check if
             # the current wrapper_element is optional. Check the current
@@ -125,8 +123,6 @@ class AutomaticExtractor(BaseExtractor):
                     wrapper_children[i - 1].insert_after(html_children[k])
                     wrapper_children.insert(i, html_children[k])
                     i += 1
-
-                match_found = True
             else:
                 # The element has not been found. This means that the
                 # wrapper_element is optional.
@@ -136,45 +132,7 @@ class AutomaticExtractor(BaseExtractor):
 
                 # Reset j to its previous value and try to find the j-th child
                 # of html document in wrapper.
-                j = previous_j
-            
-            # If the wrapper element could not be matched to any element inside
-            # the html, we must search for html_element inside the wrapper.
-            if not match_found:
-                previous_i = i
-                html_element = html_children[j]
-
-                while i < len(wrapper_children):
-                    wrapper_element = wrapper_children[i]
-                    if AutomaticExtractor.tree_matching(wrapper_element, html_element):
-                        break
-                    i += 1
-                
-                if i < len(wrapper_children):
-                    # The match for html_element has been found inside wrapper.
-                    # We must mark all items between previous_i and current i as
-                    # optional.
-                    for k in range(previous_i, i):
-                        AutomaticExtractor.mark_optional(wrapper_children[k])
-                        # print(f'[i < m] Optional: {wrapper_children[k]}')
-                        # print(list(map(AutomaticExtractor.element, wrapper_children)))
-
-                    # Beacuse the optional elements are already in wraper, no
-                    # further work is required here.
-                else:
-                    # The html_element has no match in wrapper. This means that
-                    # is an optional element. We must copy it into our wrapper.
-                    i = previous_i
-
-                    AutomaticExtractor.mark_optional(html_children[j])
-                    wrapper_children[i].insert_after(html_children[j])
-                    wrapper_children.insert(i, html_children[j])
-                    # print(f'[i >= m] Optional: {html_children[j]}')
-                    # print(list(map(AutomaticExtractor.element, wrapper_children)))
-                    i += 1
-
-                    # AutomaticExtractor.mark_optional(html_children[j])
-                    # wrapper_children[i].insert_after(html_children[j])
+                j = previous_j - 1
             
             # Move on to next elements in both trees.
             i += 1
