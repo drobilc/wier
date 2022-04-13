@@ -1,5 +1,5 @@
 from .base_extractor import BaseExtractor
-from bs4 import BeautifulSoup, NavigableString
+from bs4 import BeautifulSoup, NavigableString, Comment
 from os.path import join
 import glob
 
@@ -23,6 +23,11 @@ class AutomaticExtractor(BaseExtractor):
     @staticmethod
     def clean(html):
         for child in html.children:
+            
+            # Remove comments
+            if isinstance(child, Comment):
+                child.extract()
+                continue
             
             # Skip all text
             if isinstance(child, NavigableString):
