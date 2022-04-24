@@ -152,3 +152,37 @@ class BolhaXPathExtractor(BaseExtractor):
         return {
             'items': self.extract_items(dom_tree)
         }
+
+class AvtoNetXPathExtractor(BaseExtractor):
+    
+    def extract_title(self, tree):
+        title_parts = tree.xpath('//h3//text()')
+        return ' '.join(map(lambda str: str.strip(), title_parts)).replace('\xa0', ' ')
+
+    def extract_price(self, tree):
+        return tree.xpath('//div[@id="FINANCE"]/following-sibling::div//p/text()')[0].strip()
+    
+    def extract_date_published(self, tree):
+        date_published = tree.xpath('//i[contains(@class, "fa-calendar")]/parent::div/text()')[1].strip()
+        _, date_published = date_published.split(':', 1)
+        return date_published.strip()
+    
+    def extract_number_of_views(self, tree):
+        number_of_views = tree.xpath('//i[contains(@class, "fa-bar-chart")]/parent::div/text()')[1].strip()
+        _, number_of_views = number_of_views.split(':', 1)
+        return number_of_views.strip()
+    
+    def extract_seller(self, tree):
+        return tree.xpath('//div[contains(text(), "Prodajalec")]/following-sibling::div/following-sibling::div//strong/text()')[0].strip()
+
+    def extract_data(self, content):
+        html_parser = etree.HTMLParser()
+        dom_tree = etree.fromstring(content, html_parser)
+        
+        return {
+            'title': self.extract_title(dom_tree),
+            'price': self.extract_price(dom_tree),
+            'date_published': self.extract_date_published(dom_tree),
+            'number_of_views': self.extract_number_of_views(dom_tree),
+            'seller': self.extract_seller(dom_tree),
+        }

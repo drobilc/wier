@@ -7,5 +7,6 @@ EXTRACTORS = {
     'xpath-rtvslo': RTVSloXPathExtractor,
     'xpath-overstock': OverstockXPathExtractor,
     'xpath-bolha': BolhaXPathExtractor,
+    'xpath-avtonet': AvtoNetXPathExtractor,
     'automatic': AutomaticExtractor,
 }
