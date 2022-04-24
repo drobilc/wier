@@ -6,5 +6,6 @@ EXTRACTORS = {
     'regex': RegexExtractor,
     'xpath-rtvslo': RTVSloXPathExtractor,
     'xpath-overstock': OverstockXPathExtractor,
+    'xpath-bolha': BolhaXPathExtractor,
     'automatic': AutomaticExtractor,
 }

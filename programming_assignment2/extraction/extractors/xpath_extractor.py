@@ -108,3 +108,47 @@ class OverstockXPathExtractor(BaseExtractor):
         return {
             'items': self.extract_items(dom_tree)
         }
+
+class BolhaXPathExtractor(BaseExtractor):
+    
+    def extract_title(self, tree):
+        return tree.xpath('/li//h3[@class="entity-title"]/a/text()')[0].strip()
+    
+    def extract_price(self, tree):
+        return tree.xpath('/li//li[@class="price-item"]/strong/text()')[0].strip()
+    
+    def extract_location(self, tree):
+        return tree.xpath('/li//div[@class="entity-description-main"]/text()')[1].strip()
+    
+    def extract_time(self, tree):
+        time = tree.xpath('/li//time/text()')[0].strip()
+        if time.endswith('.'):
+            return time[:-1]
+        return time 
+    
+    def extract_item(self, tree):
+        return {
+            'title': self.extract_title(tree),
+            'price': self.extract_price(tree),
+            'location': self.extract_location(tree),
+            'date_posted': self.extract_time(tree),
+        }
+
+    def extract_items(self, tree):
+        items = tree.xpath('//ul[@class="EntityList-items"]/li')
+        result = []
+        for item in items:
+            try:
+                root = etree.fromstring(etree.tostring(item))
+                result.append(self.extract_item(root))
+            except Exception as e:
+                pass
+        return result
+
+    def extract_data(self, content):
+        html_parser = etree.HTMLParser()
+        dom_tree = etree.fromstring(content, html_parser)
+        
+        return {
+            'items': self.extract_items(dom_tree)
+        }
