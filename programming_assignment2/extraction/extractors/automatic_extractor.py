@@ -37,6 +37,7 @@ class AutomaticExtractor(BaseExtractor):
             # represent content on page.
             if child.name in ['head', 'script', 'iframe', 'style']:
                 child.extract()
+                continue
             
             AutomaticExtractor.clean(child)
 
@@ -46,6 +47,13 @@ class AutomaticExtractor(BaseExtractor):
             return
         element['optional'] = True
         element['style'] = 'background: gold'
+    
+    @staticmethod
+    def mark_iterator(element):
+        if isinstance(element, NavigableString):
+            return
+        element['iterator'] = True
+        element['style'] = 'background: aqua'
     
     @staticmethod
     def element(el):
@@ -60,10 +68,73 @@ class AutomaticExtractor(BaseExtractor):
 
         first_attributes = set(first.attrs.keys())
         second_attributes = set(second.attrs.keys())
+        first_attributes.difference_update(['optional', 'iterator'])
+        second_attributes.difference_update(['optional', 'iterator'])
         return first_attributes == second_attributes
 
     @staticmethod
-    def tree_matching(wrapper, html):
+    def match(wrapper, html):
+        """
+            Check if wrapper and html elements match in both their tags and at
+            least one child.
+        """
+        if wrapper == html: return True
+        if isinstance(wrapper, NavigableString) and isinstance(html, NavigableString):
+            return True
+        
+        if isinstance(wrapper, NavigableString): return False
+        if isinstance(html, NavigableString): return False
+        if not AutomaticExtractor.elements_match(wrapper, html): return False
+
+        # Both elements are xml tags and their names do match. Check if their
+        # children also match (at least partially).
+        newline_filter = lambda element: element != '\n'
+        wrapper_children = list(filter(newline_filter, wrapper.children))
+        html_children = list(filter(newline_filter, html.children))
+
+        i = 0
+        j = 0
+
+        at_least_one_child_matches = False
+
+        while i < len(wrapper_children) and j < len(html_children):
+            wrapper_element = wrapper_children[i]
+            html_element = html_children[j]
+
+            elements_match = AutomaticExtractor.match(wrapper_element, html_element)
+            if elements_match:
+                i += 1
+                j += 1
+                at_least_one_child_matches = True
+                continue
+
+            # We have found two children tags that don't match. First, check if
+            # the current wrapper_element is optional. Check the current
+            # wrapper_element with all remaining children in other document.
+            previous_j = j
+
+            while j < len(html_children):
+                html_element = html_children[j]
+                elements_match = AutomaticExtractor.match(wrapper_element, html_element)
+                if elements_match:
+                    at_least_one_child_matches = True
+                    break
+                j += 1
+            
+            if j >= len(html_children):
+                j = previous_j - 1
+            
+            # Move on to next elements in both trees.
+            i += 1
+            j += 1
+        
+        return at_least_one_child_matches
+
+    @staticmethod
+    def generalize(wrapper, html):
+        # The elements are the same object
+        if wrapper == html: return wrapper
+
         # Both elements are strings - if the text doesn't match, then we have
         # discovered a field. Otherwise, we have found a data label.
         if isinstance(wrapper, NavigableString) and isinstance(html, NavigableString):
@@ -97,9 +168,11 @@ class AutomaticExtractor(BaseExtractor):
             # document match. If they do, move on to the next elements in both
             # trees. If not, we have found a tag mismatch and we must perform
             # the search for iterators and / or optionals.
-            elements_match = AutomaticExtractor.tree_matching(wrapper_element, html_element)
+            elements_match = AutomaticExtractor.match(wrapper_element, html_element)
             
             if elements_match:
+                AutomaticExtractor.generalize(wrapper_element, html_element)
+                wrapper_children = list(filter(newline_filter, wrapper.children))
                 i += 1
                 j += 1
                 continue
@@ -111,11 +184,15 @@ class AutomaticExtractor(BaseExtractor):
 
             while j < len(html_children):
                 html_element = html_children[j]
-                if AutomaticExtractor.tree_matching(wrapper_element, html_element):
+                elements_match = AutomaticExtractor.match(wrapper_element, html_element)
+                if elements_match:
                     break
                 j += 1
             
             if j < len(html_children):
+                AutomaticExtractor.generalize(wrapper_element, html_element)
+                wrapper_children = list(filter(newline_filter, wrapper.children))
+
                 # The corresponding element has been found in the other
                 # document. All elements between previous_j and current j can be
                 # marked as optional.
@@ -176,7 +253,7 @@ class AutomaticExtractor(BaseExtractor):
 
         # Match the wrapper and another document (in place) and return the
         # modified wrapper.
-        AutomaticExtractor.tree_matching(wrapper_document, other_document)
+        AutomaticExtractor.generalize(wrapper_document, other_document)
 
         print(wrapper_document.prettify())
         return None
