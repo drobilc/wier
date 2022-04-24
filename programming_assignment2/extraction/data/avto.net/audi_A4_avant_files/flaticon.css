@@ -1,0 +1,92 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 15/05/2018 10:45
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+font-style: normal;
+}
+
+.flaticon-alloy-wheel:before { content: "\f100"; }
+.flaticon-wheels:before { content: "\f101"; }
+.flaticon-tire:before { content: "\f102"; }
+.flaticon-gas-station-6:before { content: "\f103"; }
+.flaticon-weight-2:before { content: "\f104"; }
+.flaticon-engine-1:before { content: "\f105"; }
+.flaticon-transport:before { content: "\f106"; }
+.flaticon-dashboard-3:before { content: "\f107"; }
+.flaticon-gas-station-5:before { content: "\f108"; }
+.flaticon-furniture:before { content: "\f109"; }
+.flaticon-engine:before { content: "\f10a"; }
+.flaticon-dashboard-2:before { content: "\f10b"; }
+.flaticon-dashboard-1:before { content: "\f10c"; }
+.flaticon-dashboard:before { content: "\f10d"; }
+.flaticon-gas-station-4:before { content: "\f10e"; }
+.flaticon-gearbox-5:before { content: "\f10f"; }
+.flaticon-vehicle-1:before { content: "\f110"; }
+.flaticon-speedometer-3:before { content: "\f111"; }
+.flaticon-gearbox-4:before { content: "\f112"; }
+.flaticon-vehicle:before { content: "\f113"; }
+.flaticon-gearbox-3:before { content: "\f114"; }
+.flaticon-time-1:before { content: "\f115"; }
+.flaticon-weight-1:before { content: "\f116"; }
+.flaticon-gas-station-3:before { content: "\f117"; }
+.flaticon-road-with-broken-line:before { content: "\f118"; }
+.flaticon-calendar-1:before { content: "\f119"; }
+.flaticon-odometer-for-kilometers-and-speed-control:before { content: "\f11a"; }
+.flaticon-fuel-station-pump:before { content: "\f11b"; }
+.flaticon-calendar-with-spring-binder-and-date-blocks:before { content: "\f11c"; }
+.flaticon-days:before { content: "\f11d"; }
+.flaticon-sleeping-bed-silhouette:before { content: "\f11e"; }
+.flaticon-speedometer-2:before { content: "\f11f"; }
+.flaticon-gearbox-2:before { content: "\f120"; }
+.flaticon-oil:before { content: "\f121"; }
+.flaticon-time:before { content: "\f122"; }
+.flaticon-gasoline-1:before { content: "\f123"; }
+.flaticon-maintenance:before { content: "\f124"; }
+.flaticon-rest:before { content: "\f125"; }
+.flaticon-gasoline:before { content: "\f126"; }
+.flaticon-speedometer-1:before { content: "\f127"; }
+.flaticon-fuel-station-1:before { content: "\f128"; }
+.flaticon-fuel-station:before { content: "\f129"; }
+.flaticon-ruler-2:before { content: "\f12a"; }
+.flaticon-ruler-1:before { content: "\f12b"; }
+.flaticon-car-1:before { content: "\f12c"; }
+.flaticon-car-repair:before { content: "\f12d"; }
+.flaticon-set-square:before { content: "\f12e"; }
+.flaticon-gas-station-2:before { content: "\f12f"; }
+.flaticon-car:before { content: "\f130"; }
+.flaticon-gas-station-1:before { content: "\f131"; }
+.flaticon-gearbox-1:before { content: "\f132"; }
+.flaticon-gearbox:before { content: "\f133"; }
+.flaticon-calendar:before { content: "\f134"; }
+.flaticon-gasoline-pump:before { content: "\f135"; }
+.flaticon-bed:before { content: "\f136"; }
+.flaticon-speedometer:before { content: "\f137"; }
+.flaticon-piston:before { content: "\f138"; }
+.flaticon-gas-station:before { content: "\f139"; }
+.flaticon-gearshift:before { content: "\f13a"; }
+.flaticon-belt:before { content: "\f13b"; }
+.flaticon-gauge:before { content: "\f13c"; }
+.flaticon-weight:before { content: "\f13d"; }
+.flaticon-ruler:before { content: "\f13e"; }

@@ -1,0 +1,129 @@
+/* ---------------------------   BUTTON ORANGE ----------------------------*/
+.GO-Button-Orange {
+	display:inline-block;
+    color:#FFFFFF;
+	font-weight:bold;
+	border: solid 0px #F47A20;
+	background-color: #F47A20;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	behavior: url(PIE.htc);
+	padding: 0px;
+	margin: 0px;
+}
+.GO-Button-Orange:hover {
+	border: solid 0px #072F57;
+	color: #FFFFFF;
+	background: #072F57;
+}
+.GO-Button-Orange:active {
+	color: #FFFFFF;
+}
+.GO-Button-Orange i{
+	float:left;
+    height: 100%;
+    width: 50px;
+  	line-height:34px;
+	font-size:15px;
+	padding: 0px;
+	border-style:solid;
+	border-width:0px 1px 0px 0px;
+	border-color:#7F9DB9; 
+	text-align: center;
+}
+.GO-Button-Orange span{
+	/*float:left;*/
+    height:100%;
+  	line-height:34px;
+    margin:0px;
+	padding: 0px;
+	text-align: center;
+}
+/* ---------------   NEW CARS / MODELS / BUTTON ACTIVE ----------------------------*/
+.list-group-item.GO-active {
+    z-index: 2;
+    color: #fff;
+    background-color: #062F57;
+    border-color: #062F57;
+}
+/* ---------------   NEW CARS / SUBMODELS / ACTIVE FILTERS ----------------------------*/
+.GO-active {
+    color: #fff;
+    background-color: #062F57;
+    border-color: #062F57;
+}
+.GO-active:link {
+    color: #fff;
+    background-color: #062F57;
+    border-color: #062F57;
+}
+.GO-active:visited {
+    color: #fff;
+    background-color: #062F57;
+    border-color: #062F57;
+}
+.GO-active:active {
+    color: #fff;
+    background-color: #062F57;
+    border-color: #062F57;
+}
+/* not active (faded)*/
+.nav-pills .GO-pill .nav-link:not(.active) {
+    background-color: #FFFFFF;
+    color: black;
+}
+
+/* active */
+.nav-pills .GO-pill .nav-link {
+    background-color: #062F57;
+    color: white;
+}
+
+/* ---------------   NEW CARS / SUBMODELS / HOVER ----------------------------*/
+.GO-showsubmodel {
+    background-color: #E9E9E9; 
+}
+.GO-showsubmodel:hover {
+    background-color: #FFFFFF; 
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,.5) !important;
+	-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,.5) !important; /* for Firefox 3.5+ */
+	-webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.5) !important; /* for Safari and Chrome */
+}
+
+.GO-showsubmodel:hover .GO-showsubmodelbutton{
+    background-color: #062F57; 
+    color: #FFFFFF;
+}
+
+
+/* Collapse Parking Icon
+-------------------------------------------------- */
+.GO-Parking-On{
+     position:relative;
+}
+.GO-Parking-On:before{
+     font-family: FontAwesome;
+	 content: "\f005";
+}
+.GO-Parking-Off{
+     position:relative;
+}
+.GO-Parking-Off:before{
+     font-family: FontAwesome;
+	 content: "\f006";
+}
+/* Collapse Dynamic Icons
+-------------------------------------------------- */
+button.btn .GO-show-ctrl{
+	 display: none;
+}
+button.btn .GO-hide-ctrl{
+	display: block;
+}
+button.btn.collapsed .GO-show-ctrl{
+	display: block;
+}
+button.btn.collapsed .GO-hide-ctrl{
+	display: none;
+}

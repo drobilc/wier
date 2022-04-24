@@ -1,0 +1,225 @@
+/* ---------------------------   RUBRIKE INDEX ----------------------------*/
+.GO-RubrikeIndex {
+	position: relative;
+	float: left;
+	width: 121px;
+	height: 50px;
+	background-color: #FAF9F9; 
+	background-color: #F1F1F1; 
+	border-style:solid;
+	border-width:2px 0px 0px 1px;
+	border-color:#E1E1E1; 
+}
+.GO-RubrikeIndex:hover {
+	background-color: #ffffff; 
+}
+.GO-RubrikeFirst {
+	width: 125px;
+	padding-top: 2px;
+	background-color: #FFFFFF; 
+	border-width:0px 1px 0px 0px;
+}
+.GO-RubrikeIndex img{
+	width: 60px;
+ 	position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+	border: 0px;
+}
+.GO-RubrikeIndex .off{
+	display: inline;
+	color: #6b8aaa;
+}
+.GO-RubrikeIndex:hover .off{
+	display:none;
+	color: #062F57;
+}
+.GO-RubrikeIndex .on{
+	display: none;
+	color: #062F57;
+}
+.GO-RubrikeIndex:hover .on{
+	display:inline;
+	color: #062F57;
+}
+.GO-RubrikeIndex span{
+	float: left;
+	padding: 0px 10px 0px 15px;
+	font-size: 10px; 
+	font-style: normal;
+    font-weight: bold;
+}
+.GO-RubrikeIndex i{
+	float: left;
+	padding: 10px 10px 0px 40px;
+}
+/* ---------------------------   RUBRIKE INDEX 2021----------------------------*/
+.GO-RubrikeIndex2021 {
+	position: relative;
+	float: left;
+	width: 139px;
+	height: 50px;
+	background-color: #FAF9F9; 
+	background-color: #F1F1F1; 
+	border-style:solid;
+	border-width:2px 0px 0px 1px;
+	border-color:#E1E1E1; 
+}
+.GO-RubrikeIndex2021:hover {
+	background-color: #ffffff; 
+}
+.GO-RubrikeFirst2021 {
+	width: 138px;
+	padding-top: 2px;
+	background-color: #FFFFFF; 
+	border-width:0px 1px 0px 0px;
+}
+.GO-RubrikeIndex2021 img{
+	width: 60px;
+ 	position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+	border: 0px;
+}
+.GO-RubrikeIndex2021 .off{
+	display: inline;
+	color: #6b8aaa;
+}
+.GO-RubrikeIndex2021:hover .off{
+	display:none;
+	color: #062F57;
+}
+.GO-RubrikeIndex2021 .on{
+	display: none;
+	color: #062F57;
+}
+.GO-RubrikeIndex2021:hover .on{
+	display:inline;
+	color: #062F57;
+}
+.GO-RubrikeIndex2021 span{
+	float: left;
+	padding: 0px 10px 0px 15px;
+	font-size: 10px; 
+	font-style: normal;
+    font-weight: bold;
+}
+.GO-RubrikeIndex2021 i{
+	float: left;
+	padding: 10px 10px 0px 40px;
+}
+
+/* ---------------------------   RUBRIKE SEZNAM V PODKATEGORIJI ----------------------------*/
+.GO-KatRubrikaContainer {
+	background-color:#FFFFFF;
+	/*border:1px solid #F1F1F1;*/
+    color: #6a829a;
+    text-decoration: none;
+}
+.GO-KatRubrikaContainer a{
+    color: #6a829a;
+}
+.GO-KatRubrikaContainer ul a{
+    /*color: #062F57;*/
+    font-weight: bold;
+}
+.GO-KatRubrikaContainer:link{
+}
+.GO-KatRubrikaContainer:visited{
+}
+.GO-KatRubrikaContainer:hover{
+	border: 1px solid #062F57;
+	color: #062F57;
+}
+.GO-KatRubrikaContainer:hover a{
+    color: #062F57;
+	text-decoration: none;
+}
+.GO-KatRubrikaContainer:hover i{
+	color: #062F57;
+}
+.GO-KatRubrikaContainer:hover .card-footer{
+    background-color:#062F57;
+}
+.GO-KatRubrikaContainer:hover .card-footer a{
+	color: #FFFFFF;
+}
+.GO-KatRubrikaContainer:hover .card-footer span{
+	color: #FFFFFF;
+}
+
+
+/* ---------------------------   RUBRIKE MAKES ----------------------------*/
+.GO-RubrikeMakes {
+	position: relative;
+	height: 80px;
+}
+
+/*------------------------------ RUBRIKE TABS --------------------------------*/
+.RubrikeTabs {
+	width: 972px;
+	height: 35px;
+	position: relative;
+	vertical-align:middle;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px; 
+	float:left;  
+	border:none;
+    FONT-STYLE: normal;
+    FONT-WEIGHT: normal;
+	color:#000000; 
+	background-color:#E9E9E9;
+}
+.RubrikaTab { 
+	position: relative;
+	float: left;
+	background-color:#062F57;
+	color: #cfd7df;
+	font-size: 14px; 
+	font-weight: bold;
+	-webkit-font-smoothing: antialiased;
+	line-height: 30px;
+	text-align:center;
+	width: 159px;
+	height: 30px;
+	margin: 0px 3px 0px 0px;
+	padding: 2px 0px 3px 0px;
+	border-style:solid;
+	border-width:0px 0px 0px 0px;
+	border-color:#062F57; 
+	-moz-border-radius-topright: 6px;
+	-moz-border-radius-topleft: 6px;
+	border-top-left-radius:6px;
+	border-top-right-radius:6px;
+	border-radius: 6px 6px 0px 0px;
+	behavior: url(https://www.avto.net/_css/PIE.htc);
+}
+.RubrikaTab:hover{
+	border-color: #FFFFFF; 
+	background-color:#FFFFFF;
+	color: #062F57;
+	FONT-WEIGHT: bold;
+}
+.RubrikaCurrentTab { 
+	width: 159px;
+	margin: 0px 3px 0px 0px;
+    FONT-WEIGHT: bold;
+	background-color:#FFFFFF; 
+	border-color: #FFFFFF; 
+	z-index: 10;
+	color: #062F57;
+}
+.RubrikaCurrentTab:hover { 
+    background-color:#FFFFFF; 
+	border-color: #FFFFFF; 
+}
+.RubrikaLastTab { 
+	width: 162px;
+	margin: 0px 0px 0px 0px;
+}

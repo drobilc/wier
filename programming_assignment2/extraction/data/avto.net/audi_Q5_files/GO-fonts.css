@@ -1,0 +1,287 @@
+/* ---------------------------   BASIC FONT STYLING ----------------------------*/
+hhh1 {
+    font-size: 24px;
+    font-weight: 600; /* normal= 400, bold = 700 */
+	color: #062F57;	
+}
+hhh2 {
+    font-size: 18px;
+	line-height: 14px;
+    font-weight: 600; /* normal= 400, bold = 700 */
+	color: #062F57;	
+}
+hhh3 {
+    font-size: 13px;
+	line-height: 13px;
+    font-weight: 600; /* normal= 400, bold = 700 */
+	color: #062F57;	
+}
+hhh6 {
+    font-size: 60px;
+	line-height: 60px;
+    font-weight: 600; /* normal= 400, bold = 700 */
+	color: #062F57;	
+}
+a img {
+	text-decoration: none;
+	border: 0 none;
+}
+a:link {
+	color: #000000;	
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+a:active {
+	color: #000000;	
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: underline;
+}
+a:visited {
+	color: #000000;	
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+a:hover {
+	color: #000000;	
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: underline;
+}
+a:focus {
+    outline: none !important;
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: none !important;;
+}
+
+ul.arrow {
+	margin-left: -35px; 
+	list-style-type:square;
+	list-style-position:inside;
+	list-style-image:url(https://www.avto.net/_graphics/arrowmini.gif);
+}
+/* ------------   FONT 11 --------------*/
+.font11:link {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+.font11:active {
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: underline;
+}
+.font11:visited {
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+.font11:hover {
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: underline;
+}
+/* ------------   FONT 12 --------------*/
+.font12:link {
+	color: #000000;
+	line-height: 15px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+	cursor:pointer;
+}
+.font12:active {
+	color: #000000;
+    font-style: normal;
+    text-decoration: underline;
+	cursor:pointer;
+}
+.font12:visited {
+	color: #000000;
+    font-style: normal;
+    text-decoration: none;
+	cursor:pointer;
+}
+.font12:hover {
+    font-style: normal;
+    text-decoration: underline;
+	cursor:pointer;
+}
+/* ------------   Adlink  --------------*/
+.Adlink:link {
+	color: #000000;
+	line-height: 16px;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+	cursor:pointer;
+}
+.Adlink:active {
+	color: #000000;
+    font-style: normal;
+    text-decoration: underline;
+	cursor:pointer;
+}
+.Adlink:visited {
+	color: #000000;
+    font-style: normal;
+    text-decoration: none;
+	cursor:pointer;
+}
+.Adlink:hover {
+    font-style: normal;
+    text-decoration: underline;
+	cursor:pointer;
+}
+/* ------------   boldlnik --------------*/
+.boldlink:link {
+	color: #000000;
+	line-height: 14px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight:bold;
+    text-decoration: underline;
+	cursor:pointer;
+}
+.boldlink:active {
+	color: #000000;
+    font-style: normal;
+    text-decoration: underline;
+	cursor:pointer;
+}
+.boldlink:visited {
+	color: #000000;
+    font-style: normal;
+    text-decoration: underline;
+	cursor:pointer;
+}
+.boldlink:hover {
+    font-style: normal;
+    text-decoration: none;
+	cursor:pointer;
+}
+/* ------------   FONT 15 --------------*/
+.font15 {
+	color: #000000;
+	line-height: 18px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+/* ------------   FONTGRAY --------------*/
+.FontGray:link {
+	color: #666666;
+	line-height: 15px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+	cursor:pointer;
+}
+.FontGray:active {
+	color: #000000;
+    font-style: normal;
+    text-decoration: underline;
+	cursor:pointer;
+}
+.FontGray:visited {
+	color: #000000;
+    font-style: normal;
+    text-decoration: none;
+	cursor:pointer;
+}
+.FontGray:hover {
+	color: #000000;
+    font-style: normal;
+    text-decoration: underline;
+	cursor:pointer;
+}
+/* ------------   FONTWHITE --------------*/
+.FontWhite:link {
+	color: #FFFFFF;
+	line-height: 15px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    text-decoration: none;
+	cursor:pointer;
+}
+.FontWhite:active {
+	color: #000000;
+    font-style: normal;
+    text-decoration: underline;
+	cursor:pointer;
+}
+.FontWhite:visited {
+	color: #FFFFFF;
+    font-style: normal;
+    text-decoration: none;
+	cursor:pointer;
+}
+.FontWhite:hover {
+	color: #000000;
+    font-style: normal;
+    text-decoration: underline;
+	cursor:pointer;
+}
+.FontWhiteAlert:link {
+	color: #FFFFFF;
+	line-height: 18px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    text-decoration: underline;
+	cursor:pointer;
+}
+.FontWhiteAlert:active {
+	color: #FFFFFF;
+    text-decoration: underline;
+}
+.FontWhiteAlert:visited {
+	color: #FFFFFF;
+    text-decoration: none;
+}
+.FontWhiteAlert:hover {
+	color: #FFFFFF;
+    text-decoration: underline;
+}
+/* ------------   GO-FONT-ORANGE --------------*/
+.GO-Font-Orange:link {
+	color: #FF6600;
+	line-height: 15px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+	cursor:pointer;
+}
+.GO-Font-Orange:active {
+	color: #FF6600;
+    font-style: normal;
+    text-decoration: underline;
+	cursor:pointer;
+}
+.GO-Font-Orange:visited {
+	color: #FF6600;
+    font-style: normal;
+    text-decoration: none;
+	cursor:pointer;
+}
+.GO-Font-Orange:hover {
+	color: #FF6600;
+    font-style: normal;
+    text-decoration: underline;
+	cursor:pointer;
+}

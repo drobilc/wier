@@ -1,0 +1,145 @@
+/* ---------------------------   ROUNDED ----------------------------*/
+
+/*  display width less than 992px
+-------------------------------------------------- */
+@media (max-width: 991.98px)
+{
+.GO-Rounded, .GO-Rounded-T, .GO-Rounded-B {
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+}
+/*  Large devices (desktops, 992px and up)
+-------------------------------------------------- */
+@media (min-width: 992px) 
+{
+.GO-Rounded-0 {
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+.GO-Rounded {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	behavior: url(PIE.htc);
+}
+.GO-Rounded-T {
+	border-width:1px 1px 0px 1px;
+	-moz-border-radius-topright: 6px;
+	-moz-border-radius-topleft: 6px;
+	border-top-left-radius:6px;
+	border-top-right-radius:6px;
+	border-radius: 6px 6px 0px 0px;
+	behavior: url(PIE.htc);
+}
+.GO-Rounded-TR {
+	border-width:1px 1px 0px 1px;
+	-moz-border-radius-topright: 6px;
+	-moz-border-radius-topleft: 0px;
+	border-top-left-radius:0px;
+	border-top-right-radius:6px;
+	border-radius: 0px 6px 0px 0px;
+	behavior: url(PIE.htc);
+}
+.GO-Rounded-B {
+	/*border-width:0px 1px 1px 1px;*/
+	-moz-border-radius-bottomright: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	border-bottom-left-radius:6px;
+	border-bottom-right-radius:6px;
+	border-radius: 0px 0px 6px 6px;
+	behavior: url(PIE.htc);
+}
+.GO-Rounded-BR {
+	border-width:1px 1px 1px 1px;
+	-moz-border-radius-bottomright: 6px;
+	border-bottom-right-radius:6px;
+	border-radius: 0px 0px 6px 0px;
+	behavior: url(PIE.htc);
+}
+.GO-Rounded-BL {
+	border-width:1px 1px 1px 1px;
+	-moz-border-radius-bottomleft: 6px;
+	border-bottom-left-radius:6px;
+	border-radius: 0px 0px 0px 6px;
+	behavior: url(PIE.htc);
+}
+.GO-Rounded-R {
+	border-width:1px 1px 1px 1px;
+	-moz-border-radius-topright: 6px;
+	-moz-border-radius-bottomright: 6px;
+	border-top-right-radius:6px;
+	border-bottom-right-radius:6px;
+	border-radius: 0px 6px 6px 0px;
+	behavior: url(PIE.htc);
+}
+.GO-Rounded-L {
+	border-width:1px 1px 1px 1px;
+	-moz-border-radius-topleft: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	border-top-left-radius:6px;
+	border-bottom-left-radius:6px;
+	border-radius: 6px 0px 0px 6px;
+	behavior: url(PIE.htc);
+}
+}
+/*  END BORDER in Large devices (desktops, 992px and up) -------------------- */
+/* ---------------------------   SHADOW ----------------------------*/
+.GO-Shadow-B {
+	box-shadow: 0px 1px 2px 0px rgba(0,0,0,.5) !important;
+	-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,.5) !important; /* for Firefox 3.5+ */
+	-webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.5) !important; /* for Safari and Chrome */
+}
+.GO-Shadow-LR {
+	box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.5);
+}
+.GO-Shadow-T {
+	box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 2px -2px rgba(0,0,0,0.5);
+}
+/* ---------------------------   BORDERS ----------------------------*/
+.GO-Border {
+	border-width: 1px 1px 1px 1px;
+	border-style:solid;
+	border-color:#E1E1E1; 
+}
+.GO-Border-LR {
+	border-width: 0px 1px 0px 1px;
+	border-style:solid;
+}
+.GO-Border-0 {
+	border-width: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px; 
+}
+.GO-Border-0-B {
+	border-width: 1px 1px 0px 1px;
+	margin: 0px 0px 0px 0px; 
+}
+.GO-Border-0-T {
+	border-width: 0px 1px 1px 1px;
+	margin: 0px 0px 0px 0px; 
+}
+.GO-Border-Line {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 1px;
+	border-style:solid;
+	border-width:0px 0px 1px 0px;
+	border-color:#E9E9E9;
+}
+.GO-Border-R-Grey {
+	border-style:solid;
+	border-width:0px 1px 0px 0px;
+	border-color:#E1E1E1;
+}
+.GO-Border-L-Form {
+	border-style:solid;
+	border-width:0px 0px 0px 1px;
+	border-color:#B2B2B2;
+}

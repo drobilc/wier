@@ -1,0 +1,247 @@
+/*------------------------------ AD MENU BOX --------------------------------*/
+.GO-OglasDodatno i {
+	font-weight: bold;
+
+}
+.GO-OglasDodatno span {
+	font-weight: normal;
+}
+/*------------------------------ AD TOP --------------------------------*/
+.GO-OglasDataCena {
+	float: left; 
+	width: 276px;
+	padding-right: 0px; 
+	margin-left: 14px;
+	margin-bottom: 7px;
+	display:block;
+	vertical-align:middle;
+	text-align: center;
+}
+.GO-OglasDataCenaTOP {
+	/* width: 276px; 
+	height:40px; 
+	display:block;*/
+	FONT-SIZE: 27px;
+    FONT-STYLE: normal;
+    FONT-WEIGHT: bold;
+}
+.GO-OglasDataCena ul { 
+	position: relative;
+	width: 100%;  
+	max-width: 276px;
+	list-style-type:none;
+	margin: 0px;
+	padding: 0px;
+	color: #999;
+}
+.GO-OglasDataCena ul li { 
+	position: relative;
+	width: 276px;
+	height: 14px; 
+	FONT-SIZE: 11px;
+    FONT-STYLE: normal;
+    FONT-WEIGHT: normal;
+	line-height: 14px; 
+}
+
+.GO-OglasDataStaraCena span {
+	/*font-size:27px;*/
+	position: relative;
+}
+.GO-OglasDataStaraCena span:before {
+	  position: absolute;
+	  content: "";
+	  left: 0;
+	  top: 50%;
+	  right: 0;
+	  border-top: 2px solid;
+	  border-color: inherit;
+	
+	  -webkit-transform:rotate(-10deg);
+	  -moz-transform:rotate(-10deg);
+	  -ms-transform:rotate(-10deg);
+	  -o-transform:rotate(-10deg);
+	  transform:rotate(-10deg);
+}
+.GO-OglasDataAkcijaCena {
+	color: #FF0000;
+	FONT-SIZE: 12px;
+    FONT-STYLE: normal;
+    FONT-WEIGHT: bold;
+}
+.GO-OglasDataAkcijaCena span{
+	color: #FF0000;
+	FONT-SIZE: 27px;
+    FONT-STYLE: normal;
+    FONT-WEIGHT: bold;
+}
+
+/*------------------------------ AD PHOTOS --------------------------------*/
+.GO-OglasPhoto {
+	position: relative;
+}
+.GO-OglasPhotoZIG {
+    position:absolute; 
+    right: 7px;
+    bottom:7px; 
+    z-index:999; 
+    width: calc(100% - 12px);
+    border: 0px;
+}
+.GO-OglasZoomMobile{
+	position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+	z-index:10;
+	color:#FFFFFF;
+	font-size:70px;
+	text-align:center;
+	display:block;
+	opacity: 0.7;
+    filter: alpha(opacity=30); 
+}
+.GO-OglasZoom {
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	top:0;
+	left:0;
+	z-index:10;
+	color:#FFFFFF;
+	font-size:90px;
+	line-height: 480px;
+	text-align:center;
+	display:none;
+	cursor: pointer;
+ }
+.GO-OglasZoomBlack {
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	top:0;
+	left:0;
+	z-index:9;
+	display:none;
+	background-color:#000000;
+ }
+ .GO-OglasPhoto:hover .GO-OglasZoom{
+	display:block;
+}
+ .GO-OglasPhoto:hover .GO-OglasZoomBlack{
+	display:block;
+	opacity: 0.3;
+    filter: alpha(opacity=30); 
+}
+.GO-OglasThumb {
+	float: left;
+	background-color:#FFFFFF; 
+	width: 90px;	
+    height:  70px;
+	/*padding: 0px 10px 10px 0px;*/
+	margin: 0px; 
+    margin-bottom: 10px;
+	cursor: pointer;
+}
+.GO-OglasLastThumb {
+	padding: 0px 0px 10px 0px; 
+}
+.GO-OglasThumb img{
+	WIDTH: 90px;
+    height: 70px;
+	BORDER: 0px solid; 
+	BORDER-COLOR: #000000;
+	cursor: pointer;
+}
+.GO-OglasThumbPadding {
+    float: left;
+	display:inline-block;
+	width: 13px; 
+}
+.GO-OglasThumbIcon {
+    /*display: inline-block;*/
+    background-color:#000000; 
+    color:#FFFFFF;
+	WIDTH: 90px;
+    height: 70px;
+	BORDER: 0px solid; 
+	BORDER-COLOR: #000000;
+	cursor: pointer;
+    text-align: center;
+}
+.GO-OglasThumbIcon span{
+	font-size:12px;
+}
+.GO-OglasMoreThumb {
+	display:inline-block;
+	width: 90px;
+	height: 70px;
+	color:#E9E9E9;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+	text-align:center;
+	padding: 0px 5px 5px 5px; 
+	margin-top: 0px;
+	cursor: pointer;
+	background-color:#000000;
+}
+.GO-OglasMoreThumb i {
+	color:#E9E9E9;
+	width: 90px;
+	font-size:40px;
+	padding-bottom: 5px;
+	padding-top: 10px;
+}
+#lightgallery {
+	 BORDER: 0px solid; 
+	 BORDER-COLOR: #7F9DB9;
+}
+#lightgallery img { 
+}
+#lightgalleryHD { 
+	 BORDER: 0px solid; 
+	 BORDER-COLOR: #7F9DB9;
+}
+#lightgalleryHD img { 
+}
+/*------------------------------ AD OPOMBE --------------------------------*/
+.GO-OglasEq1 {
+	position: relative;
+}
+.GO-OglasEq {
+	display:none;
+}
+/*------------------------------ OTHER ADS THUMBS --------------------------------*/
+
+/* MAX IMAGE THUMB HEIGHT - 3 PER ROW
+-------------------------------------------------- */
+@media (max-width: 767.98px) {
+.GO-thumbOther {
+	height: auto;
+	width: 100%;
+}
+}
+/*-------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 991.98px) {
+.GO-thumbOther {
+	height: 236px;
+}
+}
+/*-------------------------------------------------- */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+.GO-thumbOther {
+	height: 210px;
+}
+}
+/*-------------------------------------------------- */
+@media (min-width: 1200px)  {
+.GO-thumbOther {
+	height: 210px;
+}
+}

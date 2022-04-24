@@ -1,0 +1,41 @@
+/* ---------------------------   OTHER ----------------------------*/
+.GO-Transparent img {
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+/* ---------------------------   MAKES ----------------------------*/
+
+.GO-Makes ul { 
+	position: relative;
+	width: 100%;  
+	list-style-type:none;
+	margin: 0px;
+	padding: 0px;
+}
+.GO-Makes ul li { 
+	position: relative;
+	width: 144x;
+	height: 18px; 
+	line-height: 18px; 
+	padding-left: 0px;
+	padding-top: 2px;
+	padding-bottom: 0px;
+}
+.GO-Makes img { 
+	position: relative;
+	width: 60x;
+	max-height: 40px; 
+	line-height: 40px; 
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-bottom: 10px;
+	border: none;
+}
+/* ---------------------------   MAKES ----------------------------*/
+.GO-modal-full {
+    min-width: 100%;
+    margin: 0;
+}
+.GO-modal-full .modal-content {
+    min-height: 100vh;
+}

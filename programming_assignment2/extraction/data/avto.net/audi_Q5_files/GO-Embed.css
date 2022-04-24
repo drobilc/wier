@@ -1,0 +1,130 @@
+/* ---------------------------   EMBED ----------------------------*/
+/* display width less than 380 Galaxy, Samsung
+-------------------------------------------------- */
+@media (max-width:379.98px) 
+{
+.GO-EmbedStrokovnjak {
+	padding-bottom: 245%
+}
+.GO-Embed600x600 {
+	padding-bottom: 170%
+}
+.GO-Embed600x500span {
+	padding-bottom: 125%
+}
+.GO-Embed600x400 {
+	padding-bottom: 105%
+}
+.GO-Embed600x300 {
+	padding-bottom: 105%
+}
+.GO-Embed600x350 {
+	padding-bottom: 95%
+}
+}
+/*  Medium devices (Iphone, 380 to 415)
+-------------------------------------------------- */
+@media (min-width: 380px) and (max-width: 414.98px)
+{
+.GO-EmbedStrokovnjak {
+	padding-bottom: 245%
+}
+.GO-Embed600x600 {
+	padding-bottom: 170%
+}
+.GO-Embed600x500span {
+	padding-bottom: 125%
+}
+.GO-Embed600x400 {
+	padding-bottom: 105%
+}
+.GO-Embed600x300 {
+	padding-bottom: 100%
+}
+.GO-Embed600x350 {
+	padding-bottom: 95%
+}
+}
+
+/*  display width less than 992px
+-------------------------------------------------- */
+@media (min-width: 415px) and (max-width: 991.98px)
+{
+.GO-EmbedStrokovnjak {
+	padding-bottom: 100%
+}
+.GO-Embed970x250 {
+	padding-bottom: 26%
+}
+.GO-Embed400x250 {
+	padding-bottom: 65%
+}
+.GO-Embed600x600 {
+	padding-bottom: 150%
+}
+.GO-Embed600x500span {
+	padding-bottom: 125%
+}
+.GO-Embed600x500 {
+	padding-bottom: 100%
+}
+.GO-Embed600x450 {
+	padding-bottom: 100%
+}
+.GO-Embed600x400 {
+	padding-bottom: 100%
+}
+.GO-Embed600x350 {
+	padding-bottom: 95%
+}
+.GO-Embed600x300 {
+	padding-bottom: 100%
+}
+.GO-Embed600x290 {
+	padding-bottom: 65%
+}
+.GO-Embed600x200 {
+	padding-bottom: 70%
+}
+}
+/*  Large devices (desktops, 992px and up)
+-------------------------------------------------- */
+@media (min-width: 992px) 
+{
+.GO-EmbedStrokovnjak {
+	padding-bottom: 80%
+}
+.GO-Embed970x250 {
+	padding-bottom: 26%
+}
+.GO-Embed400x250 {
+	padding-bottom: 65%
+}
+.GO-Embed600x600 {
+	padding-bottom: 100%
+}
+.GO-Embed600x500span {
+	padding-bottom: 80%
+}
+.GO-Embed600x500 {
+	padding-bottom: 80%
+}
+.GO-Embed600x450 {
+	padding-bottom: 70%
+}
+.GO-Embed600x400 {
+	padding-bottom: 60%
+}
+.GO-Embed600x350 {
+	padding-bottom: 54%
+}
+.GO-Embed600x300 {
+	padding-bottom: 50%
+}
+.GO-Embed600x290 {
+	padding-bottom: 48%
+}
+.GO-Embed600x200 {
+	padding-bottom: 40%
+}
+}

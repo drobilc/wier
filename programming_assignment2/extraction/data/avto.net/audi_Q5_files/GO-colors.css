@@ -1,0 +1,50 @@
+/* ---------------------------   TEXT COLOURS ----------------------------*/
+.GO-white {
+	color: #FFFFFF;
+}
+.GO-black {
+	color: #000000;
+}
+.GO-gray {
+	color: #F1F1F1;
+}
+.GO-gray60 {
+	color: #999;
+}
+.GO-graylight {
+	color: #E9E9E9;
+}
+.GO-grayX11 {
+	color: #BEBEBE;
+}
+.GO-graydark {
+	color: #666666;
+}
+.GO-orange {
+	color: #f47a20;
+}
+.GO-red {
+	color: #FF0000;
+}
+.GO-blueuser {
+	color: #6699CC;
+}
+/* ---------------------------   BG COLOURS ----------------------------*/
+.GO-bg-orange {
+	background-color: #f47a20;
+}
+.GO-bg-dark {
+	background-color:#EBEBEB; 
+}
+.GO-bg-navy {
+	background-color:#062F57; 
+}
+.GO-bg-none {
+	background:none; 
+}
+.GO-bg-graylight {
+	background-color: #E9E9E9; 
+}
+.GO-bg-black {
+	background-color: #000000; 
+}

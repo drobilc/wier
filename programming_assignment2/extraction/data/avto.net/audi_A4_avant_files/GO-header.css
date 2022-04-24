@@ -1,0 +1,215 @@
+/*  Large devices (desktops, 992px and up)
+-------------------------------------------------- */
+@media (min-width: 992px) 
+{
+.GO-headerbar {
+	height: 10px;
+	background-color:#000;
+}
+.GO-headerwrapper {
+	background: #062F57;
+	height: 90px;
+	/*height: 60px;*/
+}
+.GO-headermid {
+	height: 60px;
+}
+.GO-logo{
+	height: 50px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.GO-logoSanta{
+	height: 58px;
+	margin-top: -6px;
+	margin-bottom: 2px;
+}
+}
+/*  Medium devices (tablets, 768px and up)
+-------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 991.98px)
+{
+.GO-headerbar {
+	height: 10px;
+	background-color:#000;
+}
+.GO-headerwrapper {
+	background: #062F57;
+	height: 50px;
+}
+.GO-headermid {
+	height: 40px;
+}
+.GO-logo{
+	height: 40px;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+.GO-logoSanta{
+	height: 40px;
+	margin-top: -3px;
+	margin-left: 5px;
+}
+}
+/* display width less than 768
+-------------------------------------------------- */
+@media (max-width:767.98px) 
+{
+.GO-headerbar {
+	height: 10px;
+	background-color:#062F57;
+}
+.GO-headerwrapper{
+	background: #062F57;
+	height: 40px;
+}
+.GO-logo{
+	height: 30px;
+	margin-left: 10px;
+}
+.GO-logoSanta{
+    height: 35px;
+    margin-top: -3px;
+	margin-left: 10px;
+}
+}
+/* ---------------------------   HEADER MOJ.avto.net----------------------------*/
+.GO-moj-menu ul {
+	 float:right;
+}
+.GO-moj-menu li {
+	float: left;
+	display:inline;
+	font-size: 12px;
+}
+.GO-moj-menu li a {
+	float:left;
+	color: white;
+	text-decoration:none;
+	text-shadow:1px 1px 1px #000000;
+}
+.GO-moj-menu li a i {
+	float:left;
+	width: 20px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+}
+.GO-moj-menu li a span {
+	float:left;
+	width: 130px;
+	padding: 0px 0px 0px 0px;
+	height: 30px;
+	line-height: 30px;
+}
+.GO-moj-menu-dark {
+	background: #000000;
+	/* ROUNDED BORDER */
+    border-color: #000000;
+	border-radius: 0px 0px 6px 6px;
+	-moz-border-radius: 0px 0px 6px 6px;
+	-webkit-border-radius: 0px 0px 6px 6px;
+	behavior: url(PIE.htc);
+}
+/* Change color on hover */
+.GO-moj-menu-hover:hover {
+	border-style: solid;
+	background-color:#6699CC;
+	border-radius: 0px 0px 6px 6px;
+	-moz-border-radius: 0px 0px 6px 6px;
+	-webkit-border-radius: 0px 0px 6px 6px;
+	behavior: url(PIE.htc);
+	border:  none;
+}
+/* ---------------------------   HEADER MENU TABS ----------------------------*/
+.GO-ddcolortabsFULLWIDTH{
+	height: 30px;
+	/*background: transparent;*/
+	background-image: url(https://www.avto.net/_graphics/menugrad02.png);/* For Internet Explorer*/
+	background-repeat:repeat-x;
+	background-position:0px 5px;
+}
+.GO-ddcolortabs{
+	margin:0px auto;
+	width: 972px;
+}
+.GO-ddcolortabs ul{
+	list-style:none;
+}
+.GO-ddcolortabs li{
+	display:inline;
+	margin:0px 0px 0px 0px;
+}
+.GO-ddcolortabs a{
+	float:left;
+	color: white;
+	margin:4px 0px 0px 0px;
+	padding:0px 0px 0px 0px;
+	text-decoration:none;
+	letter-spacing: 1px;
+	border-left: 1px solid #607B94;
+    border-right: 1px solid #062f57;
+	text-shadow:1px 1px 1px #000000;
+	font-size: 12px; 
+}
+.GO-ddcolortabs a span{
+	display:block;
+	width: 152px;
+	height: 26px;
+	line-height: 16px;
+	text-align:center;
+	margin:0px 0px 0px 0px;
+	padding: 6px 0px 0px 0px;
+}
+.GO-ddcolortabs a span.moj{
+	width: 142px;
+}
+.GO-ddcolortabs a span.mojtrg{
+	width: 119px;
+}
+.GO-ddcolortabs a:hover{
+	/*background: #CFD7DF;*/
+	background: #FFFFFF;
+	color: #062f57;
+	margin:0px 0px 0px 0px;
+	padding-top: 4px;
+	/* ROUNDED BORDER */
+	border-color: #607B94;
+	border-radius: 6px 6px 0px 0px;
+	-moz-border-radius: 6px 6px 0px 0px;
+	-webkit-border-radius: 6px 6px 0px 0px;
+	behavior: url(PIE.htc);
+	text-shadow:0px 0px 0px #000000;
+}
+.GO-ddcolortabs a:hover span{
+	background: #FFFFFF;
+	color: #000;
+}
+/* ---------------------------   HEADER CURRENT SELECTED TAB----------------------------*/
+.GO-ddcolortabs a.current{ 
+	background: #FFFFFF;
+	margin:0px 0px 0px 0px;
+	padding-top: 4px;
+	/* ROUNDED BORDER */
+    border-color: #607B94;
+	border-radius: 6px 6px 0px 0px;
+	-moz-border-radius: 6px 6px 0px 0px;
+	-webkit-border-radius: 6px 6px 0px 0px;
+	behavior: url(PIE.htc);
+}
+.GO-ddcolortabs a.current span{ 
+	background: #FFFFFF;
+	color: #000;
+	font-weight: bold;
+	text-shadow:0px 0px 0px #000000;
+}
+/* ---------------------------   HEADER FIRST  TAB----------------------------*/
+.GO-ddcolortabs a.current span.first{ 
+		width: 46px; 
+}
+.GO-ddcolortabs a span.first{ 
+		width: 46px; 
+}
+.GO-ddcolortabs a span.first:hover{ 
+	background: #FFFFFF;
+}

@@ -1,0 +1,71 @@
+/* ---------------------------   MARGINS  ----------------------------*/
+.GO-Margin-14-L {
+	margin-left: 14px;
+}
+.GO-Margin-14-R {
+	margin-right: 14px;
+}
+.GO-Margin-14-ROnly {
+	margin: 0px 14px 0px 0px;
+}
+.GO-Margin-14 {
+	margin: 14px;
+}
+.GO-Margin-12-RL {
+	margin: 0px 12px 0px 12px;
+}
+.GO-Margin-14-T {
+	margin-top: 14px;
+}
+.GO-Margin-14-B {
+	margin-bottom: 14px;
+}
+.GO-Margin-7-B {
+	margin-bottom: 7px;
+}
+.GO-Margin-14-TB {
+	margin-top: 14px;
+	margin-bottom: 14px;
+}
+.GO-Margin-0 {
+	margin: 0px;
+}
+/* ---------------------------   PADDING ----------------------------*/
+.GO-Padding-0 {
+	padding: 0px;
+}
+.GO-Padding-7 {
+	padding: 7px;
+}
+.GO-Padding-7-TB {
+	padding: 7px 0px 7px 0px;
+}
+.GO-Padding-14 {
+	padding: 14px 14px 14px 14px;
+}
+.GO-Padding-14-LR {
+	padding: 0px 14px 0px 14px;
+}
+.GO-Padding-14-T {
+	padding: 14px 0px 0px 0px;
+}
+.GO-Padding-14-TB {
+	padding: 14px 0px 14px 0px;
+}
+.FGO-Padding-14-B {
+	padding: 0px 0px 14px 0px;
+}
+.GO-Padding14-LRB {
+	padding: 0px 14px 14px 14px;
+}
+.GO-Padding-14-LRT {
+	padding: 14px 14px 0px 14px;
+}
+/* ---------------------------   ANCHOR FOR STICKY FOOTER ----------------------------*/
+.GO-Anchor {
+    display: block;
+    height: 115px;
+    margin-top: -115px;
+    visibility: hidden;
+}   
+

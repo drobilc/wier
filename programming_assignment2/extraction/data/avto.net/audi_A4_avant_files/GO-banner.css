@@ -1,0 +1,173 @@
+/*  Large devices (desktops, 992px and up)
+-------------------------------------------------- */
+@media (min-width: 992px) 
+{
+.GO-banner-970x250 {
+    width: 970px;
+    height: 250px;
+    max-height: 250px;
+    max-width: 970px;
+}
+.GO-banner-Billboard {
+    /*background-image: url("https://via.placeholder.com/970x250?text=BANNER");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+    min-height: 100px;
+}
+}
+/*  Medium devices (tablets, 768px and up)
+-------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 991.98px)
+{
+.GO-banner-970x250 {
+     width: 100%;
+     height: 190px;
+}
+.GO-banner-Billboard {
+    min-height: 100px;
+    /*max-height: 250px;*/
+}
+}
+/* display width less than 768
+-------------------------------------------------- */
+@media (max-width:767.98px) 
+{
+.GO-banner-970x250 {
+    width: 420px;
+    height: 200px;
+}
+.GO-banner-Billboard {
+    /*background-image: url("https://via.placeholder.com/400x230?text=BANNER");*/
+    background-image: url("https://via.placeholder.com/300x200?text=BANNER");
+    background-repeat: no-repeat; 
+    background-position: center; 
+    min-height: 100px;
+    /*max-height: 250px;*/
+}
+    
+    
+.GO-banner-Billboard.img {
+    max-width: 100%;
+    height: auto;
+    }
+}
+/* ---------------------------   BANNER ----------------------------*/
+.GO-BannerBox-728-Shadow {
+	position: relative;
+	float: left;
+	text-align:left;
+	background-color:#FFFFFF;
+	width: 728px;
+	padding: 0px 0px 0px 0px; 
+	margin: 0px 0px 14px 0px; 
+	border-style:solid;
+	border-width:0px 0px 0px 0px;
+	border-color:#7F9DB9; 
+
+	box-shadow: 0px 1px 2px 0px rgba(0,0,0,.5);
+	-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,.5); /* for Firefox 3.5+ */
+	-webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.5); /* for Safari and Chrome */
+}
+.GO-BannerBox-728 {
+	position: relative;
+	float: left;
+	text-align:left;
+	/*background-color:#E9E9E9;*/
+	background-color:#FFFFFF;
+	width: 728px;
+	padding: 14px 0px 14px 0px; 
+	margin: 14px 0px 14px 0px; 
+	border-style:solid;
+	border-width:1px 0px 1px 0px;
+	border-color:#666666; 
+}
+.GO-BannerBox-972 {
+	position: relative;
+	float: left;
+	/*background-color:#FFFFFF*/; 
+	width: 970px;
+	/*height: 250px;*/
+	padding: 0px; 
+	margin: 0px; 
+	border-style:solid;
+	border-width:0px 0px 0px 0px;
+	border-color:#666666; 
+}
+.GO-BannerBox-972-light {
+	position: relative;
+	float: left;
+	/*background-color:#FFFFFF*/; 
+	width: 970px;
+	min-height: 60px;
+	padding: 0px; 
+	margin: 0px; 
+	border-style:solid;
+	border-width:1px;
+	border-color:#E9E9E9; 
+}
+.GO-BannerBox-972-zero {
+	position: relative;
+	float: left;
+	/*background-color:#FFFFFF*/; 
+	min-width: 728px;
+	min-height: 90px;
+	padding: 0px; 
+	margin: auto;
+    width: 50%;
+	border-style:solid;
+	border-width:1px;
+	border-color:#E9E9E9; 
+	text-align: center;
+}
+.GO-BannerBox-972-empty {
+	position: relative;
+	float: left;
+	/*background-color:#FFFFFF*/; 
+	width: 970px;
+	height: 14px;
+	padding: 0px; 
+	margin: 0px; 
+}
+/* ---------------------------   PASICA ----------------------------*/
+.GO-PasicaBox-728-border {
+	position: relative;
+	float: left;
+	text-align:left;
+	background-color:#FFFFFF;
+	width: 728px;
+	padding: 0px 0px 0px 0px; 
+	margin: 14px 0px 14px 0px; 
+	border-style:solid;
+	border-width:0px 0px 0px 0px;
+	border-color:#7F9DB9; 
+}
+.GO-PasicaBox-728 {
+	position: relative;
+	float: left;
+	text-align:left;
+	/*background-color:#E9E9E9;*/
+	background-color:#FFFFFF;
+	width: 728px;
+	padding: 14px 0px 14px 0px; 
+	margin: 14px 0px 14px 0px; 
+	border-style:solid;
+	border-width:1px 0px 1px 0px;
+	border-color:#666666; 
+}
+.GO-PasicaBox-972 {
+	position: relative;
+	float: left;
+	background-color:#FFFFFF; 
+	width: 970px;
+	min-height: 60px;
+	padding: 0px; 
+	margin: 0px 0px 14px 0px; 
+	border-style:solid;
+	border-width:1px 1px 1px 1px;
+	border-color:#666666; 
+}
+
+.GO-banner-970x250 iframe{
+    width: 100%;
+    height: 100%;
+}
