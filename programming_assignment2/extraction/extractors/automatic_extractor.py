@@ -163,6 +163,31 @@ class AutomaticExtractor(BaseExtractor):
         return AutomaticExtractor.accurate_match(wrapper, html) is not Match.NO_MATCH
 
     @staticmethod
+    def find_best_match(haystack, needle):
+        """
+            Find the first element in haystack that matches the needle element
+            most accurately.
+        """
+        best_match = None
+        best_match_index = 0
+        best_match_type = Match.NO_MATCH
+
+        for i, element in enumerate(haystack):
+            elements_match = AutomaticExtractor.accurate_match(needle, element)
+            
+            # We have found first exact match, we can stop here.
+            if elements_match is Match.EXACT_MATCH:
+                return i, element, Match.EXACT_MATCH
+            
+            # We have found a better match than the previous one.
+            if elements_match.value > best_match_type.value:
+                best_match = element
+                best_match_index = i
+                best_match_type = elements_match
+        
+        return best_match_index, best_match, best_match_type
+
+    @staticmethod
     def generalize(wrapper, html):
         """
             Try to generalize wrapper element with data from html element. Make
@@ -198,109 +223,96 @@ class AutomaticExtractor(BaseExtractor):
         while i < len(wrapper_children) and j < len(html_children):
             wrapper_element = wrapper_children[i]
             html_element = html_children[j]
-            # print(f'Matching: {AutomaticExtractor.element(wrapper_element)} and {AutomaticExtractor.element(html_element)}')
 
-            # Recursively check if the children of the wrapper and other
-            # document match. If they do, move on to the next elements in both
-            # trees. If not, we have found a tag mismatch and we must perform
-            # the search for iterators and / or optionals.
-            elements_match = AutomaticExtractor.accurate_match(wrapper_element, html_element)
-            
-            if elements_match is Match.EXACT_MATCH:
-                AutomaticExtractor.generalize(wrapper_element, html_element)
+            # We have found two elements that don't exactly match. In this case,
+            # we will perform a cross-search in both trees to try to find a
+            # better match for our wrapper element.
+            found_index, best_match, best_match_type = AutomaticExtractor.find_best_match(html_children[j:], wrapper_element)
+            if best_match_type is Match.EXACT_MATCH:
+                # We have found an exact match for wrapper_element in
+                # html_children.
+                AutomaticExtractor.generalize(wrapper_element, best_match)
                 wrapper_children = AutomaticExtractor.get_children(wrapper)
+
+                # TODO: Check if items in html_children[j:found_index] are
+                # iterators.
+
+                for k in range(j, found_index):
+                    AutomaticExtractor.mark_optional(html_children[k])
+                    # TODO: Copy html_children[k] after wrapper_element
+
+                # print(f'{AutomaticExtractor.element(wrapper_element)} Previous j: {j}, new j: {found_index + 1}')
+                # if j == (found_index + 1): raise Exception('Same index')
+                j += found_index + 1
                 i += 1
-                j += 1
                 continue
-            
-            # We have found two children tags that don't match. First, check if
-            # the current wrapper_element is optional. Check the current
-            # wrapper_element with all remaining children in other document.
-            best_match = None
-            best_match_indices = None
-            best_match_type = Match.NO_MATCH
+            else:
+                # We have found an approximate or no match for wrapper_element
+                # in html_children.
+                found_index_other, best_match_other, best_match_type_other = AutomaticExtractor.find_best_match(wrapper_children[i:], html_element)
+                if best_match_type_other is Match.EXACT_MATCH:
+                    # We have found an exact match for html_element in
+                    # wrapper_children.
+                    AutomaticExtractor.generalize(best_match_other, html_element)
+                    wrapper_children = AutomaticExtractor.get_children(wrapper)
 
-            previous_j = j
+                    # TODO: Check if items in wrapper_children[i:found_index] are
+                    # iterators.
 
-            while j < len(html_children):
-                html_element = html_children[j]
-                elements_match = AutomaticExtractor.accurate_match(wrapper_element, html_element)
-                
-                # We have found first exact match, we can stop here.
-                if elements_match is Match.EXACT_MATCH:
-                    best_match = (wrapper_element, html_element)
-                    best_match_indices = (i, j)
-                    best_match_type = elements_match
-                    break
-                
-                # We have found a better match than the previous one.
-                if elements_match.value > best_match_type.value:
-                    best_match = (wrapper_element, html_element)
-                    best_match_indices = (i, j)
-                    best_match_type = elements_match
-                
-                j += 1
-            
-            if best_match_type is not Match.EXACT_MATCH:
-                # Try to find the current html element in wrapper.
-                j = previous_j
-                html_element = html_children[j]
+                    for k in range(i, found_index):
+                        AutomaticExtractor.mark_optional(wrapper_children[k])
 
-                previous_i = i
+                    # print(f'Previous i: {i}, new i: {found_index + 1}')
+                    # if i == (found_index + 1): raise Exception('Same index')
+                    i += found_index_other + 1
+                    j += 1
+                    continue
+                elif best_match_type is Match.APPROXIMATE_MATCH:
+                    # We have found an exact match for html_element in
+                    # wrapper_children.
+                    AutomaticExtractor.generalize(wrapper_element, best_match)
+                    wrapper_children = AutomaticExtractor.get_children(wrapper)
 
-                while i < len(wrapper_children):
-                    wrapper_element = wrapper_children[i]
-                    elements_match = AutomaticExtractor.accurate_match(wrapper_element, html_element)
-                    
-                    # We have found first exact match, we can stop here.
-                    if elements_match is Match.EXACT_MATCH:
-                        best_match = (wrapper_element, html_element)
-                        best_match_indices = (i, j)
-                        best_match_type = elements_match
-                        break
-                    
-                    # We have found a better match than the previous one.
-                    if elements_match.value > best_match_type.value:
-                        best_match = (wrapper_element, html_element)
-                        best_match_indices = (i, j)
-                        best_match_type = elements_match
-                    
+                    # TODO: Check if items in html_children[j:found_index] are
+                    # iterators.
+
+                    for k in range(j, found_index):
+                        AutomaticExtractor.mark_optional(html_children[k])
+                        # TODO: Copy html_children[k] after wrapper_element
+
+                    #if j == (found_index + 1): raise Exception('Same index')
+                    #print(f'Previous j: {j}, new j: {found_index + 1}')
+                    j += found_index + 1
                     i += 1
-                
-                i = previous_i
+                    continue
+                elif best_match_type_other is Match.APPROXIMATE_MATCH:                        
+                    # We have found an exact match for html_element in
+                    # wrapper_children.
+                    AutomaticExtractor.generalize(best_match_other, html_element)
+                    wrapper_children = AutomaticExtractor.get_children(wrapper)
 
-            # TODO: Check for iterators and check for optionals
-            # We now have the best match between elements in wrapper and html.
-            # We now have multiple options:
+                    # TODO: Check if items in wrapper_children[i:found_index] are
+                    # iterators.
 
-            if best_match is None:
-                AutomaticExtractor.mark_optional(wrapper_children[i])
-                # TODO: Add html_child here
-                i += 1
-                j += 1
-                continue
+                    for k in range(i, found_index):
+                        AutomaticExtractor.mark_optional(wrapper_children[k])
 
-            wrapper_element, html_element = best_match
-            AutomaticExtractor.generalize(wrapper_element, html_element)
-            wrapper_children = AutomaticExtractor.get_children(wrapper)
+                    # if i == (found_index + 1): raise Exception('Same index')
+                    # print(f'Previous i: {i}, new i: {found_index + 1}')
+                    i = found_index_other + 1
+                    j += 1
+                    continue
+                else:
+                    # Here, we can assume that no match has been found for
+                    # wrapper_element or html_element.
+                    # TODO: Check if wrapper_element is iterator in wrapper_children.
+                    # TODO: Check if html_element is iterator in wrapper_children?
+                    AutomaticExtractor.mark_optional(wrapper_element)
+                    AutomaticExtractor.mark_optional(html_element)
 
-            new_i, new_j = best_match_indices
-            for k in range(i, new_i):
-                AutomaticExtractor.mark_optional(wrapper_children[k])
-            
-            new_items = 0
-            for k in range(j, new_j):
-                AutomaticExtractor.mark_optional(html_children[k])
-                wrapper_children[i - 1].insert_after(html_children[k])
-                wrapper_children.insert(i, html_children[k])
-                new_items += 1
-            
-            i, j = best_match_indices
-            i += new_items
-            
-            # Move on to next elements in both trees.
-            i += 1
-            j += 1
+                    # Move onto the next items.
+                    i += 1
+                    j += 1
         
         # The loop above might have ended, but not all elements have been
         # matched.
@@ -310,16 +322,6 @@ class AutomaticExtractor(BaseExtractor):
         
         while j < len(html_children):
             AutomaticExtractor.mark_optional(html_children[j])
-
-            # Special case - the wrapper has no children, but the other element
-            # does. Append the first child and then use a normal version.
-            if len(wrapper_children) <= 0:
-                wrapper.append(html_children[j])
-                wrapper_children = [ html_children[j] ]
-            else:
-                wrapper_children[i - 1].insert_after(html_children[j])
-                wrapper_children.insert(i, html_children[j])
-            i += 1
             j += 1
         
         return True
