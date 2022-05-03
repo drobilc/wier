@@ -101,6 +101,10 @@ class AutomaticExtractor(BaseExtractor):
 
         at_least_one_child_matches = False
 
+        # We can assume here that the element tags match. If both trees have no
+        # children then they are the same.
+        if len(wrapper_children) == 0 and len(html_children) == 0: return True
+
         while i < len(wrapper_children) and j < len(html_children):
             wrapper_element = wrapper_children[i]
             html_element = html_children[j]
