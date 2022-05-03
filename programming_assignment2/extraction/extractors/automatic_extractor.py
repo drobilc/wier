@@ -68,9 +68,14 @@ class AutomaticExtractor(BaseExtractor):
 
         first_attributes = set(first.attrs.keys())
         second_attributes = set(second.attrs.keys())
-        first_attributes.difference_update(['optional', 'iterator'])
-        second_attributes.difference_update(['optional', 'iterator'])
+        first_attributes.difference_update(['optional', 'iterator', 'style'])
+        second_attributes.difference_update(['optional', 'iterator', 'style'])
         return first_attributes == second_attributes
+
+    @staticmethod
+    def get_children(node):
+        child_filter = lambda element: element != '\n'
+        return list(filter(child_filter, node.children))
 
     @staticmethod
     def match(wrapper, html):
@@ -88,9 +93,8 @@ class AutomaticExtractor(BaseExtractor):
 
         # Both elements are xml tags and their names do match. Check if their
         # children also match (at least partially).
-        newline_filter = lambda element: element != '\n'
-        wrapper_children = list(filter(newline_filter, wrapper.children))
-        html_children = list(filter(newline_filter, html.children))
+        wrapper_children = AutomaticExtractor.get_children(wrapper)
+        html_children = AutomaticExtractor.get_children(html)
 
         i = 0
         j = 0
@@ -133,7 +137,7 @@ class AutomaticExtractor(BaseExtractor):
     @staticmethod
     def generalize(wrapper, html):
         # The elements are the same object
-        if wrapper == html: return wrapper
+        if wrapper == html: return True
 
         # Both elements are strings - if the text doesn't match, then we have
         # discovered a field. Otherwise, we have found a data label.
@@ -152,9 +156,8 @@ class AutomaticExtractor(BaseExtractor):
 
         # Both elements are xml tags and their names do match. Check if their
         # children also match (at least partially).
-        newline_filter = lambda element: element != '\n'
-        wrapper_children = list(filter(newline_filter, wrapper.children))
-        html_children = list(filter(newline_filter, html.children))
+        wrapper_children = AutomaticExtractor.get_children(wrapper)
+        html_children = AutomaticExtractor.get_children(html)
 
         i = 0
         j = 0
@@ -172,7 +175,7 @@ class AutomaticExtractor(BaseExtractor):
             
             if elements_match:
                 AutomaticExtractor.generalize(wrapper_element, html_element)
-                wrapper_children = list(filter(newline_filter, wrapper.children))
+                wrapper_children = AutomaticExtractor.get_children(wrapper)
                 i += 1
                 j += 1
                 continue
@@ -191,7 +194,7 @@ class AutomaticExtractor(BaseExtractor):
             
             if j < len(html_children):
                 AutomaticExtractor.generalize(wrapper_element, html_element)
-                wrapper_children = list(filter(newline_filter, wrapper.children))
+                wrapper_children = AutomaticExtractor.get_children(wrapper)
 
                 # The corresponding element has been found in the other
                 # document. All elements between previous_j and current j can be
