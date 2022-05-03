@@ -1,0 +1,46 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage{tikz}
+\usepackage{cite}
+
+\usepackage[slovene]{babel}
+
+% correct bad hyphenation here
+\hyphenation{}
+
+\begin{document}
+	
+	\title{Ekstrakcija podatkov}
+	
+	\author{Skupina \textbf{DOMACI-NJOKI}: Niki Bizjak, Bojan Vrangeloski, Uroš Škrjanc}
+	
+	\maketitle
+	
+	\begin{abstract}
+		Cilj prve seminarske naloge je bil napisati pajka, ki zna s spleta prenašati spletne vsebine in jih shranjevati v podatkovno bazo. Pred iskanjem podatkov po taki podatkovni bazi, pa je treba prenesene vsebine najprej prečistiti in iz njih izluščiti pomembne informacije. V drugem seminarju si bomo ogledali tri različne načine za ekstrakcijo podatkov iz HTML vsebin.
+	\end{abstract}
+	
+	\IEEEpeerreviewmaketitle
+	
+	\section{Uvod}
+	
+	Druga seminarska naloga pri predmetu Iskanje in ekstrakcija podatkov s spleta je namenjena pridobivanju informacij iz vsebin, ki jih je s spleta prenesel pajek. V seminarju smo si ogledali tri različne načine ekstrakcije - dva taka, ki zahtevata veliko uporabnikovega poseganja in razumevanja strukture strani in tretjega, ki zna informacije prepoznati in izluščiti avtomatično, s primerjavo podobnih spletnih strani.
+	
+	\section{Regularni izrazi}
+	
+	Regularni izrazi nam omogočajo učinkovito iskanje informacij v nizih z uporabo končnih avtomatov.
+	
+	\section{XPath}
+	
+	XPath je poizvedovalni jezik, ki je bil razvit za namene ekstrakcije podatkov iz XML podatkovnih struktur.
+	
+	\section{Avtomatična ekstrakcija podatkov}
+	
+	Na spletu se od uvedbe programskega jezika PHP naprej pojavlja dosti dinamičnih spletnih strani. Take strani hranijo podatke v podatkovni bazi in glede na dostopan URL naslov izvedejo poizvedbo v podatkovni bazi in na podlagi rezultata prikažejo podatke v uporabniku prijazni obliki. Pri avtomatični ekstrakciji podatkov, bi radi na podlagi dveh strani, ki imata enako strukturo, a drugačno vsebino, zgradili program, ki zna samodejno pridobiti podatke.
+	
+	V našem primeru smo za avtomatično ekstrakcijo podatkov uporabili algoritem \textsc{RoadRunner}~\cite{roadrunner, crescenzi2001automatic}. Ta sicer v originalni implementaciji deluje na seznamu žetonov (angl. token), v našem primeru pa smo za predstavitev HTML vsebin uporabili kar DOM drevo.
+	
+	\bibliographystyle{IEEEtran}
+	\bibliography{bibliography}
+	
+\end{document}
