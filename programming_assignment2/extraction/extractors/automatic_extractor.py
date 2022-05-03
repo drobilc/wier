@@ -2,6 +2,12 @@ from .base_extractor import BaseExtractor
 from bs4 import BeautifulSoup, NavigableString, Comment
 from os.path import join
 import glob
+from enum import Enum
+
+class Match(Enum):
+    NO_MATCH = 1
+    APPROXIMATE_MATCH = 2
+    EXACT_MATCH = 3
 
 class AutomaticExtractor(BaseExtractor):
 
@@ -78,18 +84,18 @@ class AutomaticExtractor(BaseExtractor):
         return list(filter(child_filter, node.children))
 
     @staticmethod
-    def match(wrapper, html):
+    def accurate_match(wrapper, html):
         """
             Check if wrapper and html elements match in both their tags and at
             least one child.
         """
-        if wrapper == html: return True
+        if wrapper == html: return Match.EXACT_MATCH
         if isinstance(wrapper, NavigableString) and isinstance(html, NavigableString):
-            return True
+            return Match.EXACT_MATCH
         
-        if isinstance(wrapper, NavigableString): return False
-        if isinstance(html, NavigableString): return False
-        if not AutomaticExtractor.elements_match(wrapper, html): return False
+        if isinstance(wrapper, NavigableString): return Match.NO_MATCH
+        if isinstance(html, NavigableString): return Match.NO_MATCH
+        if not AutomaticExtractor.elements_match(wrapper, html): return Match.NO_MATCH
 
         # Both elements are xml tags and their names do match. Check if their
         # children also match (at least partially).
@@ -100,10 +106,11 @@ class AutomaticExtractor(BaseExtractor):
         j = 0
 
         at_least_one_child_matches = False
+        has_optional_elements = False
 
         # We can assume here that the element tags match. If both trees have no
         # children then they are the same.
-        if len(wrapper_children) == 0 and len(html_children) == 0: return True
+        if len(wrapper_children) == 0 and len(html_children) == 0: return Match.EXACT_MATCH
 
         while i < len(wrapper_children) and j < len(html_children):
             wrapper_element = wrapper_children[i]
@@ -115,6 +122,8 @@ class AutomaticExtractor(BaseExtractor):
                 j += 1
                 at_least_one_child_matches = True
                 continue
+            
+            has_optional_elements = True
 
             # We have found two children tags that don't match. First, check if
             # the current wrapper_element is optional. Check the current
@@ -136,10 +145,27 @@ class AutomaticExtractor(BaseExtractor):
             i += 1
             j += 1
         
-        return at_least_one_child_matches
+        has_optional_elements = has_optional_elements or (i < len(wrapper_children))
+        has_optional_elements = has_optional_elements or (j < len(html_children))
+
+        if not at_least_one_child_matches: return Match.NO_MATCH
+        if has_optional_elements: return Match.APPROXIMATE_MATCH
+
+        # At least one child matches AND there is no optional elements. This is
+        # an exact match.
+        return Match.EXACT_MATCH
+
+    @staticmethod
+    def match(wrapper, html):
+        return AutomaticExtractor.accurate_match(wrapper, html) is not Match.NO_MATCH
 
     @staticmethod
     def generalize(wrapper, html):
+        """
+            Try to generalize wrapper element with data from html element. Make
+            sure to check if the elements match using AutomaticExtractor.match
+            before generalization.
+        """
         # The elements are the same object
         if wrapper == html: return True
 
