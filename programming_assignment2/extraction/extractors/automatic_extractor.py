@@ -1,8 +1,7 @@
 from .base_extractor import BaseExtractor
 from bs4 import BeautifulSoup, NavigableString, Comment
-from os.path import join
-import glob
 from enum import Enum
+import argparse
 
 class Match(Enum):
     NO_MATCH = 1
@@ -11,19 +10,23 @@ class Match(Enum):
 
 class AutomaticExtractor(BaseExtractor):
 
+    def parse_arguments(self, arguments):
+        parser = argparse.ArgumentParser()
+        self.add_arguments(parser)
+        arguments, _ = parser.parse_known_args(arguments)
+        self.configuration = arguments
+    
+    def add_arguments(self, parser):
+        parser.add_argument('wrapper_file_path')
+        parser.add_argument('html_file_path')
+
     def extract(self):
-        input_folder = self.configuration.input_folder
-
-        # Find all HTML files inside input folder
-        glob_pathname = join(input_folder, '*.html')
-        html_files = glob.glob(glob_pathname)
-
-        if len(html_files) < 2:
-            raise Exception('Not enough files in input_folder')
+        wrapper_file_path = self.configuration.wrapper_file_path
+        html_file_path = self.configuration.html_file_path
         
-        with open(html_files[0], 'r+') as first_file:
-            with open(html_files[1], 'r+') as second_file:
-                wrapper = self.generate_wrapper(first_file.read(), second_file.read())
+        with open(wrapper_file_path, 'r+') as wrapper_file:
+            with open(html_file_path, 'r+') as html_file:
+                wrapper = self.generate_wrapper(wrapper_file.read(), html_file.read())
                 return wrapper
     
     @staticmethod
@@ -201,53 +204,99 @@ class AutomaticExtractor(BaseExtractor):
             # document match. If they do, move on to the next elements in both
             # trees. If not, we have found a tag mismatch and we must perform
             # the search for iterators and / or optionals.
-            elements_match = AutomaticExtractor.match(wrapper_element, html_element)
+            elements_match = AutomaticExtractor.accurate_match(wrapper_element, html_element)
             
-            if elements_match:
+            if elements_match is Match.EXACT_MATCH:
                 AutomaticExtractor.generalize(wrapper_element, html_element)
                 wrapper_children = AutomaticExtractor.get_children(wrapper)
                 i += 1
                 j += 1
                 continue
-
+            
             # We have found two children tags that don't match. First, check if
             # the current wrapper_element is optional. Check the current
             # wrapper_element with all remaining children in other document.
+            best_match = None
+            best_match_indices = None
+            best_match_type = Match.NO_MATCH
+
             previous_j = j
 
             while j < len(html_children):
                 html_element = html_children[j]
-                elements_match = AutomaticExtractor.match(wrapper_element, html_element)
-                if elements_match:
+                elements_match = AutomaticExtractor.accurate_match(wrapper_element, html_element)
+                
+                # We have found first exact match, we can stop here.
+                if elements_match is Match.EXACT_MATCH:
+                    best_match = (wrapper_element, html_element)
+                    best_match_indices = (i, j)
+                    best_match_type = elements_match
                     break
+                
+                # We have found a better match than the previous one.
+                if elements_match.value > best_match_type.value:
+                    best_match = (wrapper_element, html_element)
+                    best_match_indices = (i, j)
+                    best_match_type = elements_match
+                
                 j += 1
             
-            if j < len(html_children):
-                AutomaticExtractor.generalize(wrapper_element, html_element)
-                wrapper_children = AutomaticExtractor.get_children(wrapper)
+            if best_match_type is not Match.EXACT_MATCH:
+                # Try to find the current html element in wrapper.
+                j = previous_j
+                html_element = html_children[j]
 
-                # The corresponding element has been found in the other
-                # document. All elements between previous_j and current j can be
-                # marked as optional.
-                # Because those elements are not yet in our wrapper, we must
-                # copy them into wrapper.
-                for k in range(previous_j, j):
-                    AutomaticExtractor.mark_optional(html_children[k])
-                    # print(f'[j < n] Optional: {html_children[k]}')
-                    # print(list(map(AutomaticExtractor.element, wrapper_children)))
-                    wrapper_children[i - 1].insert_after(html_children[k])
-                    wrapper_children.insert(i, html_children[k])
+                previous_i = i
+
+                while i < len(wrapper_children):
+                    wrapper_element = wrapper_children[i]
+                    elements_match = AutomaticExtractor.accurate_match(wrapper_element, html_element)
+                    
+                    # We have found first exact match, we can stop here.
+                    if elements_match is Match.EXACT_MATCH:
+                        best_match = (wrapper_element, html_element)
+                        best_match_indices = (i, j)
+                        best_match_type = elements_match
+                        break
+                    
+                    # We have found a better match than the previous one.
+                    if elements_match.value > best_match_type.value:
+                        best_match = (wrapper_element, html_element)
+                        best_match_indices = (i, j)
+                        best_match_type = elements_match
+                    
                     i += 1
-            else:
-                # The element has not been found. This means that the
-                # wrapper_element is optional.
-                AutomaticExtractor.mark_optional(wrapper_element)
-                # print(f'[j >= n] Optional: {wrapper_element}')
-                # print(list(map(AutomaticExtractor.element, wrapper_children)))
+                
+                i = previous_i
 
-                # Reset j to its previous value and try to find the j-th child
-                # of html document in wrapper.
-                j = previous_j - 1
+            # TODO: Check for iterators and check for optionals
+            # We now have the best match between elements in wrapper and html.
+            # We now have multiple options:
+
+            if best_match is None:
+                AutomaticExtractor.mark_optional(wrapper_children[i])
+                # TODO: Add html_child here
+                i += 1
+                j += 1
+                continue
+
+            wrapper_element, html_element = best_match
+            AutomaticExtractor.generalize(wrapper_element, html_element)
+            wrapper_children = AutomaticExtractor.get_children(wrapper)
+
+            new_i, new_j = best_match_indices
+            for k in range(i, new_i):
+                AutomaticExtractor.mark_optional(wrapper_children[k])
+            
+            new_items = 0
+            for k in range(j, new_j):
+                AutomaticExtractor.mark_optional(html_children[k])
+                wrapper_children[i - 1].insert_after(html_children[k])
+                wrapper_children.insert(i, html_children[k])
+                new_items += 1
+            
+            i, j = best_match_indices
+            i += new_items
             
             # Move on to next elements in both trees.
             i += 1
