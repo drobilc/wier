@@ -2,6 +2,8 @@
 
 \usepackage{tikz}
 \usepackage{cite}
+\usepackage{caption}
+
 
 \usepackage[slovene]{babel}
 
@@ -26,54 +28,56 @@
 	
 	Druga seminarska naloga pri predmetu Iskanje in ekstrakcija podatkov s spleta je namenjena pridobivanju informacij iz vsebin, ki jih je s spleta prenesel pajek. V seminarju smo si ogledali tri različne načine ekstrakcije - dva taka, ki zahtevata veliko uporabnikovega poseganja in razumevanja strukture strani in tretjega, ki zna informacije prepoznati in izluščiti avtomatično, s primerjavo podobnih spletnih strani.
 	
+	Ekstrakcijo podatkov smo izvajali na štirih različnih spletnih straneh, ki jih glede na strukturo razdelimo na dve skupini:
+	
+	\begin{itemize}
+		\itemsep 0em
+		\item \textbf{list} - stran vsebuje \textit{seznam} izdelkov, artiklov, člankov, ipd.
+		\item \textbf{detail} - stran prikazuje podatke za en izdelek, članek, ipd.
+	\end{itemize}
+
+	Tabela \ref{tab:tipi}, prikazuje naše testne strani, razvrščene glede na tipa strani, opisana zgoraj.
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{l|l}
+			Stran & Tip \\ 
+			\hline 
+			\texttt{overstock.com} & list \\ 
+			\texttt{rtvslo.si} & detail \\ 
+			\texttt{bolha.com} & list \\ 
+			\texttt{avto.net} & detail \\ 
+		\end{tabular}
+		\caption{Tip strani za posamezno domeno, nad katero smo izvajali ekstrakcijo podatkov}
+		\label{tab:tipi}
+	\end{table}
+	
 	\section{Regularni izrazi}
 	
-	Regularni izrazi nam omogočajo učinkovito iskanje informacij v nizih z uporabo končnih avtomatov. Regularni izrazi lahko se uporabijo za preverjanje ce posamezen niz vsebuje podani vzorec iskanja. Pomagali smo si z python knjiznico import re. 
-	Za spletno domeno Overstock smo uporabili naslednje (glej spodaj) regularne izraze. Najprej smo definirali regularne izraze za vsak iskani podatek posebaj, nato pa smo jih z ustreznimi vmesnimi regularnimi izrazi povezali v skupen regularni izraz, ki poišče vse omenjene podatke hkrati, naredimo (angl. pattern search), pa iscemo primerjavo.
+	Regularni izrazi nam omogočajo učinkovito iskanje informacij v nizih z uporabo končnih avtomatov. Regularni izrazi se lahko uporabijo za preverjanje, če posamezen niz vsebuje iskan vzorec. Pri implementaciji ekstrakcije z regularnimi izrazi, smo si pomagali s vgrajeno Python knjižnico \texttt{re}. 
 	
-	title_regex = "<b>(.+-[kK]t[^<]+)</b>"
-	list_price_regex = "<b>List Price:</b></td><td align=\"left\"
-	nowrap=\"nowrap\"><s>([^<]+)</s>"
-	price_regex = "<span class=\"bigred\"><b>([^<]+)</b></span>"
-	saving_regex = "<span class=\"littleorange\">([$][^<]+)</span>"
-	content_regex = "<span class=\"normal\">([^<]+)"
-
-
-	regex = title_regex + "</a><br>[\s]+<table><tbody><tr><td 
-	valign=\"top\"><table>[\s]+<tbody><tr><td align=\"right\" nowrap=\"nowrap\">" + \
-	list_price_regex + "</td></tr>[\s]+<tr><td align=\"right\"
-	nowrap=\"nowrap\"><b>Price:</b></td><td align=\"left\" nowrap=\"nowrap\">" + \
-	price_regex + "</td></tr>[\s]+<tr><td align=\"right\" nowrap=\"nowrap\"><b>You 
-	Save:</b></td><td align=\"left\" nowrap=\"nowrap\">" + \
-	saving_regex + "</td></tr>[\s]+</tbody></table>[\s]+</td><td valign=\"top\">" + \
-	content_regeX
-
-	Za spletno domeno RTV SLO smo uporabili naslednje (glej spodaj) regularne izraze, ki smo jih z ustreznimi vmesnimi izrazi povezali v skupen regularni izraz, ki poišče vse omenjene podatke hkrati
-
-	title_regex = r"<h1>([^<]+)</h1>[\s]+<div class=\"subtitle\">([^<]+)</div>[\s]+<div class=\"article-meta-mobile\">[\s]+"
-	author_regex = r"<div class=\"author-timestamp\">[\s]+<strong>([^<]+)</strong>([^<]+)</div>"
-	lead_regex = r"<p class=\"lead\">([^<]+)</p>"
-	content_regex = r"<\/div>[\s]*?<\/figure>[\s]*?<p([\s\S]*?)<div class=\"gallery\">"
-	regex = title_regex + author_regex + r"[\s\S]*" + lead_regex + r"[\s\S]*" + content_regex
-
-			
-			
-	Za spletno domeno Avtonet smo uporabili naslednje (glej spodaj) regularne izraze, katerih rezultate smo dodajali iterativno v posamezen iskani element oziroma Data Record.
-			
-	link_regex = "<a class=\"stretched-link\" href=\"([^\"]+)\"></a>"
-	title_regex = "<div class=\"GO-Results-Naziv [^\"]+\">[\s]+<span>([^<]+)<\/span>[\s]+</div>"
-	data_regex = "<tbody>[\s]*<tr>[\s]+<td class=\"w-25 d-none d-md-block pl-3\">[^<]+</td>[\s]+<td class=\"w-75 pl-3\">([^<]+)" \
-				"</td>[\s]+</tr>(<tr>[\s]+<td class=\"d-none d-md-block pl-3\">[^<]+</td>[\s]+<td class=\"pl-3\">([^<]+)</td>[\s]+" \
-				"</tr>)?<tr>[\s]+<td class=\"d-none d-md-block pl-3\">Gorivo</td>[\s]+<td class=\"pl-3\">([^<]+)</td>[\s]+</tr><tr>[\s]+" \
-				"<td class=\"d-none d-md-block pl-3\">Menjalnik</td>[\s]+<td class=\"pl-3 text-truncate\">([^<]+)</td>[\s]+" \
-				"</tr><tr class=\"d-none d-md-table-row\">[\s]+<td class=\"d-none d-md-block pl-3\">Motor</td>[\s]+<td class=\"pl-3 text-truncate\">[\s]+" \
-				"([^<]+)</td>[\s]+</tr>[\s]+</tbody>[\s]+</table>"
-
-	price_regex = "<div class=\"GO-Results-(Top-)?Price-TXT-[^BbSsTt\"]*\">([^<]+)</div>"
-
+	Za ekstrakcijo podatkov s strani Overstock, smo uporabili regularne izraze, prikazane na sliki \ref{fig:overstock-regex}. Najprej smo za vsako iskano polje na strani definirali svoj regularni izraz, nato pa smo jih z ustreznimi vmesnimi regularnimi izrazi, povezali v skupen izraz, ki zna hkrati poiskati vse podatke. Na podoben način smo ekstrahirali podatke tudi iz ostalih spletnih strani. Regularne izraze za spletno stran RTV SLO lahko vidimo na sliki \ref{fig:rtvslo-regex}, slika \ref{fig:avtonet-regex}, pa prikazuje regularne izraze za spletno stran \texttt{Avto.net}.
 	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/overstock_regex}
+		\caption{Regularni izrazi, uporabljeni za ekstrakcijo podatkov s strani Overstock}
+		\label{fig:overstock-regex}
+	\end{figure}
 
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/rtvslo_regex}
+		\caption{Regularni izrazi, uporabljeni za ekstrakcijo podatkov s strani RTV SLO}
+		\label{fig:rtvslo-regex}
+	\end{figure}
 
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/avtonet_regex}
+		\caption{Regularni izrazi, uporabljeni za ekstrakcijo podatkov s strani Avto.net}
+		\label{fig:avtonet-regex}
+	\end{figure}
 
 	\section{XPath}
 	
