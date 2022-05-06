@@ -229,6 +229,9 @@ class AutomaticExtractor(BaseExtractor):
             # better match for our wrapper element.
             found_index, best_match, best_match_type = AutomaticExtractor.find_best_match(html_children[j:], wrapper_element)
             if best_match_type is Match.EXACT_MATCH:
+                #print(f'Exact match {wrapper_element} and {best_match}<br><br><br>')
+                #print(j, found_index)
+                #print('<hr>')
                 # We have found an exact match for wrapper_element in
                 # html_children.
                 AutomaticExtractor.generalize(wrapper_element, best_match)
@@ -237,12 +240,14 @@ class AutomaticExtractor(BaseExtractor):
                 # TODO: Check if items in html_children[j:found_index] are
                 # iterators.
 
-                for k in range(j, found_index):
+                for k in range(j, j + found_index):
                     AutomaticExtractor.mark_optional(html_children[k])
-                    # TODO: Copy html_children[k] after wrapper_element
 
-                # print(f'{AutomaticExtractor.element(wrapper_element)} Previous j: {j}, new j: {found_index + 1}')
-                # if j == (found_index + 1): raise Exception('Same index')
+                    # TODO: Copy html_children[k] after wrapper_element
+                    wrapper_children[i - 1].insert_after(html_children[k])
+                    wrapper_children.insert(i, html_children[k])
+                    i += 1
+
                 j += found_index + 1
                 i += 1
                 continue
@@ -259,11 +264,9 @@ class AutomaticExtractor(BaseExtractor):
                     # TODO: Check if items in wrapper_children[i:found_index] are
                     # iterators.
 
-                    for k in range(i, found_index):
+                    for k in range(i, i + found_index_other):
                         AutomaticExtractor.mark_optional(wrapper_children[k])
 
-                    # print(f'Previous i: {i}, new i: {found_index + 1}')
-                    # if i == (found_index + 1): raise Exception('Same index')
                     i += found_index_other + 1
                     j += 1
                     continue
@@ -276,17 +279,19 @@ class AutomaticExtractor(BaseExtractor):
                     # TODO: Check if items in html_children[j:found_index] are
                     # iterators.
 
-                    for k in range(j, found_index):
+                    for k in range(j, j + found_index):
                         AutomaticExtractor.mark_optional(html_children[k])
+                        
                         # TODO: Copy html_children[k] after wrapper_element
+                        wrapper_children[i - 1].insert_after(html_children[k])
+                        wrapper_children.insert(i, html_children[k])
+                        i += 1
 
-                    #if j == (found_index + 1): raise Exception('Same index')
-                    #print(f'Previous j: {j}, new j: {found_index + 1}')
                     j += found_index + 1
                     i += 1
                     continue
                 elif best_match_type_other is Match.APPROXIMATE_MATCH:                        
-                    # We have found an exact match for html_element in
+                    # We have found an approximate match for html_element in
                     # wrapper_children.
                     AutomaticExtractor.generalize(best_match_other, html_element)
                     wrapper_children = AutomaticExtractor.get_children(wrapper)
@@ -294,11 +299,9 @@ class AutomaticExtractor(BaseExtractor):
                     # TODO: Check if items in wrapper_children[i:found_index] are
                     # iterators.
 
-                    for k in range(i, found_index):
+                    for k in range(i, i + found_index_other):
                         AutomaticExtractor.mark_optional(wrapper_children[k])
 
-                    # if i == (found_index + 1): raise Exception('Same index')
-                    # print(f'Previous i: {i}, new i: {found_index + 1}')
                     i = found_index_other + 1
                     j += 1
                     continue
@@ -308,7 +311,11 @@ class AutomaticExtractor(BaseExtractor):
                     # TODO: Check if wrapper_element is iterator in wrapper_children.
                     # TODO: Check if html_element is iterator in wrapper_children?
                     AutomaticExtractor.mark_optional(wrapper_element)
+                    
                     AutomaticExtractor.mark_optional(html_element)
+                    wrapper_children[i - 1].insert_after(html_element)
+                    wrapper_children.insert(i, html_element)
+                    i += 1
 
                     # Move onto the next items.
                     i += 1
@@ -322,6 +329,15 @@ class AutomaticExtractor(BaseExtractor):
         
         while j < len(html_children):
             AutomaticExtractor.mark_optional(html_children[j])
+            # Special case - the wrapper has no children, but the other element
+            # does. Append the first child and then use a normal version.
+            if len(wrapper_children) <= 0:
+                wrapper.append(html_children[j])
+                wrapper_children = [ html_children[j] ]
+            else:
+                wrapper_children[i - 1].insert_after(html_children[j])
+                wrapper_children.insert(i, html_children[j])
+            i += 1
             j += 1
         
         return True
