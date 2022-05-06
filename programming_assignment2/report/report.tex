@@ -123,6 +123,31 @@
 	
 	Implementiran algoritem zna na strani prepoznati polja, tj. elemente, ki se pojavijo na obeh straneh, a imajo drugačne vrednosti. Prav tako zna program prepoznati opcijske elemente, tj. elemente, ki se pojavijo v enem izmed dokumentov, v drugem pa ne. Našo implementacijo bi lahko izboljšali tako, da bi dodali prepoznavanje iteratorjev, tj. elementov, ki se ponavljajo. Tega dela nam zaradi pomanjkanja časa, ni uspelo implementirati.
 	
+	\begin{figure}
+		\centering
+	\begin{verbatim}
+<html>
+    Books of: <b>PCDATA</b>
+    <img optional="True" src=".../"/>
+    <ul>
+        <li>
+            <i>Title:</i> #PCDATA
+        </li>
+        <li>
+            <i>Title:</i> #PCDATA
+        </li>
+        <li optional="True">
+            <i>Title:</i> Javascript
+        </li>
+    </ul>
+</html>
+	\end{verbatim}
+	\caption{Rezultat izvajanja avtomatične ekstrakcije podatkov}
+	\label{fig:automatic}
+	\end{figure}
+
+	Slika \ref{fig:automatic} prikazuje rezultat izvajanja avtomatične ekstrakcije podatkov nad primerom iz članka~\cite{roadrunner}. Naš program opcijske elemente označi z atributom \texttt{optional="True"}. Kot lahko vidimo, je naša implementacija ustrezno prepoznala polja in opcijske elemente.
+	
 %	\begin{algorithm}
 %		\caption{Generalizacija ovojnice}\label{octree}
 %		\begin{algorithmic}[1]
