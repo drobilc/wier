@@ -31,7 +31,7 @@ python createBase.py --path pot_do_datotek
 ```bash
 # argument --dbpath je opcijski
 # če arguemnt ni podan, program bazo z imenom inverted-index.db išče v imeniku, kjer poženemo program
-python run-sqlite-search.py --query "besede ločene s presledkom" --dbpath [pot do obsoječe baze]\
+python run-sqlite-search.py --query "besede ločene s presledkom" --dbpath [pot do obsoječe baze]
 ```
 
 ### Iskanje po HTML datotekah
