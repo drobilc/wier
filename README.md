@@ -2,4 +2,4 @@
 
 * [Seminar 1 - spletni pajek](programming_assignment1)
 * [Seminar 2 - ekstrakcija podatkov](programming_assignment2)
-* [Seminar 2 - implementacija preprostega indeksa](programming_assignment3)
+* [Seminar 3 - implementacija preprostega indeksa](programming_assignment3)
