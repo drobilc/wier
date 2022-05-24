@@ -1,0 +1,9 @@
+Results for a query:  social services
+Results found in: 10 ms
+
+Frequency  Keywords               Document                                           Snippets
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5           social + services      e-uprava.gov.si\e-uprava.gov.si.45.html            Social services , health , ... Social services , health , ... social assistance ? How
+5           social + services      e-uprava.gov.si\e-uprava.gov.si.9.html             Social services , health , ... Social services , health , ... social assistance ? How
+1           services               evem.gov.si\evem.gov.si.661.html                   Services ( AJPES )
+1           services               podatki.gov.si\podatki.gov.si.340.html             services ltd. TERME MARIBOR

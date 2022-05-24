@@ -1,0 +1,629 @@
+Results for a query:  zakon
+Results found in: 35 ms
+
+Frequency  Keywords   Document                                           Snippets
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+319         zakon      evem.gov.si\evem.gov.si.371.html                   zakon Zakon predpisuje naslednje poklice ... zakon Zakon predpisuje naslednje poklice ... zakon Zako
+13          zakon      evem.gov.si\evem.gov.si.227.html                   zakon ali uredba določa ... zakon , ter opravlja ... Zakon o sodiščih in ... Zakon o sodiščih ( ...
+11          zakon      evem.gov.si\evem.gov.si.224.html                   zakon ( ObrZ ) ... Zakon o zasebnem varovanju ... Zakon o zasebnem varovanju ... Zakon o zasebnem va
+9           zakon      e-prostor.gov.si\e-prostor.gov.si.13.html          zakon določa pristojnost Geodetske ... zakon določa organizacijo in ... zakon določa , da ... Zakon
+9           zakon      evem.gov.si\evem.gov.si.398.html                   zakon predpisuje , da ... zakon ne določa . ... zakon določa , da ... zakon ( ObrZ ) ... Zakon o spr
+8           zakon      evem.gov.si\evem.gov.si.164.html                   zakon , opravljajo kot ... Zakon o visokem šolstvu ... Zakon o visokem šolstvu ... Zakon o organizac
+6           zakon      evem.gov.si\evem.gov.si.140.html                   zakon ( ObrZ ) ... Zakon o orožju Pravna ... Zakon o orožju ( ... Zakon o obrambi Kdor ... Zakon o o
+6           zakon      evem.gov.si\evem.gov.si.26.html                    zakon ter vprašanjih , ... Zakon o sodelovanju delavcev ... Zakon o nematerializiranih vrednostnih .
+6           zakon      evem.gov.si\evem.gov.si.29.html                    zakon , ki ureja ... Zakon opredeljuje kot najbolj ... Zakon opredeljuje dejavnosti , ... Zakon o za
+6           zakon      evem.gov.si\evem.gov.si.391.html                   Zakon o zdravstvenem varstvu ... Zakon o urejanju trga ... Zakon o starševskem varstvu ... Zakon o p
+6           zakon      evem.gov.si\evem.gov.si.46.html                    Zakon o gospodarskih družbah ... Zakon o gospodarskih družbah ... Zakon o davčnem potrjevanju ... Za
+6           zakon      evem.gov.si\evem.gov.si.557.html                   Zakon o zdravstvenem varstvu ... Zakon o zdravstvenem varstvu ... Zakon o semenskem materialu ... Za
+6           zakon      evem.gov.si\evem.gov.si.88.html                    Zakon o zdravstvenem varstvu ... Zakon o urejanju trga ... Zakon o starševskem varstvu ... Zakon o p
+5           zakon      evem.gov.si\evem.gov.si.11.html                    zakon . Časovna omejitev ... Zakon o urejanju trga ... Zakon o spremembah in ... Zakon o delovnih ra
+5           zakon      evem.gov.si\evem.gov.si.172.html                   zakon Za dejavnosti , ... zakon , opravljajo kot ... zakon ( ObrZ ) ... Zakon o gostinstvu Gostinsko
+5           zakon      evem.gov.si\evem.gov.si.205.html                   zakon ( ObrZ ) ... Zakon o prevozih v ... Zakon o prevozih v ... Zakon o cestah Izredni ... Zakon o
+5           zakon      evem.gov.si\evem.gov.si.276.html                   Zakon o živinoreji Zakon predpisuje naslednje poklice ... Zakon o živinoreji ( ... Zakon o kmetijstv
+5           zakon      evem.gov.si\evem.gov.si.406.html                   Zakon o zdravstvenem varstvu ... Zakon o urejanju trga ... Zakon o starševskem varstvu ... Zakon o p
+5           zakon      evem.gov.si\evem.gov.si.485.html                   zakon Za dejavnosti , ... zakon , opravljajo kot ... zakon ( ObrZ ) ... Zakon o gostinstvu Gostinsko
+5           zakon      evem.gov.si\evem.gov.si.486.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov ... Zakon o graditvi objektov ... Zakon o gozdovih Za .
+5           zakon      evem.gov.si\evem.gov.si.553.html                   zakon ( ObrZ ) ... Zakon o zdravstvenem varstvu ... Zakon o zdravstvenem varstvu ... Zakon o semensk
+4           zakon      e-prostor.gov.si\e-prostor.gov.si.20.html          zakon opredelil tudi transformacijo ... Zakon o evidentiranju nepremičnin ... Zakon o državnem geode
+4           zakon      evem.gov.si\evem.gov.si.101.html                   zakon V primeru , ... zakon ( ObrZ ) ... Zakon o graditvi objektov ... Zakon o graditvi objektov
+4           zakon      evem.gov.si\evem.gov.si.128.html                   zakon in imeti dovoljenje ... zakon ( ObrZ ) ... Zakon o kemikalijah Pravne ... Zakon o kemikalijah
+4           zakon      evem.gov.si\evem.gov.si.129.html                   zakon Za dejavnosti , ... zakon ( ObrZ ) ... Zakon o varstvu okolja ... Zakon o varstvu okolja
+4           zakon      evem.gov.si\evem.gov.si.152.html                   zakon ( ObrZ ) ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon o gostinstvu (
+4           zakon      evem.gov.si\evem.gov.si.155.html                   zakon ( ObrZ ) ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon o gostinstvu (
+4           zakon      evem.gov.si\evem.gov.si.157.html                   zakon ( ObrZ ) ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon o gostinstvu (
+4           zakon      evem.gov.si\evem.gov.si.159.html                   zakon ( ObrZ ) ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon o gostinstvu (
+4           zakon      evem.gov.si\evem.gov.si.161.html                   Zakon o prijavi prebivališča ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon
+4           zakon      evem.gov.si\evem.gov.si.162.html                   Zakon o prijavi prebivališča ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon
+4           zakon      evem.gov.si\evem.gov.si.165.html                   Zakon o prijavi prebivališča ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon
+4           zakon      evem.gov.si\evem.gov.si.166.html                   Zakon o prijavi prebivališča ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon
+4           zakon      evem.gov.si\evem.gov.si.201.html                   Zakon o graditvi objektov ... Zakon o graditvi objektov ... Zakon o gozdovih Za ... Zakon o gozdovih
+4           zakon      evem.gov.si\evem.gov.si.202.html                   zakon V primeru , ... zakon ( ObrZ ) ... Zakon o graditvi objektov ... Zakon o graditvi objektov
+4           zakon      evem.gov.si\evem.gov.si.249.html                   Zakon o živinoreji ( ... Zakon o veterinarstvu ( ... Zakon o veterinarskih merilih ... Zakon o kmeti
+4           zakon      evem.gov.si\evem.gov.si.272.html                   Zakon o kmetijstvu Za ... Zakon o kmetijstvu ( ... Zakon o gozdovih Za ... Zakon o gozdovih (
+4           zakon      evem.gov.si\evem.gov.si.274.html                   Zakon o zdravstvenem varstvu ... Zakon o zdravstvenem varstvu ... Zakon o kmetijstvu Za ... Zakon o
+4           zakon      evem.gov.si\evem.gov.si.304.html                   Zakon o zdravstvenem varstvu ... Zakon o zdravstvenem varstvu ... Zakon o semenskem materialu ... Za
+4           zakon      evem.gov.si\evem.gov.si.358.html                   zakon prometa s temi ... Zakon o trgovini ( ... Zakon o meroslovju ( ... Zakon o kemikalijah (
+4           zakon      evem.gov.si\evem.gov.si.472.html                   Zakon o prijavi prebivališča ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon
+4           zakon      evem.gov.si\evem.gov.si.474.html                   Zakon o prijavi prebivališča ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon
+4           zakon      evem.gov.si\evem.gov.si.475.html                   zakon ( ObrZ ) ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon o gostinstvu (
+4           zakon      evem.gov.si\evem.gov.si.476.html                   Zakon o prijavi prebivališča ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon
+4           zakon      evem.gov.si\evem.gov.si.477.html                   Zakon o prijavi prebivališča ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon
+4           zakon      evem.gov.si\evem.gov.si.478.html                   Zakon o prijavi prebivališča ... Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon
+4           zakon      evem.gov.si\evem.gov.si.48.html                    Zakon o izvršbi in ... Zakon o gospodarskih družbah ... Zakon o gospodarskih družbah ... Zakon o fin
+4           zakon      evem.gov.si\evem.gov.si.481.html                   zakon , opravljajo kot ... zakon ( ObrZ ) ... Zakon o gostinstvu Gostinsko ... Zakon o gostinstvu (
+4           zakon      evem.gov.si\evem.gov.si.556.html                   Zakon o semenskem materialu ... Zakon o semenskem materialu ... Zakon o kmetijstvu in ... Zakon o km
+4           zakon      evem.gov.si\evem.gov.si.570.html                   Zakon o živinoreji Pred ... Zakon o živinoreji ( ... Zakon o ohranjanju narave ... Zakon o ohranjanj
+4           zakon      evem.gov.si\evem.gov.si.574.html                   zakon in imeti dovoljenje ... zakon ( ObrZ ) ... Zakon o kemikalijah Pravne ... Zakon o kemikalijah
+4           zakon      evem.gov.si\evem.gov.si.645.html                   Zakon o zdravilih ( ... Zakon o trgovini ( ... Zakon o meroslovju ( ... Zakon o lekarniški dejavnost
+4           zakon      evem.gov.si\evem.gov.si.7.html                     Zakon o spodbujanju skladnega ... Zakon o finančni upravi ... Zakon o dohodnini ( ... Zakon o davku
+4           zakon      evem.gov.si\evem.gov.si.73.html                    zakon , ki ureja ... zakon , ki ureja ... Zakon o delovnih razmerjih ... Zakon o delovnih razmerjih
+4           zakon      evem.gov.si\evem.gov.si.86.html                    Zakon o zdravstvenem varstvu ... Zakon o urejanju trga ... Zakon o starševskem varstvu ... Zakon o p
+3           zakon      e-prostor.gov.si\e-prostor.gov.si.129.html         Zakon o ugotavljanju katastrskega ... Zakon o ugotavljanju katastrskega ... Zakon o ugotavljanju kat
+3           zakon      evem.gov.si\evem.gov.si.133.html                   zakon ( ObrZ ) ... Zakon o prevozu nevarnega ... Zakon o prevozu nevarnega
+3           zakon      evem.gov.si\evem.gov.si.141.html                   zakon in imeti dovoljenje ... Zakon o kemikalijah Pravne ... Zakon o kemikalijah (
+3           zakon      evem.gov.si\evem.gov.si.158.html                   Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon o gostinstvu (
+3           zakon      evem.gov.si\evem.gov.si.168.html                   zakon , opravljajo kot ... Zakon o gostinstvu Gostinsko ... Zakon o gostinstvu (
+3           zakon      evem.gov.si\evem.gov.si.177.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov ... Zakon o graditvi objektov
+3           zakon      evem.gov.si\evem.gov.si.187.html                   zakon in imeti dovoljenje ... Zakon o kemikalijah Pravne ... Zakon o kemikalijah (
+3           zakon      evem.gov.si\evem.gov.si.197.html                   zakon Upravnik večstanovanjske hiše ... zakon . Vir : ... zakon ( SZ-1 )
+3           zakon      evem.gov.si\evem.gov.si.199.html                   zakon ( ObrZ ) ... Zakon o varstvu okolja ... Zakon o kmetijstvu (
+3           zakon      evem.gov.si\evem.gov.si.223.html                   Zakon v 6. členu ... Zakon o izvajanju carinskih ... Zakon o izvajanju carinske
+3           zakon      evem.gov.si\evem.gov.si.225.html                   Zakon o občinskem redarstvu ... Zakon o občinskem redarstvu ... Zakon določa pogoje za
+3           zakon      evem.gov.si\evem.gov.si.247.html                   Zakon o živinoreji ( ... Zakon o vodah ( ... Zakon o sladkovodnem ribištvu
+3           zakon      evem.gov.si\evem.gov.si.248.html                   Zakon o zdravstvenem varstvu ... Zakon o zdravstvenem varstvu ... Zakon o kmetijstvu (
+3           zakon      evem.gov.si\evem.gov.si.316.html                   Zakon o trgovini ( ... Zakon o meroslovju ( ... Zakon o izdelkih iz
+3           zakon      evem.gov.si\evem.gov.si.331.html                   Zakon o varstvu okolja ... Zakon o trgovini ( ... Zakon o meroslovju (
+3           zakon      evem.gov.si\evem.gov.si.337.html                   Zakon o trgovini ( ... Zakon o meroslovju ( ... Zakon o izdelkih iz
+3           zakon      evem.gov.si\evem.gov.si.346.html                   Zakon o trgovini ( ... Zakon o meroslovju ( ... Zakon o kmetijstvu (
+3           zakon      evem.gov.si\evem.gov.si.352.html                   Zakon o trgovini ( ... Zakon o morskem ribištvu ... Zakon o meroslovju (
+3           zakon      evem.gov.si\evem.gov.si.354.html                   Zakon o trgovini ( ... Zakon o meroslovju ( ... Zakon o izdelkih iz
+3           zakon      evem.gov.si\evem.gov.si.360.html                   Zakon o zdravilih ( ... Zakon o trgovini ( ... Zakon o meroslovju (
+3           zakon      evem.gov.si\evem.gov.si.376.html                   Zakon o spremembah in ... Zakon o kmetijskih zemljiščih ... Zakon o kmetijskih zemljiščih
+3           zakon      evem.gov.si\evem.gov.si.387.html                   Zakon o gospodarskih družbah ... Zakon o gospodarskih družbah ... Zakon o finančnem poslovanju
+3           zakon      evem.gov.si\evem.gov.si.397.html                   Zakon o spodbujanju skladnega ... Zakon o dohodnini ( ... Zakon o davku od
+3           zakon      evem.gov.si\evem.gov.si.441.html                   zakon ( ObrZ ) ... Zakon o obrambi Aerosnemanja ... Zakon o obrambi (
+3           zakon      evem.gov.si\evem.gov.si.449.html                   zakon ( ObrZ ) ... Zakon o trgovini ( ... Zakon o meroslovju (
+3           zakon      evem.gov.si\evem.gov.si.462.html                   zakon ( ObrZ ) ... Zakon o medicinskih pripomočkih ... Zakon o medicinskih pripomočkih
+3           zakon      evem.gov.si\evem.gov.si.464.html                   Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon o gostinstvu (
+3           zakon      evem.gov.si\evem.gov.si.469.html                   Zakon o omejevanju porabe ... Zakon o kmetijstvu ( ... Zakon o gostinstvu (
+3           zakon      evem.gov.si\evem.gov.si.471.html                   Zakon o omejevanju uporabe ... Zakon o omejevanju porabe ... Zakon o gostinstvu (
+3           zakon      evem.gov.si\evem.gov.si.484.html                   zakon , opravljajo kot ... Zakon o gostinstvu Gostinsko ... Zakon o gostinstvu (
+3           zakon      evem.gov.si\evem.gov.si.499.html                   zakon in imeti dovoljenje ... Zakon o kemikalijah Pravne ... Zakon o kemikalijah (
+3           zakon      evem.gov.si\evem.gov.si.584.html                   Zakon o trgovini ( ... Zakon o meroslovju ( ... Zakon o fitofarmacevtskih sredstvih
+3           zakon      evem.gov.si\evem.gov.si.599.html                   Zakon o zdravilih ( ... Zakon o trgovini ( ... Zakon o meroslovju (
+3           zakon      evem.gov.si\evem.gov.si.612.html                   Zakon o trgovini ( ... Zakon o meroslovju ( ... Zakon o kmetijstvu (
+3           zakon      evem.gov.si\evem.gov.si.625.html                   zakon ( ObrZ ) ... Zakon o trgovini ( ... Zakon o meroslovju (
+3           zakon      evem.gov.si\evem.gov.si.642.html                   Zakon o trgovini ( ... Zakon o meroslovju ( ... Zakon o kemikalijah (
+3           zakon      evem.gov.si\evem.gov.si.657.html                   Zakon o izvršbi in ... Zakon o izvršbi in ... Zakon o finančnem poslovanju
+3           zakon      evem.gov.si\evem.gov.si.72.html                    Zakon o dohodnini , ... Zakon o dohodnini ( ... Zakon o davku od
+3           zakon      evem.gov.si\evem.gov.si.74.html                    Zakon o dohodnini Zakon o pokojninskem in ... Zakon o zdravstvenem varstvu
+3           zakon      podatki.gov.si\podatki.gov.si.352.html             Zakon o praznikih in ... Zakon o praznikih in ... Zakon o praznikih in
+3           zakon      podatki.gov.si\podatki.gov.si.361.html             Zakon o varnosti na ... Zakon o varnosti na ... Zakon o varnosti na
+2           zakon      e-prostor.gov.si\e-prostor.gov.si.112.html         Zakon o evidentiranju nepremičnin ... Zakon o evidentiranju nepremičnin
+2           zakon      e-prostor.gov.si\e-prostor.gov.si.113.html         Zakon o evidentiranju nepremičnin ... Zakon o določanju območij
+2           zakon      e-prostor.gov.si\e-prostor.gov.si.54.html          Zakon o urejanju prostora/ZUreP-1/ ... Zakon o prostorskem načrtovanju
+2           zakon      e-uprava.gov.si\e-uprava.gov.si.59.html            Zakon o uveljavljanju pravic ... Zakon o starševskem varstvu
+2           zakon      evem.gov.si\evem.gov.si.109.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.126.html                   zakon V primeru , ... zakon ( ObrZ )
+2           zakon      evem.gov.si\evem.gov.si.135.html                   zakon V primeru , ... zakon ( ObrZ )
+2           zakon      evem.gov.si\evem.gov.si.151.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.156.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.160.html                   Zakon o kmetijstvu ( ... Zakon o gostinstvu (
+2           zakon      evem.gov.si\evem.gov.si.169.html                   Zakon o spodbujanju razvoja ... Zakon o spodbujanju razvoja
+2           zakon      evem.gov.si\evem.gov.si.170.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.179.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.180.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.182.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.184.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.185.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.196.html                   Zakon o graditvi objektov ... Zakon o gozdovih (
+2           zakon      evem.gov.si\evem.gov.si.203.html                   zakon Pravilnik o enostavnih ... Zakon o elektronskih komunikacijah
+2           zakon      evem.gov.si\evem.gov.si.206.html                   Zakon o žičniških napravah ... Zakon o varnosti na
+2           zakon      evem.gov.si\evem.gov.si.208.html                   zakon ( ObrZ ) ... Zakon o prevozih v
+2           zakon      evem.gov.si\evem.gov.si.209.html                   Zakon o pravniškem državnem ... Zakon o odvetništvu (
+2           zakon      evem.gov.si\evem.gov.si.219.html                   zakon ali uredba določa ... Zakon o sodiščih (
+2           zakon      evem.gov.si\evem.gov.si.220.html                   Zakon o plovbi po ... Zakon o plovbi po
+2           zakon      evem.gov.si\evem.gov.si.228.html                   Zakon o letalstvu Dejavnost ... Zakon o letalstvu (
+2           zakon      evem.gov.si\evem.gov.si.23.html                    Zakon o gospodarskih družbah ... Zakon o davčnem postopku
+2           zakon      evem.gov.si\evem.gov.si.230.html                   Zakon o železniškem prometu ... Zakon o varnosti v
+2           zakon      evem.gov.si\evem.gov.si.232.html                   Zakon o prevozih v ... Zakon o morskem ribištvu
+2           zakon      evem.gov.si\evem.gov.si.252.html                   Zakon o divjadi in ... Zakon o divjadi in
+2           zakon      evem.gov.si\evem.gov.si.258.html                   Zakon o semenskem materialu ... Zakon o semenskem materialu
+2           zakon      evem.gov.si\evem.gov.si.259.html                   Zakon o rudarstvu Rudarska ... Zakon o rudarstvu (
+2           zakon      evem.gov.si\evem.gov.si.260.html                   Zakon o kmetijstvu in ... Zakon o kmetijstvu (
+2           zakon      evem.gov.si\evem.gov.si.261.html                   Zakon o rudarstvu Rudarska ... Zakon o rudarstvu (
+2           zakon      evem.gov.si\evem.gov.si.264.html                   Zakon o semenskem materialu ... Zakon o semenskem materialu
+2           zakon      evem.gov.si\evem.gov.si.265.html                   Zakon o kmetijstvu , ... Zakon o kmetijstvu (
+2           zakon      evem.gov.si\evem.gov.si.278.html                   Zakon o semenskem materialu ... Zakon o semenskem materialu
+2           zakon      evem.gov.si\evem.gov.si.280.html                   Zakon o gozdovih Za ... Zakon o gozdovih (
+2           zakon      evem.gov.si\evem.gov.si.284.html                   Zakon o vodah ( ... Zakon o sladkovodnem ribištvu
+2           zakon      evem.gov.si\evem.gov.si.295.html                   Zakon o vodah ( ... Zakon o kmetijstvu (
+2           zakon      evem.gov.si\evem.gov.si.305.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.308.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.310.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.312.html                   Zakon o trgovini ( ... Zakon o fitofarmacevtskih sredstvih
+2           zakon      evem.gov.si\evem.gov.si.315.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.319.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.320.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.321.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.322.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.323.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.324.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.325.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.326.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.327.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.328.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.329.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.330.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.332.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.333.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.334.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.336.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.339.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.340.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.341.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.342.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.343.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.344.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.345.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.347.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.348.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.349.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.350.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.351.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.353.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.355.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.356.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.386.html                   Zakon o socialnem podjetništvu ... Zakon o avtorskih in
+2           zakon      evem.gov.si\evem.gov.si.405.html                   Zakon o spremembah in ... Zakon o delovnih razmerjih
+2           zakon      evem.gov.si\evem.gov.si.415.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.416.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.43.html                    zakon Stanovanjski zakon Pomoč & Podpora
+2           zakon      evem.gov.si\evem.gov.si.444.html                   zakon V primeru , ... zakon ( ObrZ )
+2           zakon      evem.gov.si\evem.gov.si.452.html                   zakon V primeru , ... zakon ( ObrZ )
+2           zakon      evem.gov.si\evem.gov.si.466.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.470.html                   Zakon o kmetijstvu ( ... Zakon o gostinstvu (
+2           zakon      evem.gov.si\evem.gov.si.473.html                   Zakon o kmetijstvu ( ... Zakon o gostinstvu (
+2           zakon      evem.gov.si\evem.gov.si.480.html                   Zakon o gostinstvu Sobodajalec ... Zakon o gostinstvu (
+2           zakon      evem.gov.si\evem.gov.si.487.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.490.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.491.html                   Zakon o graditvi objektov ... Zakon o geodetski dejavnosti
+2           zakon      evem.gov.si\evem.gov.si.493.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.494.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.495.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.496.html                   zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.510.html                   Zakon o poštnih storitvah ... Zakon o poštnih storitvah
+2           zakon      evem.gov.si\evem.gov.si.511.html                   Zakon o zasebnem varovanju ... Zakon o javnih zbiranjih
+2           zakon      evem.gov.si\evem.gov.si.515.html                   Zakon o zasebnem varovanju ... Zakon o javnih zbiranjih
+2           zakon      evem.gov.si\evem.gov.si.516.html                   zakon ali uredba določa ... Zakon o sodiščih (
+2           zakon      evem.gov.si\evem.gov.si.518.html                   zakon ali uredba določa ... Zakon o sodiščih (
+2           zakon      evem.gov.si\evem.gov.si.521.html                   Zakon o zdravstvenem varstvu ... Zakon o zdravstvenem varstvu
+2           zakon      evem.gov.si\evem.gov.si.524.html                   Zakon o elektronskih komunikacijah ... Zakon o elektronskih komunikacijah
+2           zakon      evem.gov.si\evem.gov.si.525.html                   Zakon o plovbi po ... Zakon o plovbi po
+2           zakon      evem.gov.si\evem.gov.si.526.html                   Zakon o varstvu pred ... Zakon o varstvu pred
+2           zakon      evem.gov.si\evem.gov.si.555.html                   Zakon o kmetijstvu in ... Zakon o kmetijstvu (
+2           zakon      evem.gov.si\evem.gov.si.558.html                   Zakon o rudarstvu Rudarska ... Zakon o rudarstvu (
+2           zakon      evem.gov.si\evem.gov.si.569.html                   Zakon o sladkovodnem ribištvu ... Zakon o sladkovodnem ribištvu
+2           zakon      evem.gov.si\evem.gov.si.576.html                   zakon ( ObrZ ) ... Zakon o gozdovih (
+2           zakon      evem.gov.si\evem.gov.si.577.html                   Zakon o veterinarstvu Veterinarske ... Zakon o veterinarstvu (
+2           zakon      evem.gov.si\evem.gov.si.601.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.603.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.605.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.608.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.609.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.611.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.613.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.614.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.615.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.616.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.617.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.618.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.619.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.620.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.621.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.622.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.623.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.624.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.626.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.628.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.629.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.630.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.632.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.634.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.635.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.636.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.638.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.639.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.640.html                   Zakon o trgovini ( ... Zakon o izdelkih iz
+2           zakon      evem.gov.si\evem.gov.si.641.html                   Zakon o trgovini ( ... Zakon o meroslovju (
+2           zakon      evem.gov.si\evem.gov.si.65.html                    Zakon o poslovnem registru ... Zakon o podpornem okolju
+2           zakon      evem.gov.si\evem.gov.si.656.html                   Zakon o davčnem potrjevanju ... Zakon o davku na
+2           zakon      evem.gov.si\evem.gov.si.659.html                   zakon vsebuje nekaj posebnih ... Zakon o gospodarskih družbah
+2           zakon      evem.gov.si\evem.gov.si.68.html                    Zakon o podpornem okolju ... Zakon o Poslovnem registru
+2           zakon      evem.gov.si\evem.gov.si.71.html                    Zakon o davčnem postopku ... Zakon o davku na
+2           zakon      evem.gov.si\evem.gov.si.78.html                    Zakon o preprečevanju dela ... Zakon in pravilnik delita
+2           zakon      evem.gov.si\evem.gov.si.8.html                     Zakon o finančni upravi ... Zakon o davčnem postopku
+2           zakon      evem.gov.si\evem.gov.si.84.html                    Zakon o zaposlovanju , ... Zakon o tujcih (
+2           zakon      evem.gov.si\evem.gov.si.9.html                     zakon . Poslovni enoti ... Zakon o davku od
+2           zakon      evem.gov.si\evem.gov.si.91.html                    zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.93.html                    zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      evem.gov.si\evem.gov.si.99.html                    zakon ( ObrZ ) ... Zakon o graditvi objektov
+2           zakon      podatki.gov.si\podatki.gov.si.210.html             Zakon o javnih financah ... Zakon o izvrševanju proračunov
+2           zakon      podatki.gov.si\podatki.gov.si.211.html             Zakon o finančni upravi ... Zakon o dohodnini (
+2           zakon      podatki.gov.si\podatki.gov.si.216.html             Zakon o državni statistiki ... Zakon o Banki Slovenije
+2           zakon      podatki.gov.si\podatki.gov.si.423.html             Zakon o zdravilih Pravna ... Zakon o zdravilih (
+2           zakon      podatki.gov.si\podatki.gov.si.462.html             Zakon o državni statistiki ... Zakon o Banki Slovenije
+2           zakon      podatki.gov.si\podatki.gov.si.465.html             Zakon o državni statistiki ... Zakon o Banki Slovenije
+2           zakon      podatki.gov.si\podatki.gov.si.511.html             Zakon o sistemu plač ... Zakon o sistemu plač
+2           zakon      podatki.gov.si\podatki.gov.si.551.html             zakon ne določa drugače ... zakon ali je za
+1           zakon      e-prostor.gov.si\e-prostor.gov.si.11.html          Zakon o ugotavljanju katastrskega
+1           zakon      e-prostor.gov.si\e-prostor.gov.si.140.html         Zakon o državnem geodetskem
+1           zakon      e-prostor.gov.si\e-prostor.gov.si.145.html         Zakon o določanju območij
+1           zakon      e-prostor.gov.si\e-prostor.gov.si.149.html         Zakon je tudi opredelil
+1           zakon      e-prostor.gov.si\e-prostor.gov.si.24.html          Zakon o evidentiranju nepremičnin
+1           zakon      e-prostor.gov.si\e-prostor.gov.si.57.html          Zakon o evidentiranju nepremičnin
+1           zakon      e-prostor.gov.si\e-prostor.gov.si.58.html          zakon . Kadar nam
+1           zakon      e-prostor.gov.si\e-prostor.gov.si.94.html          Zakon o ugotavljanju katastrskega
+1           zakon      e-uprava.gov.si\e-uprava.gov.si.25.html            Zakon o izvrševanju kazenskih
+1           zakon      e-uprava.gov.si\e-uprava.gov.si.31.html            Zakon o splošnem upravnem
+1           zakon      e-uprava.gov.si\e-uprava.gov.si.44.html            zakon . Kadar bodo
+1           zakon      e-uprava.gov.si\e-uprava.gov.si.56.html            Zakon vsakomur omogoča dostop
+1           zakon      e-uprava.gov.si\e-uprava.gov.si.58.html            Zakon o prijavi prebivališča
+1           zakon      evem.gov.si\evem.gov.si.102.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.103.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.104.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.105.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.106.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.107.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.108.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.110.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.111.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.112.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.113.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.114.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.115.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.116.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.117.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.118.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.119.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.12.html                    Zakon o avtorski in
+1           zakon      evem.gov.si\evem.gov.si.120.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.121.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.122.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.123.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.124.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.125.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.127.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.132.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.134.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.136.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.137.html                   zakon V primeru ,
+1           zakon      evem.gov.si\evem.gov.si.14.html                    Zakon o varnosti in
+1           zakon      evem.gov.si\evem.gov.si.145.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.149.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.153.html                   Zakon o spodbujanju razvoja
+1           zakon      evem.gov.si\evem.gov.si.154.html                   Zakon o spodbujanju razvoja
+1           zakon      evem.gov.si\evem.gov.si.163.html                   Zakon o gostinstvu (
+1           zakon      evem.gov.si\evem.gov.si.167.html                   Zakon o omejevanju uporabe
+1           zakon      evem.gov.si\evem.gov.si.171.html                   Zakon o graditvi objektov
+1           zakon      evem.gov.si\evem.gov.si.173.html                   Zakon o graditvi objektov
+1           zakon      evem.gov.si\evem.gov.si.174.html                   Zakon o graditvi objektov
+1           zakon      evem.gov.si\evem.gov.si.175.html                   Zakon o graditvi objektov
+1           zakon      evem.gov.si\evem.gov.si.176.html                   Zakon o graditvi objektov
+1           zakon      evem.gov.si\evem.gov.si.178.html                   Zakon o graditvi objektov
+1           zakon      evem.gov.si\evem.gov.si.181.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.183.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.186.html                   Zakon o nepremičninskem posredovanju
+1           zakon      evem.gov.si\evem.gov.si.189.html                   Zakon o graditvi objektov
+1           zakon      evem.gov.si\evem.gov.si.192.html                   Zakon o kmetijstvu in
+1           zakon      evem.gov.si\evem.gov.si.198.html                   Zakon o gozdovih (
+1           zakon      evem.gov.si\evem.gov.si.200.html                   Zakon o trgovini (
+1           zakon      evem.gov.si\evem.gov.si.204.html                   Zakon o elektronskih komunikacijah
+1           zakon      evem.gov.si\evem.gov.si.207.html                   Zakon o prevozih v
+1           zakon      evem.gov.si\evem.gov.si.210.html                   Zakon o zasebnem varovanju
+1           zakon      evem.gov.si\evem.gov.si.211.html                   Zakon o zasebnem varovanju
+1           zakon      evem.gov.si\evem.gov.si.212.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.215.html                   Zakon o poštnih storitvah
+1           zakon      evem.gov.si\evem.gov.si.216.html                   Zakon o zasebnem varovanju
+1           zakon      evem.gov.si\evem.gov.si.218.html                   Zakon o zasebnem varovanju
+1           zakon      evem.gov.si\evem.gov.si.22.html                    Zakon o gospodarskih družbah
+1           zakon      evem.gov.si\evem.gov.si.221.html                   Zakon o občinskem redarstvu
+1           zakon      evem.gov.si\evem.gov.si.231.html                   Zakon o železniškem prometu
+1           zakon      evem.gov.si\evem.gov.si.233.html                   Zakon o železniškem prometu
+1           zakon      evem.gov.si\evem.gov.si.234.html                   Zakon o poštnih storitvah
+1           zakon      evem.gov.si\evem.gov.si.235.html                   Zakon o železniškem prometu
+1           zakon      evem.gov.si\evem.gov.si.236.html                   Zakon o varnosti v
+1           zakon      evem.gov.si\evem.gov.si.238.html                   Zakon o varnosti v
+1           zakon      evem.gov.si\evem.gov.si.240.html                   Zakon o ratifikaciji Manilskih
+1           zakon      evem.gov.si\evem.gov.si.243.html                   Zakon o veterinarstvu (
+1           zakon      evem.gov.si\evem.gov.si.245.html                   Zakon o veterinarstvu (
+1           zakon      evem.gov.si\evem.gov.si.246.html                   Zakon o veterinarstvu (
+1           zakon      evem.gov.si\evem.gov.si.250.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.251.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.253.html                   Zakon o fitofarmacevtskih sredstvih
+1           zakon      evem.gov.si\evem.gov.si.256.html                   Zakon o semenskem materialu
+1           zakon      evem.gov.si\evem.gov.si.263.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.270.html                   Zakon o sladkovodnem ribištvu
+1           zakon      evem.gov.si\evem.gov.si.273.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.275.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.279.html                   Zakon o semenskem materialu
+1           zakon      evem.gov.si\evem.gov.si.28.html                    Zakon o zavodih (
+1           zakon      evem.gov.si\evem.gov.si.281.html                   Zakon o gozdovih (
+1           zakon      evem.gov.si\evem.gov.si.282.html                   Zakon o gozdovih (
+1           zakon      evem.gov.si\evem.gov.si.283.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.285.html                   Zakon o morskem ribištvu
+1           zakon      evem.gov.si\evem.gov.si.287.html                   Zakon o kmetijstvu (
+1           zakon      evem.gov.si\evem.gov.si.288.html                   Zakon o vinu (
+1           zakon      evem.gov.si\evem.gov.si.289.html                   Zakon o fitofarmacevtskih sredstvih
+1           zakon      evem.gov.si\evem.gov.si.290.html                   Zakon o sladkovodnem ribištvu
+1           zakon      evem.gov.si\evem.gov.si.292.html                   Zakon o kmetijstvu (
+1           zakon      evem.gov.si\evem.gov.si.293.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.294.html                   Zakon o gozdnem reprodukcijskem
+1           zakon      evem.gov.si\evem.gov.si.296.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.297.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.298.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.299.html                   Zakon o zdravstvenem varstvu
+1           zakon      evem.gov.si\evem.gov.si.300.html                   Zakon o zdravstvenem varstvu
+1           zakon      evem.gov.si\evem.gov.si.301.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.302.html                   Zakon o zdravstvenem varstvu
+1           zakon      evem.gov.si\evem.gov.si.303.html                   Zakon o semenskem materialu
+1           zakon      evem.gov.si\evem.gov.si.306.html                   Zakon o trgovini (
+1           zakon      evem.gov.si\evem.gov.si.307.html                   Zakon o varstvu okolja
+1           zakon      evem.gov.si\evem.gov.si.313.html                   Zakon o omejevanju uporabe
+1           zakon      evem.gov.si\evem.gov.si.335.html                   Zakon o trgovini (
+1           zakon      evem.gov.si\evem.gov.si.338.html                   Zakon o trgovini (
+1           zakon      evem.gov.si\evem.gov.si.34.html                    Zakon o poslovnem registru
+1           zakon      evem.gov.si\evem.gov.si.357.html                   Zakon o zdravstvenem varstvu
+1           zakon      evem.gov.si\evem.gov.si.359.html                   Zakon o zdravilih (
+1           zakon      evem.gov.si\evem.gov.si.364.html                   zakon . Če so
+1           zakon      evem.gov.si\evem.gov.si.366.html                   Zakon o zaposlitveni rehabilitaciji
+1           zakon      evem.gov.si\evem.gov.si.368.html                   Zakon o javnem interesu
+1           zakon      evem.gov.si\evem.gov.si.382.html                   Zakon o uresničevanju javnega
+1           zakon      evem.gov.si\evem.gov.si.383.html                   Zakon o raziskovalni in
+1           zakon      evem.gov.si\evem.gov.si.4.html                     Zakon o gospodarskih družbah
+1           zakon      evem.gov.si\evem.gov.si.400.html                   Zakon o delovnih razmerjih
+1           zakon      evem.gov.si\evem.gov.si.402.html                   Zakon o zdravstvenem varstvu
+1           zakon      evem.gov.si\evem.gov.si.408.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.410.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.411.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.412.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.413.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.414.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.418.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.419.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.420.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.421.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.422.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.423.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.424.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.425.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.426.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.427.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.428.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.429.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.430.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.431.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.432.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.434.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.435.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.436.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.437.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.438.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.439.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.44.html                    Zakon o gospodarskih družbah
+1           zakon      evem.gov.si\evem.gov.si.440.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.442.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.443.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.445.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.446.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.447.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.448.html                   Zakon o fitofarmacevtskih sredstvih
+1           zakon      evem.gov.si\evem.gov.si.450.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.456.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.459.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.460.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.461.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.463.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.465.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.467.html                   Zakon o gostinstvu (
+1           zakon      evem.gov.si\evem.gov.si.468.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.479.html                   Zakon o omejevanju uporabe
+1           zakon      evem.gov.si\evem.gov.si.482.html                   Zakon o graditvi objektov
+1           zakon      evem.gov.si\evem.gov.si.483.html                   Zakon o graditvi objektov
+1           zakon      evem.gov.si\evem.gov.si.488.html                   Zakon o graditvi objektov
+1           zakon      evem.gov.si\evem.gov.si.489.html                   Zakon o graditvi objektov
+1           zakon      evem.gov.si\evem.gov.si.49.html                    zakon . ( 3
+1           zakon      evem.gov.si\evem.gov.si.492.html                   Zakon o graditvi objektov
+1           zakon      evem.gov.si\evem.gov.si.497.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.500.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.502.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.504.html                   Zakon o prevozih v
+1           zakon      evem.gov.si\evem.gov.si.505.html                   Zakon o notariatu (
+1           zakon      evem.gov.si\evem.gov.si.506.html                   Zakon o prevozih v
+1           zakon      evem.gov.si\evem.gov.si.507.html                   Zakon o prevozih v
+1           zakon      evem.gov.si\evem.gov.si.508.html                   Zakon o detektivski dejavnosti
+1           zakon      evem.gov.si\evem.gov.si.512.html                   Zakon o zasebnem varovanju
+1           zakon      evem.gov.si\evem.gov.si.513.html                   Zakon o zasebnem varovanju
+1           zakon      evem.gov.si\evem.gov.si.514.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.517.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.519.html                   Zakon o finančnem poslovanju
+1           zakon      evem.gov.si\evem.gov.si.522.html                   zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.528.html                   Zakon o elektronskih komunikacijah
+1           zakon      evem.gov.si\evem.gov.si.530.html                   Zakon o poštnih storitvah
+1           zakon      evem.gov.si\evem.gov.si.531.html                   Zakon o poštnih storitvah
+1           zakon      evem.gov.si\evem.gov.si.532.html                   Zakon o železniškem prometu
+1           zakon      evem.gov.si\evem.gov.si.537.html                   Zakon o varnosti v
+1           zakon      evem.gov.si\evem.gov.si.538.html                   Zakon o varnosti v
+1           zakon      evem.gov.si\evem.gov.si.540.html                   Zakon o veterinarstvu (
+1           zakon      evem.gov.si\evem.gov.si.541.html                   Zakon o varstvu okolja
+1           zakon      evem.gov.si\evem.gov.si.542.html                   Zakon o elektronskih komunikacijah
+1           zakon      evem.gov.si\evem.gov.si.543.html                   Zakon o gozdovih (
+1           zakon      evem.gov.si\evem.gov.si.544.html                   Zakon o kmetijstvu (
+1           zakon      evem.gov.si\evem.gov.si.545.html                   Zakon o kmetijstvu (
+1           zakon      evem.gov.si\evem.gov.si.547.html                   Zakon o varstvu okolja
+1           zakon      evem.gov.si\evem.gov.si.548.html                   Zakon o morskem ribištvu
+1           zakon      evem.gov.si\evem.gov.si.549.html                   Zakon o gozdovih Za
+1           zakon      evem.gov.si\evem.gov.si.550.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.551.html                   Zakon o semenskem materialu
+1           zakon      evem.gov.si\evem.gov.si.554.html                   Zakon o kmetijstvu (
+1           zakon      evem.gov.si\evem.gov.si.564.html                   Zakon o vinu Pridelovalci
+1           zakon      evem.gov.si\evem.gov.si.567.html                   Zakon o zdravstvenem varstvu
+1           zakon      evem.gov.si\evem.gov.si.572.html                   Zakon o kmetijstvu (
+1           zakon      evem.gov.si\evem.gov.si.573.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.575.html                   Zakon o semenskem materialu
+1           zakon      evem.gov.si\evem.gov.si.579.html                   Zakon o morskem ribištvu
+1           zakon      evem.gov.si\evem.gov.si.580.html                   Zakon o morskem ribištvu
+1           zakon      evem.gov.si\evem.gov.si.581.html                   Zakon o vinu (
+1           zakon      evem.gov.si\evem.gov.si.582.html                   Zakon o fitofarmacevtskih sredstvih
+1           zakon      evem.gov.si\evem.gov.si.583.html                   Zakon o sladkovodnem ribištvu
+1           zakon      evem.gov.si\evem.gov.si.585.html                   Zakon o gozdovih (
+1           zakon      evem.gov.si\evem.gov.si.586.html                   Zakon o gozdovih (
+1           zakon      evem.gov.si\evem.gov.si.587.html                   Zakon o gozdovih (
+1           zakon      evem.gov.si\evem.gov.si.588.html                   Zakon o kmetijstvu (
+1           zakon      evem.gov.si\evem.gov.si.589.html                   Zakon o sladkovodnem ribištvu
+1           zakon      evem.gov.si\evem.gov.si.590.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.591.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.592.html                   Zakon o zdravstvenem varstvu
+1           zakon      evem.gov.si\evem.gov.si.593.html                   Zakon o zdravstvenem varstvu
+1           zakon      evem.gov.si\evem.gov.si.594.html                   Zakon o živinoreji (
+1           zakon      evem.gov.si\evem.gov.si.595.html                   Zakon o semenskem materialu
+1           zakon      evem.gov.si\evem.gov.si.596.html                   Zakon o varstvu pred
+1           zakon      evem.gov.si\evem.gov.si.597.html                   Zakon o trgovini (
+1           zakon      evem.gov.si\evem.gov.si.598.html                   Zakon o zdravstvenem varstvu
+1           zakon      evem.gov.si\evem.gov.si.600.html                   Zakon o semenskem materialu
+1           zakon      evem.gov.si\evem.gov.si.61.html                    Zakon o elektronskih komunikacijah
+1           zakon      evem.gov.si\evem.gov.si.627.html                   Zakon o trgovini (
+1           zakon      evem.gov.si\evem.gov.si.64.html                    Zakon o poslovnem registru
+1           zakon      evem.gov.si\evem.gov.si.648.html                   Zakon o društvih O
+1           zakon      evem.gov.si\evem.gov.si.649.html                   Zakon o kmetijstvu (
+1           zakon      evem.gov.si\evem.gov.si.652.html                   Zakon o ustanovah Pomoč
+1           zakon      evem.gov.si\evem.gov.si.655.html                   Zakon o vinu (
+1           zakon      evem.gov.si\evem.gov.si.70.html                    zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.94.html                    zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.95.html                    zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.96.html                    zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.97.html                    zakon ( ObrZ )
+1           zakon      evem.gov.si\evem.gov.si.98.html                    zakon ( ObrZ )
+1           zakon      podatki.gov.si\podatki.gov.si.104.html             Zakon o integriteti in
+1           zakon      podatki.gov.si\podatki.gov.si.105.html             Zakon o javnih uslužbencih
+1           zakon      podatki.gov.si\podatki.gov.si.108.html             Zakon o varstvu osebnih
+1           zakon      podatki.gov.si\podatki.gov.si.121.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.122.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.135.html             Zakon o varstvu kulturne
+1           zakon      podatki.gov.si\podatki.gov.si.136.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.139.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.147.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.148.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.149.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.150.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.151.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.152.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.164.html             Zakon o zbirkah podatkov
+1           zakon      podatki.gov.si\podatki.gov.si.165.html             Zakon o zbirkah podatkov
+1           zakon      podatki.gov.si\podatki.gov.si.166.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.167.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.169.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.170.html             Zakon o zbirkah podatkov
+1           zakon      podatki.gov.si\podatki.gov.si.178.html             Zakon o ravnanju z
+1           zakon      podatki.gov.si\podatki.gov.si.179.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.180.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.181.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.184.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.200.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.203.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.213.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.217.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.219.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.228.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.229.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.230.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.231.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.232.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.233.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.234.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.247.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.248.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.249.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.251.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.252.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.256.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.262.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.263.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.264.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.265.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.272.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.274.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.277.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.278.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.279.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.280.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.283.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.284.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.285.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.308.html             zakon doživel že več
+1           zakon      podatki.gov.si\podatki.gov.si.329.html             Zakon o varstvu kulturne
+1           zakon      podatki.gov.si\podatki.gov.si.336.html             Zakon o varnosti na
+1           zakon      podatki.gov.si\podatki.gov.si.351.html             Zakon o sistemu plač
+1           zakon      podatki.gov.si\podatki.gov.si.355.html             Zakon o varnosti na
+1           zakon      podatki.gov.si\podatki.gov.si.356.html             Zakon o varnosti na
+1           zakon      podatki.gov.si\podatki.gov.si.358.html             Zakon o varnosti na
+1           zakon      podatki.gov.si\podatki.gov.si.360.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.362.html             Zakon o varnosti na
+1           zakon      podatki.gov.si\podatki.gov.si.363.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.378.html             Zakon o integriteti in
+1           zakon      podatki.gov.si\podatki.gov.si.390.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.393.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.394.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.400.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.401.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.402.html             Zakon o športu (
+1           zakon      podatki.gov.si\podatki.gov.si.410.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.411.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.412.html             Zakon o društvih (
+1           zakon      podatki.gov.si\podatki.gov.si.413.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.422.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.425.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.426.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.435.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.436.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.439.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.448.html             Zakon o javnih cestah
+1           zakon      podatki.gov.si\podatki.gov.si.449.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.450.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.451.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.461.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.463.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.477.html             Zakon o Poslovnem registru
+1           zakon      podatki.gov.si\podatki.gov.si.479.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.480.html             Zakon o stvarnem premoženju
+1           zakon      podatki.gov.si\podatki.gov.si.491.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.492.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.493.html             Zakon o kmetijstvu (
+1           zakon      podatki.gov.si\podatki.gov.si.500.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.501.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.502.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.503.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.505.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.507.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.521.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.523.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.524.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.525.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.526.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.527.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.528.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.531.html             Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.544.html             Zakon o dostopu do
+1           zakon      podatki.gov.si\podatki.gov.si.550.html             Zakon vsebuje pomembno priporočilo
+1           zakon      podatki.gov.si\podatki.gov.si.56.html              Zakon o varnosti na
+1           zakon      podatki.gov.si\podatki.gov.si.64.html              Zakon o motornih vozilih
+1           zakon      podatki.gov.si\podatki.gov.si.65.html              Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.68.html              Zakon o sistemu plač
+1           zakon      podatki.gov.si\podatki.gov.si.73.html              Zakon o varnosti na
+1           zakon      podatki.gov.si\podatki.gov.si.75.html              Zakon o varnosti na
+1           zakon      podatki.gov.si\podatki.gov.si.78.html              Zakon o varnosti na
+1           zakon      podatki.gov.si\podatki.gov.si.83.html              Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.84.html              Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.85.html              Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.86.html              Zakon o državni statistiki
+1           zakon      podatki.gov.si\podatki.gov.si.87.html              Zakon o državni statistiki

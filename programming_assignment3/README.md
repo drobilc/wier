@@ -5,7 +5,7 @@ Navodila naloge se nahajajo [tukaj](https://szitnik.github.io/wier-labs/PA3.html
 ## Namestitev
 
 ```bash
-cd programming_assignment3/search
+cd programming_assignment3/implementation-indexing
 
 # Create a new virtual environment
 python -m venv venv
