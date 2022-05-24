@@ -1,4 +1,4 @@
-# Seminar 3 - ekstrakcija podatkov
+# Seminar 3 - implementacija preprostega indeksa
 
 Navodila naloge se nahajajo [tukaj](https://szitnik.github.io/wier-labs/PA3.html).
 
