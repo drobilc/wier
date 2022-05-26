@@ -42,4 +42,4 @@ python run-basic-search.py --query "besede ločene s presledkom" --path pot_do_d
 ```
 
 ### Že kreirana baza podatkov
-Bazo podatkov, narejeno s createBase.py, lahko snamete na [naslovu] (https://drive.google.com/file/d/1CDF1kLlZ_72cYs-poq0AkLnbQV0hOQz2/view?usp=sharing)
+Bazo podatkov, narejeno s createBase.py, lahko snamete na [naslovu](https://drive.google.com/file/d/1CDF1kLlZ_72cYs-poq0AkLnbQV0hOQz2/view?usp=sharing).
